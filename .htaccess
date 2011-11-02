@@ -1,0 +1,17 @@
+Options +ExecCGI
+
+<Files map>
+  SetHandler cgi-script
+</Files>
+
+<Files info>
+  SetHandler cgi-script
+</Files>
+
+<Files search>
+  SetHandler cgi-script
+</Files>
+
+<Files mapO>
+  SetHandler cgi-script
+</Files>
