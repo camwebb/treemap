@@ -94,10 +94,6 @@ BEGIN{
 
 }
 
-function gpheader() {
-  print "set terminal png transparent font \"./PlantagenetCherokee.ttf,12\" size 500,500\nset size square\nset xrange [" f["long"] ":" f["long"]+0.001 "]\nset yrange [" f["lat"] ":" f["lat"]+0.001 "]\nset border 0\nunset xtics\nunset ytics\nunset key\nset bmargin 0\nset tmargin 0\nset lmargin 0\nset rmargin 0\n\nset output \"run/" ps ".png\"\nset multiplot\n" > "run/" ps ".plt" ;
-}
-
 function header() {
     print "Content-type: text/html\n\n";
     print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \

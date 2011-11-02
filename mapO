@@ -61,7 +61,7 @@ BEGIN{
 }
 
 function gpheader() {
-  print "set terminal png transparent font \"./PlantagenetCherokee.ttf,12\" size 525,550\nset xrange [-71.136:-71.115]\nset yrange [42.288:42.310]\nset border 0\nunset xtics\nunset ytics\nunset key\nset bmargin 0\nset tmargin 0\nset lmargin 0\nset rmargin 0\nset output \"run/" ps ".png\"\n" > "run/" ps ".plt" ;
+  print "set terminal png transparent size 525,550\nset xrange [-71.136:-71.115]\nset yrange [42.288:42.310]\nset border 0\nunset xtics\nunset ytics\nunset key\nset bmargin 0\nset tmargin 0\nset lmargin 0\nset rmargin 0\nset output \"run/" ps ".png\"\n" > "run/" ps ".plt" ;
 }
 
 function header() {
