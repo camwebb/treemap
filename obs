@@ -1,0 +1,111 @@
+#!/usr/bin/gawk -f
+
+# Script to generate obervation form
+
+BEGIN{
+
+  split(ENVIRON["QUERY_STRING"], query, "&");
+  for (i in query)
+	{
+	  split(query[i], tq, "=");
+	  f[tq[1]] = decode(tq[2]); 
+   }
+
+  header();
+
+  print "<h1>Make an observation</h1>";
+  print "<p>for tree with tag <b>" f["tag"] "</b><br/> <b>(Please double check the tag code)</b></p>";
+  print "<form enctype=\"multipart/form-data\" method=\"post\" action=\"obsD\">" ;
+  print "<p><input type=\"hidden\" name=\"tag\" value=\"" f["tag"] "\" /><b>Type</b> of observation:<br /><select name=\"type\"><option value=\"flower\">In flower</option><option value=\"fall\">Outstanding fall color</option><option value=\"damage\">Report plant damage</option></select></p>";
+  print "<p>Upload a <b>photo</b> (optional)<br/><input type=\"file\" name=\"photo\" /></p>";
+  print "<p>Your <b>notes</b> (optional):<br/><textarea name=\"notes\" cols=\"30\" rows=\"2\"></textarea></p>";
+  print "<p>Your <b>email</b> (optional)<br/><input type=\"text\" name=\"email\" size=\"30\"/></p>";
+
+  print "<p><input type=\"submit\" value=\"Send observation\" /></p>";
+  print "</form>";
+
+ footer();
+
+ exit;
+
+ }
+
+function header() {
+    print "Content-type: text/html\n\n";
+    print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \
+         <head><title>Arnold Arboretum Trees : Tree observation</title> \
+         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=yes\" /> \
+         <meta http-equiv=\"Content-Type\" content=\"text/html; \
+           charset=utf-8\" /><link rel=\"stylesheet\" \
+           href=\"aa.css\" type=\"text/css\" /> \
+           </head><body>" ;
+
+}
+
+function footer() {
+
+  print "</html>\n";
+}
+
+
+function error(msg) {
+  print msg ;
+  print "Exiting. Please return to previous page.";
+  print "</pre></body></html>";
+  exit;
+}
+
+# decode urlencoded string
+function decode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
+	
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  for (i=0; i<16; i++) hextab[hex[i+1]] = i
+  
+  # urldecode function from Heiner Steven
+  # http://www.shelldorado.com/scripts/cmds/urldecode
+
+  # decode %xx to ASCII char 
+  decoded = ""
+  i = 1
+  len = length(text)
+  
+  while ( i <= len ) {
+    c = substr (text, i, 1)
+    if ( c == "%" ) {
+      if ( i+2 <= len ) {
+	c1 = tolower(substr(text, i+1, 1))
+	c2 = tolower(substr(text, i+2, 1))
+	if ( hextab [c1] != "" || hextab [c2] != "" ) {
+	  # print "Read: %" c1 c2;
+	  # Allow: 
+	  # 20 begins main chars, but dissallow 7F (wrong in orig code!)
+	       # tab, newline, formfeed, carriage return
+	  if ( ( (c1 >= 2) && ((c1 c2) != "7f") )  \
+	       || (c1 == 0 && c2 ~ "[9acd]") )
+	  {
+	    code = 0 + hextab [c1] * 16 + hextab [c2] + 0
+	    # print "Code: " code
+	    c = sprintf ("%c", code)
+	  } else {
+	    # for dissallowed chars
+	    c = " "
+	  }
+	  i = i + 2
+	}
+      }
+    } else if ( c == "+" ) {	# special handling: "+" means " "
+      c = " "
+    }
+    decoded = decoded c
+    ++i
+  }
+  
+  # change linebreaks to \n
+  gsub(/\r\n/, "\n", decoded);
+  
+  # remove last linebreak
+  sub(/[\n\r]*$/,"",decoded);
+  
+  return decoded
+}
+

@@ -8,7 +8,7 @@ BEGIN{
   ps = substr(rand(),3);
 
   # clean old files (older than one minute)
-  system("rm -f `find run -type f -cmin +1 -print` >& /dev/null");
+  system("rm -f `find run -type f -cmin +1 -not -name .gitignore -print` >& /dev/null");
 
   split(ENVIRON["QUERY_STRING"], query, "&");
   for (i in query)

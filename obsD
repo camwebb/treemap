@@ -1,0 +1,171 @@
+#!/usr/bin/gawk -f
+
+# Script to parse return from observation form
+
+# Form template:
+
+# -----------------------------1928954284948244595549659756
+# Content-Disposition: form-data; name="type"
+# 
+# fall
+# -----------------------------1928954284948244595549659756
+# Content-Disposition: form-data; name="notes"
+# 
+# Notes
+# -----------------------------1928954284948244595549659756
+# Content-Disposition: form-data; name="photo"; filename="img.png"
+# Content-Type: image/png
+# 
+# <image>
+# -----------------------------1928954284948244595549659756--
+
+
+BEGIN{
+
+  header();
+
+  # View form data during testing with:
+  #  RS = "\x04"; getline; print $0;
+  #   print "</pre></body></html>"; exit;
+
+  RS = "\r\n";
+  # Use the first line as the multipart form delimiter
+  getline;
+  # escape regexp chars (prob just `-'):
+  gsub(/\-/,"\\-",$0); gsub(/\*/,"\\*",$0);
+  gsub(/\./,"\\.",$0); gsub(/\?/,"\\?",$0);
+  RS = $0 "[^\r]*" "\r\n" ; 
+  # had to add the extra regex return because webkit and mozilla use a 
+  #   different last delimiter ( ----XYZ-- )
+  while (getline > 0)
+  	{
+	  # print "<pre>" $0 "</pre>";
+	  # split the dataparts
+	  lines = split($0, line, "\r\n");
+	  # if the media:
+	  if (line[2] ~ /Content\-Type/)
+		{
+		  ORS = "";
+		  split (line[1], i, ";");
+		  filename = gensub(/ filename="([^"]*)"$/,"\\1","G",i[3]);
+		  mediatype = gensub(/[^/]*\/([a-z]+)/,"\\1","G",line[2]);
+		  outfile = strftime("%Y%m%d-%H%M%S_") tag "." mediatype ;
+		  # likely all to be in line 4, but there may be a \r\n in the 
+		  #  file, so better to concatenate lines
+		  for (x = 4 ; x < lines ; x++)
+			{
+			  # could add a rand component: srand(); substr(rand(),3,5)
+			  # but chance of two uploads in same second very tiny
+			  print line[x] "\r\n" >> "obsdata/" outfile;
+			}
+		  ORS = "\n";
+		}
+	  else if (line[1] ~ /Content\-Disposition/)
+		{
+		  split (line[1], i, ";");
+		  name = gensub(/\ name="([^"]*)"$/,"\\1","G",i[2]);
+		  if (name == "tag")  { tag = line[3] }
+		  if (name == "type") { obstype = line[3] }
+		  if (name == "email") { email = line[3] }
+		  if (name == "notes")
+			{
+			  for (x = 3 ; x < lines ; x++)
+				{
+				  notes = notes line[x] "\\n" ;
+				}
+			}
+		}
+	}
+
+  gsub(/|/,"",notes) ; gsub(/|/,"",filename); # just in case
+
+  print strftime("%Y%m%d-%H%M%S|") tag "|" obstype "|" notes "|" email "|" \
+	filename >> "obsdata/data.csv" ;
+
+  print "<p>Thanks for your observation on plant <a href=\"info?tag=" tag "\">" tag "</a></p>";
+  print "<p>[ <a href=\"index.html\">home</a> ]</p>";
+  footer();
+
+ exit;
+
+ }
+
+function header() {
+    print "Content-type: text/html\n\n";
+    print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \
+         <head><title>Arnold Arboretum Trees : Tree observation</title> \
+         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=yes\" /> \
+         <meta http-equiv=\"Content-Type\" content=\"text/html; \
+           charset=utf-8\" /><link rel=\"stylesheet\" \
+           href=\"aa.css\" type=\"text/css\" /> \
+           </head><body>" ;
+
+}
+
+function footer() {
+
+  print "</html>\n";
+}
+
+
+function error(msg) {
+  print msg ;
+  print "Exiting. Please return to previous page.";
+  print "</pre></body></html>";
+  exit;
+}
+
+# decode urlencoded string
+function decode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
+	
+  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
+  for (i=0; i<16; i++) hextab[hex[i+1]] = i
+  
+  # urldecode function from Heiner Steven
+  # http://www.shelldorado.com/scripts/cmds/urldecode
+
+  # decode %xx to ASCII char 
+  decoded = ""
+  i = 1
+  len = length(text)
+  
+  while ( i <= len ) {
+    c = substr (text, i, 1)
+    if ( c == "%" ) {
+      if ( i+2 <= len ) {
+	c1 = tolower(substr(text, i+1, 1))
+	c2 = tolower(substr(text, i+2, 1))
+	if ( hextab [c1] != "" || hextab [c2] != "" ) {
+	  # print "Read: %" c1 c2;
+	  # Allow: 
+	  # 20 begins main chars, but dissallow 7F (wrong in orig code!)
+	       # tab, newline, formfeed, carriage return
+	  if ( ( (c1 >= 2) && ((c1 c2) != "7f") )  \
+	       || (c1 == 0 && c2 ~ "[9acd]") )
+	  {
+	    code = 0 + hextab [c1] * 16 + hextab [c2] + 0
+	    # print "Code: " code
+	    c = sprintf ("%c", code)
+	  } else {
+	    # for dissallowed chars
+	    c = " "
+	  }
+	  i = i + 2
+	}
+      }
+    } else if ( c == "+" ) {	# special handling: "+" means " "
+      c = " "
+    }
+    decoded = decoded c
+    ++i
+  }
+  
+  # change linebreaks to \n
+  gsub(/\r\n/, "\n", decoded);
+  
+  # remove last linebreak
+  sub(/[\n\r]*$/,"",decoded);
+  
+  return decoded
+}
+
