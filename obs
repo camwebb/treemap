@@ -17,7 +17,7 @@ BEGIN{
   print "<p>for tree with tag <b>" f["tag"] "</b><br/> <b>(Please double check the tag code)</b></p>";
   print "<form enctype=\"multipart/form-data\" method=\"post\" action=\"obsD\">" ;
   print "<p><input type=\"hidden\" name=\"tag\" value=\"" f["tag"] "\" /><b>Type</b> of observation:<br /><select name=\"type\"><option value=\"flower\">In flower</option><option value=\"fall\">Outstanding fall color</option><option value=\"damage\">Report plant damage</option></select></p>";
-  print "<p>Upload a <b>photo</b> (optional)<br/><input type=\"file\" name=\"photo\" /></p>";
+  print "<p>Upload a <b>photo</b> (optional)<br/><span style=\"font-size:12px;\"><i>(small please: &lt;3 MB)</i></span><br/><input type=\"file\" name=\"photo\" /></p>";
   print "<p>Your <b>notes</b> (optional):<br/><textarea name=\"notes\" cols=\"30\" rows=\"2\"></textarea></p>";
   print "<p>Your <b>email</b> (optional)<br/><input type=\"text\" name=\"email\" size=\"30\"/></p>";
 

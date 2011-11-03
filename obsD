@@ -43,7 +43,8 @@ BEGIN{
 	  # split the dataparts
 	  lines = split($0, line, "\r\n");
 	  # if the media:
-	  if (line[2] ~ /Content\-Type/)
+	  if ((line[2] ~ /Content\-Type/) && \
+	      ("png|jpeg|jpg" ~ gensub(/[^/]*\/([a-z]+)/,"\\1","G",line[2])))
 		{
 		  ORS = "";
 		  split (line[1], i, ";");
@@ -80,7 +81,7 @@ BEGIN{
   gsub(/|/,"",notes) ; gsub(/|/,"",filename); # just in case
 
   print strftime("%Y%m%d-%H%M%S|") tag "|" obstype "|" notes "|" email "|" \
-	filename >> "obsdata/data.csv" ;
+	filename "|" outfile >> "obsdata/data.csv" ;
 
   print "<p>Thanks for your observation on plant <a href=\"info?tag=" tag "\">" tag "</a></p>";
   print "<p>[ <a href=\"index.html\">home</a> ]</p>";
