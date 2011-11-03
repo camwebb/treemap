@@ -15,3 +15,11 @@ Options +ExecCGI -Indexes
 <Files mapO>
   SetHandler cgi-script
 </Files>
+
+<Files obs>
+  SetHandler cgi-script
+</Files>
+
+<Files obsD>
+  SetHandler cgi-script
+</Files>
