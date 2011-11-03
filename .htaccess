@@ -1,4 +1,4 @@
-Options +ExecCGI
+Options +ExecCGI -Indexes
 
 <Files map>
   SetHandler cgi-script
