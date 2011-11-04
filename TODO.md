@@ -7,5 +7,6 @@
   * Work out why the division marker sent by iCab iPhone browser is not
     being recognized
   * Add Geolocation data and a mapping overlay
+  * Look into failure of Blackberries to use image maps
 
 ## Long term
