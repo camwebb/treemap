@@ -20,7 +20,7 @@ BEGIN{
  while ((getline < "aa-tree.csv") > 0)
    {
 	 famN[$3]++ ; spN[$4]++ ;
-	 if (tolower($1) == tolower(f["q"]))
+	 if (gensub(/\*/,"-","G",tolower($1)) == gensub(/\*/,"-","G",tolower(f["q"])))
 	   {
 		 print "<p>Tag match found: <a href=\"info?tag=" $1 "\">" $1 "</a> (<a href=\"mapO?tagQ=" $1 "\">map</a>)</p>" ;
 		 footer() ;
