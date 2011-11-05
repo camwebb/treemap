@@ -19,7 +19,7 @@ function success_callback(p)
 	  var wid = 500 ;
 	  var hig = 500 ;
 	  var factr = 500000 ;
-	  // alert('map!');
+	  // alert('map! '+ longOri + ', '+ latOri);
 	}
   else
 	{
@@ -33,7 +33,9 @@ function success_callback(p)
   var xpx = Math.round( wid + ((+p.coords.longitude.toFixed(3) - longOri ) * factr )) ;
   var ypx = Math.round( hig - ((+p.coords.latitude.toFixed(3)  - latOri ) * factr));  
   
-  // alert('lat=' + ypx + ';lon=' + xpx );
+  // xpx = 100; ypx = 100;
+
+  alert('lat=' + ypx + ';lon=' + xpx );
 
   if ((xpx >= 0) && (xpx < wid) && (ypx >= 0) && (ypx < hig ))
 	{
