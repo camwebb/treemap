@@ -25,7 +25,7 @@ BEGIN{
   header();
 
   # View form data during testing with:
-  #  RS = "\x04"; getline; print $0;
+  #  RS = "\x04"; getline; print "<pre>" $0;
   #   print "</pre></body></html>"; exit;
 
   RS = "\r\n";

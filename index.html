@@ -13,10 +13,13 @@
 	<p><input name="q" type="text" size="15" /> <input type="submit" value="search" /> for family or genus &amp; species or tag code,<br /> or browse by tapping on area to zoom in. (<a href="about.html">about...</a>)</p>
 </form>
 <div id="base">
-  <img src="thumb.jpg" usemap="#grid" border="0" alt="" />
-  <div id="over">
-	<canvas id="gps" width="525" height="550"></canvas>
+  <img src="thumb.jpg" border="0" alt="" />
+  <div id="mid">
+    <canvas id="gps" width="525" height="550"></canvas>
   </div>
+  <div id="top">
+    <img src="img/blank.png" width="525" height="550" usemap="#grid" border="0" alt="" />
+  </div> 
 </div>
 <map name="grid" id="grid">
 <area shape="rect" coords="0,0,25,25" href="map?long=-71.136&amp;lat=42.309" />

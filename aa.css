@@ -25,11 +25,21 @@ a {
     text-decoration:none;
 }
 
-#base { position: relative; }
-#over { position: absolute;
-		bottom:0px; /* position will be on bottom */  
-		left:0px;  
-		width:100%;   
-	  }
+#base { position: relative; 
+    /*  z-index:-1; */ }
+
+#mid { position: absolute;
+	bottom:0px; /* position will be on bottom */  
+	left:0px;  
+	width:100%;
+	/* z-index:0 */;
+      }
+#top { position: absolute;
+	bottom:0px; /* position will be on bottom */  
+	left:0px;  
+	width:100%;
+	/* z-index:1; */   
+	opacity:0;
+      }
 
 
