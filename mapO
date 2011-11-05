@@ -72,7 +72,9 @@ function header() {
          <meta http-equiv=\"Content-Type\" content=\"text/html; \
            charset=utf-8\" /><link rel=\"stylesheet\" \
            href=\"aa.css\" type=\"text/css\" /> \
-           </head><body>" ;
+           <script type=\"text/javascript\" src=\"js/gps.js\" ></script> \
+           <script type=\"text/javascript\" src=\"js/geo.js\"></script> \
+           </head><body onload=\"gpsit()\" >" ;
 	print "<h1>Search results</h1>";
 	print "<p><b>" f["famQ"] f["spQ"] "</b></p>" ;
 
@@ -83,8 +85,16 @@ function header() {
 
 function footer() {
   # print "</pre>";
-  print "<img src=\"run/" ps  ".jpg\" usemap=\"#trees\" />";
-
+  # print "<img src=\"run/" ps  ".jpg\" usemap=\"#trees\" />";
+  print "<div id=\"base\"> \
+           <img src=\"run/" ps ".jpg\" border=\"0\" alt=\"\" /> \
+           <div id=\"mid\"> \
+             <canvas id=\"gps\" width=\"525\" height=\"550\"></canvas> \
+           </div> \
+           <div id=\"top\"> \
+             <img src=\"img/blank.png\" width=\"525\" height=\"550\" usemap=\"#trees\" border=\"0\" alt=\"\" /> \
+           </div> \
+         </div> " ;
   print "</body></html>\n";
 }
 
