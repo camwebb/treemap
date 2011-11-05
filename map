@@ -94,7 +94,9 @@ function header() {
          <meta http-equiv=\"Content-Type\" content=\"text/html; \
            charset=utf-8\" /><link rel=\"stylesheet\" \
            href=\"aa.css\" type=\"text/css\" /> \
-           </head><body>" ;
+           <script type=\"text/javascript\" src=\"js/gps.js\" ></script> \
+           <script type=\"text/javascript\" src=\"js/geo.js\"></script> \
+           </head><body onload=\"gpsit()\">" ;
 	# print "<h1>Arboretum trees</h1>";
     # <link href=\"../img/icon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\"/>
 	# print "<pre>" ;
@@ -105,7 +107,18 @@ function footer() {
   # print "</pre>";
   print "<table cellpadding=\"5\">";
   print "<tr><td>&#160;</td><td align=\"center\"><a href=\"map?long=" f["long"] "&amp;lat=" f["lat"]+0.001 "\"><img src=\"img/U.png\" /></a></td><td>&#160;</td></tr>";
-  print "<tr><td><a href=\"map?long=" f["long"] - 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/L.png\" /></a></td><td><img src=\"run/" ps  ".jpg\" usemap=\"#trees\" /></td><td><a href=\"map?long=" f["long"] + 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/R.png\" /></a></td></tr>" ;
+  print "<tr><td><a href=\"map?long=" f["long"] - 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/L.png\" /></a></td><td>" ;
+  # print "<img src=\"run/" ps  ".jpg\" usemap=\"#trees\" />";
+  print "<div id=\"base\"> \
+           <img src=\"run/" ps ".jpg\" border=\"0\" alt=\"\" /> \
+           <div id=\"mid\">											   \
+             <canvas id=\"gps\" width=\"500\" height=\"500\"></canvas> \
+           </div>													   \
+           <div id=\"top\">												\
+             <img src=\"img/blank.png\" width=\"500\" height=\"500\" usemap=\"#trees\" border=\"0\" alt=\"\" /> \
+           </div> \
+         </div> " ;
+  print "</td><td><a href=\"map?long=" f["long"] + 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/R.png\" /></a></td></tr>" ;
   print "<tr><td>&#160;</td><td align=\"center\"><a href=\"map?long=" f["long"] "&amp;lat=" f["lat"]-0.001 "\"><img src=\"img/D.png\" /></a></td><td>&#160;</td></tr>";
   print "<tr><td colspan=\"3\" align=\"right\">[ <a href=\"search?long=" f["long"] "&amp;lat=" f["lat"] "\">list taxa</a> | <a href=\"index.html\">zoom out</a> ]</td></tr>";
   print "</table>";
