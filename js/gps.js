@@ -30,27 +30,17 @@ function success_callback(p)
 	  var factr = 25000 ;
 	}
 
-  // alert(p.coords.longitude.toFixed(4) + ', ' + p.coords.latitude.toFixed(4));
   var xpx = parseInt( wid + ((p.coords.longitude - longOri ) * factr )) ;
-  // var xpx = p.coords.longitude -longOri  ;
   var ypx = parseInt( hig - ((+p.coords.latitude  - latOri ) * factr));  
   
-  // xpx = 100; ypx = 100;
-
-  //alert('lat=' + ypx + ';lon=' + xpx );
-
   if ((xpx >= 0) && (xpx < wid) && (ypx >= 0) && (ypx < hig ))
 	{
 	  var ctx = document.getElementById("gps").getContext("2d");
-	  // left of map = -71.136, right of map = -71.115 : width = 
-  
-	  // var xpx = Math.round(525 + ((+p.coords.longitude.toFixed(3) - -71.115) * 25000)) ;
-	  // var ypx = Math.round(550 - ((+p.coords.latitude.toFixed(3)  - 42.288) * 25000));
 
 	  var dot = new Image();
-	  dot.src = "img/dot.png";
+	  dot.src = "img/ring.png";
 	  dot.onload = function() {
-		ctx.drawImage(dot, xpx-12, ypx-12);
+		ctx.drawImage(dot, xpx-25, ypx-25);
 	  }
 	}
 }
