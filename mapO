@@ -28,9 +28,9 @@ BEGIN{
 	 # if tag is given
 	 if ($1 == f["tagQ"])
 	   {
-		 print $14 " " $13 > "run/" ps ".dat";
 		 xsq = substr(($14 - 0.001),1,7); ysq = substr($13,1,6) ;
-		 print "<area shape=\"circle\" coords=" int(525 + (( xsq + 0.0005) - -71.115) * 25000) "," int(550 - ((( ysq + 0.0005) - 42.288) * 25000)) ",12\" href=\"map?long=" xsq "&amp;lat=" ysq "&amp;tagQ=" f["tagQ"] "\" />" ;
+		 print xsq + 0.0005" " ysq +0.0005 > "run/" ps ".dat";
+		 print "<area shape=\"circle\" coords=" int(525 + (( xsq + 0.0005 ) - -71.115) * 25000) "," int(550 - ((( ysq + 0.0005 ) - 42.288) * 25000)) ",12\" href=\"map?long=" xsq "&amp;lat=" ysq "&amp;tagQ=" f["tagQ"] "\" />" ;
 	   }
 	 # or if taxa given
 	 else if (($3 == f["famQ"]) || ($4 == f["spQ"]))
