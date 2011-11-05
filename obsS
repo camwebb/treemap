@@ -22,7 +22,7 @@ BEGIN{
 	{
 	  while ((getline < "obsdata/data.csv") > 0)
 		{
-		  if (($3 != "damage") && (f["tag"] == $3))
+		  if (($3 != "damage") && (f["tag"] == $2))
 			{
 			  date[++n] = $1;
 			  tag[n] = $2;
