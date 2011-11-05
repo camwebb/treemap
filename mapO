@@ -25,21 +25,32 @@ BEGIN{
  FS="|";
  while ((getline < "aa-tree.csv") > 0)
    {
-	 if (($3 == f["famQ"]) || ($4 == f["spQ"]))
+	 # if tag is given
+	 if ($1 == f["tagQ"])
+	   {
+		 print $14 " " $13 > "run/" ps ".dat";
+		 xsq = substr(($14 - 0.001),1,7); ysq = substr($13,1,6) ;
+		 print "<area shape=\"circle\" coords=" int(525 + (( xsq + 0.0005) - -71.115) * 25000) "," int(550 - ((( ysq + 0.0005) - 42.288) * 25000)) ",12\" href=\"map?long=" xsq "&amp;lat=" ysq "&amp;tagQ=" f["tagQ"] "\" />" ;
+	   }
+	 # or if taxa given
+	 else if (($3 == f["famQ"]) || ($4 == f["spQ"]))
 	   {
 		 ll[ substr(($14 - 0.001),1,7) "|" substr($13,1,6) ]++;
 	   }
    }
 
- for (i in ll)
+ if (f["tagQ"]=="")
    {
-	 # print i;
-	 split(i,tmp,"|");
-	 print tmp[1] + 0.0005 " " tmp[2] + 0.0005 >> "run/" ps ".dat";
-	 # x = -1000 *(tmp[1] + 71) ; y = 1000 *(tmp[2]-42) ;
-	 if (f["famQ"] != "") qry = "famQ=" f["famQ"] ;
-	 else if (f["spQ"] != "") qry = "spQ=" f["spQ"] ;
-	 print "<area shape=\"circle\" coords=" int(525 + ((tmp[1] + 0.0005) - -71.115) * 25000) "," int(550 - (((tmp[2] + 0.0005) - 42.288) * 25000)) ",12\" href=\"map?long=" tmp[1] "&amp;lat=" tmp[2] "&amp;" qry "\" />" ;
+	 for (i in ll)
+	   {
+		 # print i;
+		 split(i,tmp,"|");
+		 print tmp[1] + 0.0005 " " tmp[2] + 0.0005 >> "run/" ps ".dat";
+		 # x = -1000 *(tmp[1] + 71) ; y = 1000 *(tmp[2]-42) ;
+		 if (f["famQ"] != "") qry = "famQ=" f["famQ"] ;
+		 else if (f["spQ"] != "") qry = "spQ=" f["spQ"] ;
+		 print "<area shape=\"circle\" coords=" int(525 + ((tmp[1] + 0.0005) - -71.115) * 25000) "," int(550 - (((tmp[2] + 0.0005) - 42.288) * 25000)) ",12\" href=\"map?long=" tmp[1] "&amp;lat=" tmp[2] "&amp;" qry "\" />" ;
+	   }
    }
 
  gpheader() ;

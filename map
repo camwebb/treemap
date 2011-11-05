@@ -47,7 +47,12 @@ BEGIN{
 		 hasFam[$3]++;
 		 
 		 # Hightlight
-		 if (($3 == f["famQ"]) || ($4 == f["spQ"])) 
+		 if ($1 == f["tagQ"])
+           {
+			 print $14 " " $13 > "run/" ps ".Q.dat";
+			 hasQ = 1;
+		   }
+		 else if (($3 == f["famQ"]) || ($4 == f["spQ"])) 
 		   {
 			 print $14 " " $13 >> "run/" ps ".Q.dat";
 			 hasQ = 1;
