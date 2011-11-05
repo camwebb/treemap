@@ -31,7 +31,7 @@ BEGIN{
  }
 
 function header() {
-    print "Content-type: text/html\n\n";
+    print "Content-type: text/html\n";
     print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \
          <head><title>Arnold Arboretum Trees : Tree observation</title> \
          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=yes\" /> \

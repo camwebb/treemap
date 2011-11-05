@@ -94,9 +94,6 @@ function header() {
          <meta http-equiv=\"Content-Type\" content=\"text/html; \
            charset=utf-8\" /><link rel=\"stylesheet\" \
            href=\"aa.css\" type=\"text/css\" /> \
-           <script type=\"text/javascript\" src=\"js/gps.js\" ></script> \
-           <script type=\"text/javascript\" src=\"js/geo.js\"></script> \
-           <script src=\"http://code.google.com/apis/gears/gears_init.js\" type=\"text/javascript\" charset=\"utf-8\"></script> \
            </head><body onload=\"gpsit()\">" ;
 	# print "<h1>Arboretum trees</h1>";
     # <link href=\"../img/icon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\"/>
@@ -124,6 +121,9 @@ function footer() {
   print "<tr><td colspan=\"3\" align=\"right\">[ <a href=\"search?long=" f["long"] "&amp;lat=" f["lat"] "\">list taxa</a> | <a href=\"index.html\">zoom out</a> ]</td></tr>";
   print "</table>";
   print "<p id=\"current\">Initializing GPS...</p>";
+  print "  <script type=\"text/javascript\" src=\"js/gps.js\" ></script> \
+           <script type=\"text/javascript\" src=\"js/geo.js\"></script> \
+           <script src=\"http://code.google.com/apis/gears/gears_init.js\" type=\"text/javascript\" charset=\"utf-8\"></script>";
   print "</body></html>\n";
 }
 
