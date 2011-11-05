@@ -85,6 +85,10 @@ BEGIN{
 
   print "<p>Thanks for your observation on plant <a href=\"info?tag=" tag "\">" tag "</a></p>";
   print "<p>[ <a href=\"index.html\">home</a> ]</p>";
+
+  # make thumb
+  system("convert 'obsdata/" outfile "' -resize 50x50 'obsdata/sm_" outfile "'");
+
   footer();
 
  exit;

@@ -23,3 +23,7 @@ Options +ExecCGI -Indexes
 <Files obsD>
   SetHandler cgi-script
 </Files>
+
+<Files obsS>
+  SetHandler cgi-script
+</Files>
