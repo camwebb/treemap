@@ -2,6 +2,13 @@
 
 BEGIN{
 
+  split(ENVIRON["QUERY_STRING"], query, "&");
+  for (i in query)
+	{
+	  split(query[i], tq, "=");
+	  f[tq[1]] = decode(tq[2]); 
+	}
+
   header();
 
   stages["bud"] = "just budding out";
@@ -10,31 +17,56 @@ BEGIN{
   stages["fall"] = "in fine Fall color";
   
   FS="|";
-  while ((getline < "obsdata/data.csv") > 0)
+
+  if (f["tag"] != "")
 	{
-	  if ($3 != "damage")
+	  while ((getline < "obsdata/data.csv") > 0)
 		{
-		  date[++n] = $1;
-		  tag[n] = $2;
-		  stage[n] = $3;
-		  img[n] = $7; 
+		  if (($3 != "damage") && (f["tag"] == $3))
+			{
+			  date[++n] = $1;
+			  tag[n] = $2;
+			  stage[n] = $3;
+			  img[n] = $7; 
+			  tagDataFound = 1;
+			}
+		}
+	}
+  else
+	{
+	  while ((getline < "obsdata/data.csv") > 0)
+		{
+		  if ($3 != "damage")
+			{
+			  date[++n] = $1;
+			  tag[n] = $2;
+			  stage[n] = $3;
+			  img[n] = $7; 
+			}
 		}
 	}
 
-  print "<table cellpadding=\"8\">";
-  print "<tr><td><i>Tag</i></td><td><i>Info</i></td><td><i>Date</i></td><td><i>Photo</i></td></tr>";
-  for (i = 1; (i <= n) && (i > n-5) ;i++)
+  if ((f["tag"] != "") && (tagDataFound != 1))
 	{
-	  print "<tr><td><a href=\"mapO?tagQ=" tag[i] "\">" tag[i] "</td>" ;
-	  print "<td>" stages[stage[i]] "</td>" ;
-	  print "<td>" substr(date[i],1,4) "-" substr(date[i],5,2) "-" substr(date[i],7,2) "</td>" ;
-	  if (img[i] != "")
-		{
-		  print "<td><a href=\"obsdata/" img[i] "\"><img src=\"obsdata/sm_" img[i] "\" /></a></td></tr>" ;
-		}
-	  else print "<td>&#160;</td></tr>" ;
+	  print "<p>Sorry, not citizen science records for this plant.<br/>  Why not <a href=\"obs?tag=" f["tag"] "\">make one?</a></p>" ;
 	}
-  print "</table>";
+  else
+	{
+	  print "<table cellpadding=\"8\">";
+	  print "<tr><td><i>Tag</i></td><td><i>Info</i></td><td><i>Date</i></td><td><i>Photo</i></td></tr>";
+	  for (i = 1; (i <= n) && (i > n-10) ;i++)
+		{
+		  print "<tr><td><a href=\"mapO?tagQ=" tag[i] "\">" tag[i] "</td>" ;
+		  print "<td>" stages[stage[i]] "</td>" ;
+		  print "<td>" substr(date[i],1,4) "-" substr(date[i],5,2) "-" substr(date[i],7,2) "</td>" ;
+		  if (img[i] != "")
+			{
+			  print "<td><a href=\"obsdata/" img[i] "\"><img src=\"obsdata/sm_" img[i] "\" /></a></td></tr>" ;
+			}
+		  else print "<td>&#160;</td></tr>" ;
+		}
+	  print "</table>";
+	}
 
  footer();
 
