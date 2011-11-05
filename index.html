@@ -3,475 +3,482 @@
     <title>Arnold Arboretum Trees</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="aa.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="aa_mob.css" type="text/css" media="handheld"/> -->
     <meta name="viewport" content="width=600, user-scalable=yes" />
-  </head><body>
-<h1>Arnold Arboretum trees</h1>
-<form method="get" action="search">
-  <p><input name="q" type="text" size="15" /> <input type="submit" value="search" /> for family or genus &amp; species or tag code,<br /> or browse by tapping on area to zoom in. (<a href="about.html">about...</a>)</p>
+	<script type="text/javascript" src="js/gps.js" ></script>
+	<script type="text/javascript" src="js/geo.js"></script>
+	<!-- <script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script> -->
+	</head><body onload="gpsit()">
+  <h1>Arnold Arboretum trees</h1>
+  <form method="get" action="search">
+	<p><input name="q" type="text" size="15" /> <input type="submit" value="search" /> for family or genus &amp; species or tag code,<br /> or browse by tapping on area to zoom in. (<a href="about.html">about...</a>)</p>
 </form>
-<img src="thumb.jpg" usemap="#grid" border="0" alt=""/>
+<div id="base">
+  <img src="thumb.jpg" usemap="#grid" border="0" alt="" />
+  <div id="over">
+	<canvas id="gps" width="525" height="550"></canvas>
+  </div>
+</div>
 <map name="grid" id="grid">
-<area shape="rect" coords="0,25,25,0" href="map?long=-71.136&amp;lat=42.309" alt="" />
-<area shape="rect" coords="25,25,50,0" href="map?long=-71.135&amp;lat=42.309" alt="" />
-<area shape="rect" coords="50,25,75,0" href="map?long=-71.134&amp;lat=42.309" alt="" />
-<area shape="rect" coords="75,25,100,0" href="map?long=-71.133&amp;lat=42.309" alt="" />
-<area shape="rect" coords="100,25,125,0" href="map?long=-71.132&amp;lat=42.309" alt="" />
-<area shape="rect" coords="125,25,150,0" href="map?long=-71.131&amp;lat=42.309" alt="" />
-<area shape="rect" coords="150,25,175,0" href="map?long=-71.130&amp;lat=42.309" alt="" />
-<area shape="rect" coords="175,25,200,0" href="map?long=-71.129&amp;lat=42.309" alt="" />
-<area shape="rect" coords="200,25,225,0" href="map?long=-71.128&amp;lat=42.309" alt="" />
-<area shape="rect" coords="225,25,250,0" href="map?long=-71.127&amp;lat=42.309" alt="" />
-<area shape="rect" coords="250,25,275,0" href="map?long=-71.126&amp;lat=42.309" alt="" />
-<area shape="rect" coords="275,25,300,0" href="map?long=-71.125&amp;lat=42.309" alt="" />
-<area shape="rect" coords="300,25,325,0" href="map?long=-71.124&amp;lat=42.309" alt="" />
-<area shape="rect" coords="325,25,350,0" href="map?long=-71.123&amp;lat=42.309" alt="" />
-<area shape="rect" coords="350,25,375,0" href="map?long=-71.122&amp;lat=42.309" alt="" />
-<area shape="rect" coords="375,25,400,0" href="map?long=-71.121&amp;lat=42.309" alt="" />
-<area shape="rect" coords="400,25,425,0" href="map?long=-71.120&amp;lat=42.309" alt="" />
-<area shape="rect" coords="425,25,450,0" href="map?long=-71.119&amp;lat=42.309" alt="" />
-<area shape="rect" coords="450,25,475,0" href="map?long=-71.118&amp;lat=42.309" alt="" />
-<area shape="rect" coords="475,25,500,0" href="map?long=-71.117&amp;lat=42.309" alt="" />
-<area shape="rect" coords="500,25,525,0" href="map?long=-71.116&amp;lat=42.309" alt="" />
-<area shape="rect" coords="0,50,25,25" href="map?long=-71.136&amp;lat=42.308" alt="" />
-<area shape="rect" coords="25,50,50,25" href="map?long=-71.135&amp;lat=42.308" alt="" />
-<area shape="rect" coords="50,50,75,25" href="map?long=-71.134&amp;lat=42.308" alt="" />
-<area shape="rect" coords="75,50,100,25" href="map?long=-71.133&amp;lat=42.308" alt="" />
-<area shape="rect" coords="100,50,125,25" href="map?long=-71.132&amp;lat=42.308" alt="" />
-<area shape="rect" coords="125,50,150,25" href="map?long=-71.131&amp;lat=42.308" alt="" />
-<area shape="rect" coords="150,50,175,25" href="map?long=-71.130&amp;lat=42.308" alt="" />
-<area shape="rect" coords="175,50,200,25" href="map?long=-71.129&amp;lat=42.308" alt="" />
-<area shape="rect" coords="200,50,225,25" href="map?long=-71.128&amp;lat=42.308" alt="" />
-<area shape="rect" coords="225,50,250,25" href="map?long=-71.127&amp;lat=42.308" alt="" />
-<area shape="rect" coords="250,50,275,25" href="map?long=-71.126&amp;lat=42.308" alt="" />
-<area shape="rect" coords="275,50,300,25" href="map?long=-71.125&amp;lat=42.308" alt="" />
-<area shape="rect" coords="300,50,325,25" href="map?long=-71.124&amp;lat=42.308" alt="" />
-<area shape="rect" coords="325,50,350,25" href="map?long=-71.123&amp;lat=42.308" alt="" />
-<area shape="rect" coords="350,50,375,25" href="map?long=-71.122&amp;lat=42.308" alt="" />
-<area shape="rect" coords="375,50,400,25" href="map?long=-71.121&amp;lat=42.308" alt="" />
-<area shape="rect" coords="400,50,425,25" href="map?long=-71.120&amp;lat=42.308" alt="" />
-<area shape="rect" coords="425,50,450,25" href="map?long=-71.119&amp;lat=42.308" alt="" />
-<area shape="rect" coords="450,50,475,25" href="map?long=-71.118&amp;lat=42.308" alt="" />
-<area shape="rect" coords="475,50,500,25" href="map?long=-71.117&amp;lat=42.308" alt="" />
-<area shape="rect" coords="500,50,525,25" href="map?long=-71.116&amp;lat=42.308" alt="" />
-<area shape="rect" coords="0,75,25,50" href="map?long=-71.136&amp;lat=42.307" alt="" />
-<area shape="rect" coords="25,75,50,50" href="map?long=-71.135&amp;lat=42.307" alt="" />
-<area shape="rect" coords="50,75,75,50" href="map?long=-71.134&amp;lat=42.307" alt="" />
-<area shape="rect" coords="75,75,100,50" href="map?long=-71.133&amp;lat=42.307" alt="" />
-<area shape="rect" coords="100,75,125,50" href="map?long=-71.132&amp;lat=42.307" alt="" />
-<area shape="rect" coords="125,75,150,50" href="map?long=-71.131&amp;lat=42.307" alt="" />
-<area shape="rect" coords="150,75,175,50" href="map?long=-71.130&amp;lat=42.307" alt="" />
-<area shape="rect" coords="175,75,200,50" href="map?long=-71.129&amp;lat=42.307" alt="" />
-<area shape="rect" coords="200,75,225,50" href="map?long=-71.128&amp;lat=42.307" alt="" />
-<area shape="rect" coords="225,75,250,50" href="map?long=-71.127&amp;lat=42.307" alt="" />
-<area shape="rect" coords="250,75,275,50" href="map?long=-71.126&amp;lat=42.307" alt="" />
-<area shape="rect" coords="275,75,300,50" href="map?long=-71.125&amp;lat=42.307" alt="" />
-<area shape="rect" coords="300,75,325,50" href="map?long=-71.124&amp;lat=42.307" alt="" />
-<area shape="rect" coords="325,75,350,50" href="map?long=-71.123&amp;lat=42.307" alt="" />
-<area shape="rect" coords="350,75,375,50" href="map?long=-71.122&amp;lat=42.307" alt="" />
-<area shape="rect" coords="375,75,400,50" href="map?long=-71.121&amp;lat=42.307" alt="" />
-<area shape="rect" coords="400,75,425,50" href="map?long=-71.120&amp;lat=42.307" alt="" />
-<area shape="rect" coords="425,75,450,50" href="map?long=-71.119&amp;lat=42.307" alt="" />
-<area shape="rect" coords="450,75,475,50" href="map?long=-71.118&amp;lat=42.307" alt="" />
-<area shape="rect" coords="475,75,500,50" href="map?long=-71.117&amp;lat=42.307" alt="" />
-<area shape="rect" coords="500,75,525,50" href="map?long=-71.116&amp;lat=42.307" alt="" />
-<area shape="rect" coords="0,100,25,75" href="map?long=-71.136&amp;lat=42.306" alt="" />
-<area shape="rect" coords="25,100,50,75" href="map?long=-71.135&amp;lat=42.306" alt="" />
-<area shape="rect" coords="50,100,75,75" href="map?long=-71.134&amp;lat=42.306" alt="" />
-<area shape="rect" coords="75,100,100,75" href="map?long=-71.133&amp;lat=42.306" alt="" />
-<area shape="rect" coords="100,100,125,75" href="map?long=-71.132&amp;lat=42.306" alt="" />
-<area shape="rect" coords="125,100,150,75" href="map?long=-71.131&amp;lat=42.306" alt="" />
-<area shape="rect" coords="150,100,175,75" href="map?long=-71.130&amp;lat=42.306" alt="" />
-<area shape="rect" coords="175,100,200,75" href="map?long=-71.129&amp;lat=42.306" alt="" />
-<area shape="rect" coords="200,100,225,75" href="map?long=-71.128&amp;lat=42.306" alt="" />
-<area shape="rect" coords="225,100,250,75" href="map?long=-71.127&amp;lat=42.306" alt="" />
-<area shape="rect" coords="250,100,275,75" href="map?long=-71.126&amp;lat=42.306" alt="" />
-<area shape="rect" coords="275,100,300,75" href="map?long=-71.125&amp;lat=42.306" alt="" />
-<area shape="rect" coords="300,100,325,75" href="map?long=-71.124&amp;lat=42.306" alt="" />
-<area shape="rect" coords="325,100,350,75" href="map?long=-71.123&amp;lat=42.306" alt="" />
-<area shape="rect" coords="350,100,375,75" href="map?long=-71.122&amp;lat=42.306" alt="" />
-<area shape="rect" coords="375,100,400,75" href="map?long=-71.121&amp;lat=42.306" alt="" />
-<area shape="rect" coords="400,100,425,75" href="map?long=-71.120&amp;lat=42.306" alt="" />
-<area shape="rect" coords="425,100,450,75" href="map?long=-71.119&amp;lat=42.306" alt="" />
-<area shape="rect" coords="450,100,475,75" href="map?long=-71.118&amp;lat=42.306" alt="" />
-<area shape="rect" coords="475,100,500,75" href="map?long=-71.117&amp;lat=42.306" alt="" />
-<area shape="rect" coords="500,100,525,75" href="map?long=-71.116&amp;lat=42.306" alt="" />
-<area shape="rect" coords="0,125,25,100" href="map?long=-71.136&amp;lat=42.305" alt="" />
-<area shape="rect" coords="25,125,50,100" href="map?long=-71.135&amp;lat=42.305" alt="" />
-<area shape="rect" coords="50,125,75,100" href="map?long=-71.134&amp;lat=42.305" alt="" />
-<area shape="rect" coords="75,125,100,100" href="map?long=-71.133&amp;lat=42.305" alt="" />
-<area shape="rect" coords="100,125,125,100" href="map?long=-71.132&amp;lat=42.305" alt="" />
-<area shape="rect" coords="125,125,150,100" href="map?long=-71.131&amp;lat=42.305" alt="" />
-<area shape="rect" coords="150,125,175,100" href="map?long=-71.130&amp;lat=42.305" alt="" />
-<area shape="rect" coords="175,125,200,100" href="map?long=-71.129&amp;lat=42.305" alt="" />
-<area shape="rect" coords="200,125,225,100" href="map?long=-71.128&amp;lat=42.305" alt="" />
-<area shape="rect" coords="225,125,250,100" href="map?long=-71.127&amp;lat=42.305" alt="" />
-<area shape="rect" coords="250,125,275,100" href="map?long=-71.126&amp;lat=42.305" alt="" />
-<area shape="rect" coords="275,125,300,100" href="map?long=-71.125&amp;lat=42.305" alt="" />
-<area shape="rect" coords="300,125,325,100" href="map?long=-71.124&amp;lat=42.305" alt="" />
-<area shape="rect" coords="325,125,350,100" href="map?long=-71.123&amp;lat=42.305" alt="" />
-<area shape="rect" coords="350,125,375,100" href="map?long=-71.122&amp;lat=42.305" alt="" />
-<area shape="rect" coords="375,125,400,100" href="map?long=-71.121&amp;lat=42.305" alt="" />
-<area shape="rect" coords="400,125,425,100" href="map?long=-71.120&amp;lat=42.305" alt="" />
-<area shape="rect" coords="425,125,450,100" href="map?long=-71.119&amp;lat=42.305" alt="" />
-<area shape="rect" coords="450,125,475,100" href="map?long=-71.118&amp;lat=42.305" alt="" />
-<area shape="rect" coords="475,125,500,100" href="map?long=-71.117&amp;lat=42.305" alt="" />
-<area shape="rect" coords="500,125,525,100" href="map?long=-71.116&amp;lat=42.305" alt="" />
-<area shape="rect" coords="0,150,25,125" href="map?long=-71.136&amp;lat=42.304" alt="" />
-<area shape="rect" coords="25,150,50,125" href="map?long=-71.135&amp;lat=42.304" alt="" />
-<area shape="rect" coords="50,150,75,125" href="map?long=-71.134&amp;lat=42.304" alt="" />
-<area shape="rect" coords="75,150,100,125" href="map?long=-71.133&amp;lat=42.304" alt="" />
-<area shape="rect" coords="100,150,125,125" href="map?long=-71.132&amp;lat=42.304" alt="" />
-<area shape="rect" coords="125,150,150,125" href="map?long=-71.131&amp;lat=42.304" alt="" />
-<area shape="rect" coords="150,150,175,125" href="map?long=-71.130&amp;lat=42.304" alt="" />
-<area shape="rect" coords="175,150,200,125" href="map?long=-71.129&amp;lat=42.304" alt="" />
-<area shape="rect" coords="200,150,225,125" href="map?long=-71.128&amp;lat=42.304" alt="" />
-<area shape="rect" coords="225,150,250,125" href="map?long=-71.127&amp;lat=42.304" alt="" />
-<area shape="rect" coords="250,150,275,125" href="map?long=-71.126&amp;lat=42.304" alt="" />
-<area shape="rect" coords="275,150,300,125" href="map?long=-71.125&amp;lat=42.304" alt="" />
-<area shape="rect" coords="300,150,325,125" href="map?long=-71.124&amp;lat=42.304" alt="" />
-<area shape="rect" coords="325,150,350,125" href="map?long=-71.123&amp;lat=42.304" alt="" />
-<area shape="rect" coords="350,150,375,125" href="map?long=-71.122&amp;lat=42.304" alt="" />
-<area shape="rect" coords="375,150,400,125" href="map?long=-71.121&amp;lat=42.304" alt="" />
-<area shape="rect" coords="400,150,425,125" href="map?long=-71.120&amp;lat=42.304" alt="" />
-<area shape="rect" coords="425,150,450,125" href="map?long=-71.119&amp;lat=42.304" alt="" />
-<area shape="rect" coords="450,150,475,125" href="map?long=-71.118&amp;lat=42.304" alt="" />
-<area shape="rect" coords="475,150,500,125" href="map?long=-71.117&amp;lat=42.304" alt="" />
-<area shape="rect" coords="500,150,525,125" href="map?long=-71.116&amp;lat=42.304" alt="" />
-<area shape="rect" coords="0,175,25,150" href="map?long=-71.136&amp;lat=42.303" alt="" />
-<area shape="rect" coords="25,175,50,150" href="map?long=-71.135&amp;lat=42.303" alt="" />
-<area shape="rect" coords="50,175,75,150" href="map?long=-71.134&amp;lat=42.303" alt="" />
-<area shape="rect" coords="75,175,100,150" href="map?long=-71.133&amp;lat=42.303" alt="" />
-<area shape="rect" coords="100,175,125,150" href="map?long=-71.132&amp;lat=42.303" alt="" />
-<area shape="rect" coords="125,175,150,150" href="map?long=-71.131&amp;lat=42.303" alt="" />
-<area shape="rect" coords="150,175,175,150" href="map?long=-71.130&amp;lat=42.303" alt="" />
-<area shape="rect" coords="175,175,200,150" href="map?long=-71.129&amp;lat=42.303" alt="" />
-<area shape="rect" coords="200,175,225,150" href="map?long=-71.128&amp;lat=42.303" alt="" />
-<area shape="rect" coords="225,175,250,150" href="map?long=-71.127&amp;lat=42.303" alt="" />
-<area shape="rect" coords="250,175,275,150" href="map?long=-71.126&amp;lat=42.303" alt="" />
-<area shape="rect" coords="275,175,300,150" href="map?long=-71.125&amp;lat=42.303" alt="" />
-<area shape="rect" coords="300,175,325,150" href="map?long=-71.124&amp;lat=42.303" alt="" />
-<area shape="rect" coords="325,175,350,150" href="map?long=-71.123&amp;lat=42.303" alt="" />
-<area shape="rect" coords="350,175,375,150" href="map?long=-71.122&amp;lat=42.303" alt="" />
-<area shape="rect" coords="375,175,400,150" href="map?long=-71.121&amp;lat=42.303" alt="" />
-<area shape="rect" coords="400,175,425,150" href="map?long=-71.120&amp;lat=42.303" alt="" />
-<area shape="rect" coords="425,175,450,150" href="map?long=-71.119&amp;lat=42.303" alt="" />
-<area shape="rect" coords="450,175,475,150" href="map?long=-71.118&amp;lat=42.303" alt="" />
-<area shape="rect" coords="475,175,500,150" href="map?long=-71.117&amp;lat=42.303" alt="" />
-<area shape="rect" coords="500,175,525,150" href="map?long=-71.116&amp;lat=42.303" alt="" />
-<area shape="rect" coords="0,200,25,175" href="map?long=-71.136&amp;lat=42.302" alt="" />
-<area shape="rect" coords="25,200,50,175" href="map?long=-71.135&amp;lat=42.302" alt="" />
-<area shape="rect" coords="50,200,75,175" href="map?long=-71.134&amp;lat=42.302" alt="" />
-<area shape="rect" coords="75,200,100,175" href="map?long=-71.133&amp;lat=42.302" alt="" />
-<area shape="rect" coords="100,200,125,175" href="map?long=-71.132&amp;lat=42.302" alt="" />
-<area shape="rect" coords="125,200,150,175" href="map?long=-71.131&amp;lat=42.302" alt="" />
-<area shape="rect" coords="150,200,175,175" href="map?long=-71.130&amp;lat=42.302" alt="" />
-<area shape="rect" coords="175,200,200,175" href="map?long=-71.129&amp;lat=42.302" alt="" />
-<area shape="rect" coords="200,200,225,175" href="map?long=-71.128&amp;lat=42.302" alt="" />
-<area shape="rect" coords="225,200,250,175" href="map?long=-71.127&amp;lat=42.302" alt="" />
-<area shape="rect" coords="250,200,275,175" href="map?long=-71.126&amp;lat=42.302" alt="" />
-<area shape="rect" coords="275,200,300,175" href="map?long=-71.125&amp;lat=42.302" alt="" />
-<area shape="rect" coords="300,200,325,175" href="map?long=-71.124&amp;lat=42.302" alt="" />
-<area shape="rect" coords="325,200,350,175" href="map?long=-71.123&amp;lat=42.302" alt="" />
-<area shape="rect" coords="350,200,375,175" href="map?long=-71.122&amp;lat=42.302" alt="" />
-<area shape="rect" coords="375,200,400,175" href="map?long=-71.121&amp;lat=42.302" alt="" />
-<area shape="rect" coords="400,200,425,175" href="map?long=-71.120&amp;lat=42.302" alt="" />
-<area shape="rect" coords="425,200,450,175" href="map?long=-71.119&amp;lat=42.302" alt="" />
-<area shape="rect" coords="450,200,475,175" href="map?long=-71.118&amp;lat=42.302" alt="" />
-<area shape="rect" coords="475,200,500,175" href="map?long=-71.117&amp;lat=42.302" alt="" />
-<area shape="rect" coords="500,200,525,175" href="map?long=-71.116&amp;lat=42.302" alt="" />
-<area shape="rect" coords="0,225,25,200" href="map?long=-71.136&amp;lat=42.301" alt="" />
-<area shape="rect" coords="25,225,50,200" href="map?long=-71.135&amp;lat=42.301" alt="" />
-<area shape="rect" coords="50,225,75,200" href="map?long=-71.134&amp;lat=42.301" alt="" />
-<area shape="rect" coords="75,225,100,200" href="map?long=-71.133&amp;lat=42.301" alt="" />
-<area shape="rect" coords="100,225,125,200" href="map?long=-71.132&amp;lat=42.301" alt="" />
-<area shape="rect" coords="125,225,150,200" href="map?long=-71.131&amp;lat=42.301" alt="" />
-<area shape="rect" coords="150,225,175,200" href="map?long=-71.130&amp;lat=42.301" alt="" />
-<area shape="rect" coords="175,225,200,200" href="map?long=-71.129&amp;lat=42.301" alt="" />
-<area shape="rect" coords="200,225,225,200" href="map?long=-71.128&amp;lat=42.301" alt="" />
-<area shape="rect" coords="225,225,250,200" href="map?long=-71.127&amp;lat=42.301" alt="" />
-<area shape="rect" coords="250,225,275,200" href="map?long=-71.126&amp;lat=42.301" alt="" />
-<area shape="rect" coords="275,225,300,200" href="map?long=-71.125&amp;lat=42.301" alt="" />
-<area shape="rect" coords="300,225,325,200" href="map?long=-71.124&amp;lat=42.301" alt="" />
-<area shape="rect" coords="325,225,350,200" href="map?long=-71.123&amp;lat=42.301" alt="" />
-<area shape="rect" coords="350,225,375,200" href="map?long=-71.122&amp;lat=42.301" alt="" />
-<area shape="rect" coords="375,225,400,200" href="map?long=-71.121&amp;lat=42.301" alt="" />
-<area shape="rect" coords="400,225,425,200" href="map?long=-71.120&amp;lat=42.301" alt="" />
-<area shape="rect" coords="425,225,450,200" href="map?long=-71.119&amp;lat=42.301" alt="" />
-<area shape="rect" coords="450,225,475,200" href="map?long=-71.118&amp;lat=42.301" alt="" />
-<area shape="rect" coords="475,225,500,200" href="map?long=-71.117&amp;lat=42.301" alt="" />
-<area shape="rect" coords="500,225,525,200" href="map?long=-71.116&amp;lat=42.301" alt="" />
-<area shape="rect" coords="0,250,25,225" href="map?long=-71.136&amp;lat=42.300" alt="" />
-<area shape="rect" coords="25,250,50,225" href="map?long=-71.135&amp;lat=42.300" alt="" />
-<area shape="rect" coords="50,250,75,225" href="map?long=-71.134&amp;lat=42.300" alt="" />
-<area shape="rect" coords="75,250,100,225" href="map?long=-71.133&amp;lat=42.300" alt="" />
-<area shape="rect" coords="100,250,125,225" href="map?long=-71.132&amp;lat=42.300" alt="" />
-<area shape="rect" coords="125,250,150,225" href="map?long=-71.131&amp;lat=42.300" alt="" />
-<area shape="rect" coords="150,250,175,225" href="map?long=-71.130&amp;lat=42.300" alt="" />
-<area shape="rect" coords="175,250,200,225" href="map?long=-71.129&amp;lat=42.300" alt="" />
-<area shape="rect" coords="200,250,225,225" href="map?long=-71.128&amp;lat=42.300" alt="" />
-<area shape="rect" coords="225,250,250,225" href="map?long=-71.127&amp;lat=42.300" alt="" />
-<area shape="rect" coords="250,250,275,225" href="map?long=-71.126&amp;lat=42.300" alt="" />
-<area shape="rect" coords="275,250,300,225" href="map?long=-71.125&amp;lat=42.300" alt="" />
-<area shape="rect" coords="300,250,325,225" href="map?long=-71.124&amp;lat=42.300" alt="" />
-<area shape="rect" coords="325,250,350,225" href="map?long=-71.123&amp;lat=42.300" alt="" />
-<area shape="rect" coords="350,250,375,225" href="map?long=-71.122&amp;lat=42.300" alt="" />
-<area shape="rect" coords="375,250,400,225" href="map?long=-71.121&amp;lat=42.300" alt="" />
-<area shape="rect" coords="400,250,425,225" href="map?long=-71.120&amp;lat=42.300" alt="" />
-<area shape="rect" coords="425,250,450,225" href="map?long=-71.119&amp;lat=42.300" alt="" />
-<area shape="rect" coords="450,250,475,225" href="map?long=-71.118&amp;lat=42.300" alt="" />
-<area shape="rect" coords="475,250,500,225" href="map?long=-71.117&amp;lat=42.300" alt="" />
-<area shape="rect" coords="500,250,525,225" href="map?long=-71.116&amp;lat=42.300" alt="" />
-<area shape="rect" coords="0,275,25,250" href="map?long=-71.136&amp;lat=42.299" alt="" />
-<area shape="rect" coords="25,275,50,250" href="map?long=-71.135&amp;lat=42.299" alt="" />
-<area shape="rect" coords="50,275,75,250" href="map?long=-71.134&amp;lat=42.299" alt="" />
-<area shape="rect" coords="75,275,100,250" href="map?long=-71.133&amp;lat=42.299" alt="" />
-<area shape="rect" coords="100,275,125,250" href="map?long=-71.132&amp;lat=42.299" alt="" />
-<area shape="rect" coords="125,275,150,250" href="map?long=-71.131&amp;lat=42.299" alt="" />
-<area shape="rect" coords="150,275,175,250" href="map?long=-71.130&amp;lat=42.299" alt="" />
-<area shape="rect" coords="175,275,200,250" href="map?long=-71.129&amp;lat=42.299" alt="" />
-<area shape="rect" coords="200,275,225,250" href="map?long=-71.128&amp;lat=42.299" alt="" />
-<area shape="rect" coords="225,275,250,250" href="map?long=-71.127&amp;lat=42.299" alt="" />
-<area shape="rect" coords="250,275,275,250" href="map?long=-71.126&amp;lat=42.299" alt="" />
-<area shape="rect" coords="275,275,300,250" href="map?long=-71.125&amp;lat=42.299" alt="" />
-<area shape="rect" coords="300,275,325,250" href="map?long=-71.124&amp;lat=42.299" alt="" />
-<area shape="rect" coords="325,275,350,250" href="map?long=-71.123&amp;lat=42.299" alt="" />
-<area shape="rect" coords="350,275,375,250" href="map?long=-71.122&amp;lat=42.299" alt="" />
-<area shape="rect" coords="375,275,400,250" href="map?long=-71.121&amp;lat=42.299" alt="" />
-<area shape="rect" coords="400,275,425,250" href="map?long=-71.120&amp;lat=42.299" alt="" />
-<area shape="rect" coords="425,275,450,250" href="map?long=-71.119&amp;lat=42.299" alt="" />
-<area shape="rect" coords="450,275,475,250" href="map?long=-71.118&amp;lat=42.299" alt="" />
-<area shape="rect" coords="475,275,500,250" href="map?long=-71.117&amp;lat=42.299" alt="" />
-<area shape="rect" coords="500,275,525,250" href="map?long=-71.116&amp;lat=42.299" alt="" />
-<area shape="rect" coords="0,300,25,275" href="map?long=-71.136&amp;lat=42.298" alt="" />
-<area shape="rect" coords="25,300,50,275" href="map?long=-71.135&amp;lat=42.298" alt="" />
-<area shape="rect" coords="50,300,75,275" href="map?long=-71.134&amp;lat=42.298" alt="" />
-<area shape="rect" coords="75,300,100,275" href="map?long=-71.133&amp;lat=42.298" alt="" />
-<area shape="rect" coords="100,300,125,275" href="map?long=-71.132&amp;lat=42.298" alt="" />
-<area shape="rect" coords="125,300,150,275" href="map?long=-71.131&amp;lat=42.298" alt="" />
-<area shape="rect" coords="150,300,175,275" href="map?long=-71.130&amp;lat=42.298" alt="" />
-<area shape="rect" coords="175,300,200,275" href="map?long=-71.129&amp;lat=42.298" alt="" />
-<area shape="rect" coords="200,300,225,275" href="map?long=-71.128&amp;lat=42.298" alt="" />
-<area shape="rect" coords="225,300,250,275" href="map?long=-71.127&amp;lat=42.298" alt="" />
-<area shape="rect" coords="250,300,275,275" href="map?long=-71.126&amp;lat=42.298" alt="" />
-<area shape="rect" coords="275,300,300,275" href="map?long=-71.125&amp;lat=42.298" alt="" />
-<area shape="rect" coords="300,300,325,275" href="map?long=-71.124&amp;lat=42.298" alt="" />
-<area shape="rect" coords="325,300,350,275" href="map?long=-71.123&amp;lat=42.298" alt="" />
-<area shape="rect" coords="350,300,375,275" href="map?long=-71.122&amp;lat=42.298" alt="" />
-<area shape="rect" coords="375,300,400,275" href="map?long=-71.121&amp;lat=42.298" alt="" />
-<area shape="rect" coords="400,300,425,275" href="map?long=-71.120&amp;lat=42.298" alt="" />
-<area shape="rect" coords="425,300,450,275" href="map?long=-71.119&amp;lat=42.298" alt="" />
-<area shape="rect" coords="450,300,475,275" href="map?long=-71.118&amp;lat=42.298" alt="" />
-<area shape="rect" coords="475,300,500,275" href="map?long=-71.117&amp;lat=42.298" alt="" />
-<area shape="rect" coords="500,300,525,275" href="map?long=-71.116&amp;lat=42.298" alt="" />
-<area shape="rect" coords="0,325,25,300" href="map?long=-71.136&amp;lat=42.297" alt="" />
-<area shape="rect" coords="25,325,50,300" href="map?long=-71.135&amp;lat=42.297" alt="" />
-<area shape="rect" coords="50,325,75,300" href="map?long=-71.134&amp;lat=42.297" alt="" />
-<area shape="rect" coords="75,325,100,300" href="map?long=-71.133&amp;lat=42.297" alt="" />
-<area shape="rect" coords="100,325,125,300" href="map?long=-71.132&amp;lat=42.297" alt="" />
-<area shape="rect" coords="125,325,150,300" href="map?long=-71.131&amp;lat=42.297" alt="" />
-<area shape="rect" coords="150,325,175,300" href="map?long=-71.130&amp;lat=42.297" alt="" />
-<area shape="rect" coords="175,325,200,300" href="map?long=-71.129&amp;lat=42.297" alt="" />
-<area shape="rect" coords="200,325,225,300" href="map?long=-71.128&amp;lat=42.297" alt="" />
-<area shape="rect" coords="225,325,250,300" href="map?long=-71.127&amp;lat=42.297" alt="" />
-<area shape="rect" coords="250,325,275,300" href="map?long=-71.126&amp;lat=42.297" alt="" />
-<area shape="rect" coords="275,325,300,300" href="map?long=-71.125&amp;lat=42.297" alt="" />
-<area shape="rect" coords="300,325,325,300" href="map?long=-71.124&amp;lat=42.297" alt="" />
-<area shape="rect" coords="325,325,350,300" href="map?long=-71.123&amp;lat=42.297" alt="" />
-<area shape="rect" coords="350,325,375,300" href="map?long=-71.122&amp;lat=42.297" alt="" />
-<area shape="rect" coords="375,325,400,300" href="map?long=-71.121&amp;lat=42.297" alt="" />
-<area shape="rect" coords="400,325,425,300" href="map?long=-71.120&amp;lat=42.297" alt="" />
-<area shape="rect" coords="425,325,450,300" href="map?long=-71.119&amp;lat=42.297" alt="" />
-<area shape="rect" coords="450,325,475,300" href="map?long=-71.118&amp;lat=42.297" alt="" />
-<area shape="rect" coords="475,325,500,300" href="map?long=-71.117&amp;lat=42.297" alt="" />
-<area shape="rect" coords="500,325,525,300" href="map?long=-71.116&amp;lat=42.297" alt="" />
-<area shape="rect" coords="0,350,25,325" href="map?long=-71.136&amp;lat=42.296" alt="" />
-<area shape="rect" coords="25,350,50,325" href="map?long=-71.135&amp;lat=42.296" alt="" />
-<area shape="rect" coords="50,350,75,325" href="map?long=-71.134&amp;lat=42.296" alt="" />
-<area shape="rect" coords="75,350,100,325" href="map?long=-71.133&amp;lat=42.296" alt="" />
-<area shape="rect" coords="100,350,125,325" href="map?long=-71.132&amp;lat=42.296" alt="" />
-<area shape="rect" coords="125,350,150,325" href="map?long=-71.131&amp;lat=42.296" alt="" />
-<area shape="rect" coords="150,350,175,325" href="map?long=-71.130&amp;lat=42.296" alt="" />
-<area shape="rect" coords="175,350,200,325" href="map?long=-71.129&amp;lat=42.296" alt="" />
-<area shape="rect" coords="200,350,225,325" href="map?long=-71.128&amp;lat=42.296" alt="" />
-<area shape="rect" coords="225,350,250,325" href="map?long=-71.127&amp;lat=42.296" alt="" />
-<area shape="rect" coords="250,350,275,325" href="map?long=-71.126&amp;lat=42.296" alt="" />
-<area shape="rect" coords="275,350,300,325" href="map?long=-71.125&amp;lat=42.296" alt="" />
-<area shape="rect" coords="300,350,325,325" href="map?long=-71.124&amp;lat=42.296" alt="" />
-<area shape="rect" coords="325,350,350,325" href="map?long=-71.123&amp;lat=42.296" alt="" />
-<area shape="rect" coords="350,350,375,325" href="map?long=-71.122&amp;lat=42.296" alt="" />
-<area shape="rect" coords="375,350,400,325" href="map?long=-71.121&amp;lat=42.296" alt="" />
-<area shape="rect" coords="400,350,425,325" href="map?long=-71.120&amp;lat=42.296" alt="" />
-<area shape="rect" coords="425,350,450,325" href="map?long=-71.119&amp;lat=42.296" alt="" />
-<area shape="rect" coords="450,350,475,325" href="map?long=-71.118&amp;lat=42.296" alt="" />
-<area shape="rect" coords="475,350,500,325" href="map?long=-71.117&amp;lat=42.296" alt="" />
-<area shape="rect" coords="500,350,525,325" href="map?long=-71.116&amp;lat=42.296" alt="" />
-<area shape="rect" coords="0,375,25,350" href="map?long=-71.136&amp;lat=42.295" alt="" />
-<area shape="rect" coords="25,375,50,350" href="map?long=-71.135&amp;lat=42.295" alt="" />
-<area shape="rect" coords="50,375,75,350" href="map?long=-71.134&amp;lat=42.295" alt="" />
-<area shape="rect" coords="75,375,100,350" href="map?long=-71.133&amp;lat=42.295" alt="" />
-<area shape="rect" coords="100,375,125,350" href="map?long=-71.132&amp;lat=42.295" alt="" />
-<area shape="rect" coords="125,375,150,350" href="map?long=-71.131&amp;lat=42.295" alt="" />
-<area shape="rect" coords="150,375,175,350" href="map?long=-71.130&amp;lat=42.295" alt="" />
-<area shape="rect" coords="175,375,200,350" href="map?long=-71.129&amp;lat=42.295" alt="" />
-<area shape="rect" coords="200,375,225,350" href="map?long=-71.128&amp;lat=42.295" alt="" />
-<area shape="rect" coords="225,375,250,350" href="map?long=-71.127&amp;lat=42.295" alt="" />
-<area shape="rect" coords="250,375,275,350" href="map?long=-71.126&amp;lat=42.295" alt="" />
-<area shape="rect" coords="275,375,300,350" href="map?long=-71.125&amp;lat=42.295" alt="" />
-<area shape="rect" coords="300,375,325,350" href="map?long=-71.124&amp;lat=42.295" alt="" />
-<area shape="rect" coords="325,375,350,350" href="map?long=-71.123&amp;lat=42.295" alt="" />
-<area shape="rect" coords="350,375,375,350" href="map?long=-71.122&amp;lat=42.295" alt="" />
-<area shape="rect" coords="375,375,400,350" href="map?long=-71.121&amp;lat=42.295" alt="" />
-<area shape="rect" coords="400,375,425,350" href="map?long=-71.120&amp;lat=42.295" alt="" />
-<area shape="rect" coords="425,375,450,350" href="map?long=-71.119&amp;lat=42.295" alt="" />
-<area shape="rect" coords="450,375,475,350" href="map?long=-71.118&amp;lat=42.295" alt="" />
-<area shape="rect" coords="475,375,500,350" href="map?long=-71.117&amp;lat=42.295" alt="" />
-<area shape="rect" coords="500,375,525,350" href="map?long=-71.116&amp;lat=42.295" alt="" />
-<area shape="rect" coords="0,400,25,375" href="map?long=-71.136&amp;lat=42.294" alt="" />
-<area shape="rect" coords="25,400,50,375" href="map?long=-71.135&amp;lat=42.294" alt="" />
-<area shape="rect" coords="50,400,75,375" href="map?long=-71.134&amp;lat=42.294" alt="" />
-<area shape="rect" coords="75,400,100,375" href="map?long=-71.133&amp;lat=42.294" alt="" />
-<area shape="rect" coords="100,400,125,375" href="map?long=-71.132&amp;lat=42.294" alt="" />
-<area shape="rect" coords="125,400,150,375" href="map?long=-71.131&amp;lat=42.294" alt="" />
-<area shape="rect" coords="150,400,175,375" href="map?long=-71.130&amp;lat=42.294" alt="" />
-<area shape="rect" coords="175,400,200,375" href="map?long=-71.129&amp;lat=42.294" alt="" />
-<area shape="rect" coords="200,400,225,375" href="map?long=-71.128&amp;lat=42.294" alt="" />
-<area shape="rect" coords="225,400,250,375" href="map?long=-71.127&amp;lat=42.294" alt="" />
-<area shape="rect" coords="250,400,275,375" href="map?long=-71.126&amp;lat=42.294" alt="" />
-<area shape="rect" coords="275,400,300,375" href="map?long=-71.125&amp;lat=42.294" alt="" />
-<area shape="rect" coords="300,400,325,375" href="map?long=-71.124&amp;lat=42.294" alt="" />
-<area shape="rect" coords="325,400,350,375" href="map?long=-71.123&amp;lat=42.294" alt="" />
-<area shape="rect" coords="350,400,375,375" href="map?long=-71.122&amp;lat=42.294" alt="" />
-<area shape="rect" coords="375,400,400,375" href="map?long=-71.121&amp;lat=42.294" alt="" />
-<area shape="rect" coords="400,400,425,375" href="map?long=-71.120&amp;lat=42.294" alt="" />
-<area shape="rect" coords="425,400,450,375" href="map?long=-71.119&amp;lat=42.294" alt="" />
-<area shape="rect" coords="450,400,475,375" href="map?long=-71.118&amp;lat=42.294" alt="" />
-<area shape="rect" coords="475,400,500,375" href="map?long=-71.117&amp;lat=42.294" alt="" />
-<area shape="rect" coords="500,400,525,375" href="map?long=-71.116&amp;lat=42.294" alt="" />
-<area shape="rect" coords="0,425,25,400" href="map?long=-71.136&amp;lat=42.293" alt="" />
-<area shape="rect" coords="25,425,50,400" href="map?long=-71.135&amp;lat=42.293" alt="" />
-<area shape="rect" coords="50,425,75,400" href="map?long=-71.134&amp;lat=42.293" alt="" />
-<area shape="rect" coords="75,425,100,400" href="map?long=-71.133&amp;lat=42.293" alt="" />
-<area shape="rect" coords="100,425,125,400" href="map?long=-71.132&amp;lat=42.293" alt="" />
-<area shape="rect" coords="125,425,150,400" href="map?long=-71.131&amp;lat=42.293" alt="" />
-<area shape="rect" coords="150,425,175,400" href="map?long=-71.130&amp;lat=42.293" alt="" />
-<area shape="rect" coords="175,425,200,400" href="map?long=-71.129&amp;lat=42.293" alt="" />
-<area shape="rect" coords="200,425,225,400" href="map?long=-71.128&amp;lat=42.293" alt="" />
-<area shape="rect" coords="225,425,250,400" href="map?long=-71.127&amp;lat=42.293" alt="" />
-<area shape="rect" coords="250,425,275,400" href="map?long=-71.126&amp;lat=42.293" alt="" />
-<area shape="rect" coords="275,425,300,400" href="map?long=-71.125&amp;lat=42.293" alt="" />
-<area shape="rect" coords="300,425,325,400" href="map?long=-71.124&amp;lat=42.293" alt="" />
-<area shape="rect" coords="325,425,350,400" href="map?long=-71.123&amp;lat=42.293" alt="" />
-<area shape="rect" coords="350,425,375,400" href="map?long=-71.122&amp;lat=42.293" alt="" />
-<area shape="rect" coords="375,425,400,400" href="map?long=-71.121&amp;lat=42.293" alt="" />
-<area shape="rect" coords="400,425,425,400" href="map?long=-71.120&amp;lat=42.293" alt="" />
-<area shape="rect" coords="425,425,450,400" href="map?long=-71.119&amp;lat=42.293" alt="" />
-<area shape="rect" coords="450,425,475,400" href="map?long=-71.118&amp;lat=42.293" alt="" />
-<area shape="rect" coords="475,425,500,400" href="map?long=-71.117&amp;lat=42.293" alt="" />
-<area shape="rect" coords="500,425,525,400" href="map?long=-71.116&amp;lat=42.293" alt="" />
-<area shape="rect" coords="0,450,25,425" href="map?long=-71.136&amp;lat=42.292" alt="" />
-<area shape="rect" coords="25,450,50,425" href="map?long=-71.135&amp;lat=42.292" alt="" />
-<area shape="rect" coords="50,450,75,425" href="map?long=-71.134&amp;lat=42.292" alt="" />
-<area shape="rect" coords="75,450,100,425" href="map?long=-71.133&amp;lat=42.292" alt="" />
-<area shape="rect" coords="100,450,125,425" href="map?long=-71.132&amp;lat=42.292" alt="" />
-<area shape="rect" coords="125,450,150,425" href="map?long=-71.131&amp;lat=42.292" alt="" />
-<area shape="rect" coords="150,450,175,425" href="map?long=-71.130&amp;lat=42.292" alt="" />
-<area shape="rect" coords="175,450,200,425" href="map?long=-71.129&amp;lat=42.292" alt="" />
-<area shape="rect" coords="200,450,225,425" href="map?long=-71.128&amp;lat=42.292" alt="" />
-<area shape="rect" coords="225,450,250,425" href="map?long=-71.127&amp;lat=42.292" alt="" />
-<area shape="rect" coords="250,450,275,425" href="map?long=-71.126&amp;lat=42.292" alt="" />
-<area shape="rect" coords="275,450,300,425" href="map?long=-71.125&amp;lat=42.292" alt="" />
-<area shape="rect" coords="300,450,325,425" href="map?long=-71.124&amp;lat=42.292" alt="" />
-<area shape="rect" coords="325,450,350,425" href="map?long=-71.123&amp;lat=42.292" alt="" />
-<area shape="rect" coords="350,450,375,425" href="map?long=-71.122&amp;lat=42.292" alt="" />
-<area shape="rect" coords="375,450,400,425" href="map?long=-71.121&amp;lat=42.292" alt="" />
-<area shape="rect" coords="400,450,425,425" href="map?long=-71.120&amp;lat=42.292" alt="" />
-<area shape="rect" coords="425,450,450,425" href="map?long=-71.119&amp;lat=42.292" alt="" />
-<area shape="rect" coords="450,450,475,425" href="map?long=-71.118&amp;lat=42.292" alt="" />
-<area shape="rect" coords="475,450,500,425" href="map?long=-71.117&amp;lat=42.292" alt="" />
-<area shape="rect" coords="500,450,525,425" href="map?long=-71.116&amp;lat=42.292" alt="" />
-<area shape="rect" coords="0,475,25,450" href="map?long=-71.136&amp;lat=42.291" alt="" />
-<area shape="rect" coords="25,475,50,450" href="map?long=-71.135&amp;lat=42.291" alt="" />
-<area shape="rect" coords="50,475,75,450" href="map?long=-71.134&amp;lat=42.291" alt="" />
-<area shape="rect" coords="75,475,100,450" href="map?long=-71.133&amp;lat=42.291" alt="" />
-<area shape="rect" coords="100,475,125,450" href="map?long=-71.132&amp;lat=42.291" alt="" />
-<area shape="rect" coords="125,475,150,450" href="map?long=-71.131&amp;lat=42.291" alt="" />
-<area shape="rect" coords="150,475,175,450" href="map?long=-71.130&amp;lat=42.291" alt="" />
-<area shape="rect" coords="175,475,200,450" href="map?long=-71.129&amp;lat=42.291" alt="" />
-<area shape="rect" coords="200,475,225,450" href="map?long=-71.128&amp;lat=42.291" alt="" />
-<area shape="rect" coords="225,475,250,450" href="map?long=-71.127&amp;lat=42.291" alt="" />
-<area shape="rect" coords="250,475,275,450" href="map?long=-71.126&amp;lat=42.291" alt="" />
-<area shape="rect" coords="275,475,300,450" href="map?long=-71.125&amp;lat=42.291" alt="" />
-<area shape="rect" coords="300,475,325,450" href="map?long=-71.124&amp;lat=42.291" alt="" />
-<area shape="rect" coords="325,475,350,450" href="map?long=-71.123&amp;lat=42.291" alt="" />
-<area shape="rect" coords="350,475,375,450" href="map?long=-71.122&amp;lat=42.291" alt="" />
-<area shape="rect" coords="375,475,400,450" href="map?long=-71.121&amp;lat=42.291" alt="" />
-<area shape="rect" coords="400,475,425,450" href="map?long=-71.120&amp;lat=42.291" alt="" />
-<area shape="rect" coords="425,475,450,450" href="map?long=-71.119&amp;lat=42.291" alt="" />
-<area shape="rect" coords="450,475,475,450" href="map?long=-71.118&amp;lat=42.291" alt="" />
-<area shape="rect" coords="475,475,500,450" href="map?long=-71.117&amp;lat=42.291" alt="" />
-<area shape="rect" coords="500,475,525,450" href="map?long=-71.116&amp;lat=42.291" alt="" />
-<area shape="rect" coords="0,500,25,475" href="map?long=-71.136&amp;lat=42.290" alt="" />
-<area shape="rect" coords="25,500,50,475" href="map?long=-71.135&amp;lat=42.290" alt="" />
-<area shape="rect" coords="50,500,75,475" href="map?long=-71.134&amp;lat=42.290" alt="" />
-<area shape="rect" coords="75,500,100,475" href="map?long=-71.133&amp;lat=42.290" alt="" />
-<area shape="rect" coords="100,500,125,475" href="map?long=-71.132&amp;lat=42.290" alt="" />
-<area shape="rect" coords="125,500,150,475" href="map?long=-71.131&amp;lat=42.290" alt="" />
-<area shape="rect" coords="150,500,175,475" href="map?long=-71.130&amp;lat=42.290" alt="" />
-<area shape="rect" coords="175,500,200,475" href="map?long=-71.129&amp;lat=42.290" alt="" />
-<area shape="rect" coords="200,500,225,475" href="map?long=-71.128&amp;lat=42.290" alt="" />
-<area shape="rect" coords="225,500,250,475" href="map?long=-71.127&amp;lat=42.290" alt="" />
-<area shape="rect" coords="250,500,275,475" href="map?long=-71.126&amp;lat=42.290" alt="" />
-<area shape="rect" coords="275,500,300,475" href="map?long=-71.125&amp;lat=42.290" alt="" />
-<area shape="rect" coords="300,500,325,475" href="map?long=-71.124&amp;lat=42.290" alt="" />
-<area shape="rect" coords="325,500,350,475" href="map?long=-71.123&amp;lat=42.290" alt="" />
-<area shape="rect" coords="350,500,375,475" href="map?long=-71.122&amp;lat=42.290" alt="" />
-<area shape="rect" coords="375,500,400,475" href="map?long=-71.121&amp;lat=42.290" alt="" />
-<area shape="rect" coords="400,500,425,475" href="map?long=-71.120&amp;lat=42.290" alt="" />
-<area shape="rect" coords="425,500,450,475" href="map?long=-71.119&amp;lat=42.290" alt="" />
-<area shape="rect" coords="450,500,475,475" href="map?long=-71.118&amp;lat=42.290" alt="" />
-<area shape="rect" coords="475,500,500,475" href="map?long=-71.117&amp;lat=42.290" alt="" />
-<area shape="rect" coords="500,500,525,475" href="map?long=-71.116&amp;lat=42.290" alt="" />
-<area shape="rect" coords="0,525,25,500" href="map?long=-71.136&amp;lat=42.289" alt="" />
-<area shape="rect" coords="25,525,50,500" href="map?long=-71.135&amp;lat=42.289" alt="" />
-<area shape="rect" coords="50,525,75,500" href="map?long=-71.134&amp;lat=42.289" alt="" />
-<area shape="rect" coords="75,525,100,500" href="map?long=-71.133&amp;lat=42.289" alt="" />
-<area shape="rect" coords="100,525,125,500" href="map?long=-71.132&amp;lat=42.289" alt="" />
-<area shape="rect" coords="125,525,150,500" href="map?long=-71.131&amp;lat=42.289" alt="" />
-<area shape="rect" coords="150,525,175,500" href="map?long=-71.130&amp;lat=42.289" alt="" />
-<area shape="rect" coords="175,525,200,500" href="map?long=-71.129&amp;lat=42.289" alt="" />
-<area shape="rect" coords="200,525,225,500" href="map?long=-71.128&amp;lat=42.289" alt="" />
-<area shape="rect" coords="225,525,250,500" href="map?long=-71.127&amp;lat=42.289" alt="" />
-<area shape="rect" coords="250,525,275,500" href="map?long=-71.126&amp;lat=42.289" alt="" />
-<area shape="rect" coords="275,525,300,500" href="map?long=-71.125&amp;lat=42.289" alt="" />
-<area shape="rect" coords="300,525,325,500" href="map?long=-71.124&amp;lat=42.289" alt="" />
-<area shape="rect" coords="325,525,350,500" href="map?long=-71.123&amp;lat=42.289" alt="" />
-<area shape="rect" coords="350,525,375,500" href="map?long=-71.122&amp;lat=42.289" alt="" />
-<area shape="rect" coords="375,525,400,500" href="map?long=-71.121&amp;lat=42.289" alt="" />
-<area shape="rect" coords="400,525,425,500" href="map?long=-71.120&amp;lat=42.289" alt="" />
-<area shape="rect" coords="425,525,450,500" href="map?long=-71.119&amp;lat=42.289" alt="" />
-<area shape="rect" coords="450,525,475,500" href="map?long=-71.118&amp;lat=42.289" alt="" />
-<area shape="rect" coords="475,525,500,500" href="map?long=-71.117&amp;lat=42.289" alt="" />
-<area shape="rect" coords="500,525,525,500" href="map?long=-71.116&amp;lat=42.289" alt="" />
-<area shape="rect" coords="0,550,25,525" href="map?long=-71.136&amp;lat=42.288" alt="" />
-<area shape="rect" coords="25,550,50,525" href="map?long=-71.135&amp;lat=42.288" alt="" />
-<area shape="rect" coords="50,550,75,525" href="map?long=-71.134&amp;lat=42.288" alt="" />
-<area shape="rect" coords="75,550,100,525" href="map?long=-71.133&amp;lat=42.288" alt="" />
-<area shape="rect" coords="100,550,125,525" href="map?long=-71.132&amp;lat=42.288" alt="" />
-<area shape="rect" coords="125,550,150,525" href="map?long=-71.131&amp;lat=42.288" alt="" />
-<area shape="rect" coords="150,550,175,525" href="map?long=-71.130&amp;lat=42.288" alt="" />
-<area shape="rect" coords="175,550,200,525" href="map?long=-71.129&amp;lat=42.288" alt="" />
-<area shape="rect" coords="200,550,225,525" href="map?long=-71.128&amp;lat=42.288" alt="" />
-<area shape="rect" coords="225,550,250,525" href="map?long=-71.127&amp;lat=42.288" alt="" />
-<area shape="rect" coords="250,550,275,525" href="map?long=-71.126&amp;lat=42.288" alt="" />
-<area shape="rect" coords="275,550,300,525" href="map?long=-71.125&amp;lat=42.288" alt="" />
-<area shape="rect" coords="300,550,325,525" href="map?long=-71.124&amp;lat=42.288" alt="" />
-<area shape="rect" coords="325,550,350,525" href="map?long=-71.123&amp;lat=42.288" alt="" />
-<area shape="rect" coords="350,550,375,525" href="map?long=-71.122&amp;lat=42.288" alt="" />
-<area shape="rect" coords="375,550,400,525" href="map?long=-71.121&amp;lat=42.288" alt="" />
-<area shape="rect" coords="400,550,425,525" href="map?long=-71.120&amp;lat=42.288" alt="" />
-<area shape="rect" coords="425,550,450,525" href="map?long=-71.119&amp;lat=42.288" alt="" />
-<area shape="rect" coords="450,550,475,525" href="map?long=-71.118&amp;lat=42.288" alt="" />
-<area shape="rect" coords="475,550,500,525" href="map?long=-71.117&amp;lat=42.288" alt="" />
-<area shape="rect" coords="500,550,525,525" href="map?long=-71.116&amp;lat=42.288" alt="" />
+<area shape="rect" coords="0,0,25,25" href="map?long=-71.136&amp;lat=42.309" />
+<area shape="rect" coords="25,0,50,25" href="map?long=-71.135&amp;lat=42.309" />
+<area shape="rect" coords="50,0,75,25" href="map?long=-71.134&amp;lat=42.309" />
+<area shape="rect" coords="75,0,100,25" href="map?long=-71.133&amp;lat=42.309" />
+<area shape="rect" coords="100,0,125,25" href="map?long=-71.132&amp;lat=42.309" />
+<area shape="rect" coords="125,0,150,25" href="map?long=-71.131&amp;lat=42.309" />
+<area shape="rect" coords="150,0,175,25" href="map?long=-71.130&amp;lat=42.309" />
+<area shape="rect" coords="175,0,200,25" href="map?long=-71.129&amp;lat=42.309" />
+<area shape="rect" coords="200,0,225,25" href="map?long=-71.128&amp;lat=42.309" />
+<area shape="rect" coords="225,0,250,25" href="map?long=-71.127&amp;lat=42.309" />
+<area shape="rect" coords="250,0,275,25" href="map?long=-71.126&amp;lat=42.309" />
+<area shape="rect" coords="275,0,300,25" href="map?long=-71.125&amp;lat=42.309" />
+<area shape="rect" coords="300,0,325,25" href="map?long=-71.124&amp;lat=42.309" />
+<area shape="rect" coords="325,0,350,25" href="map?long=-71.123&amp;lat=42.309" />
+<area shape="rect" coords="350,0,375,25" href="map?long=-71.122&amp;lat=42.309" />
+<area shape="rect" coords="375,0,400,25" href="map?long=-71.121&amp;lat=42.309" />
+<area shape="rect" coords="400,0,425,25" href="map?long=-71.120&amp;lat=42.309" />
+<area shape="rect" coords="425,0,450,25" href="map?long=-71.119&amp;lat=42.309" />
+<area shape="rect" coords="450,0,475,25" href="map?long=-71.118&amp;lat=42.309" />
+<area shape="rect" coords="475,0,500,25" href="map?long=-71.117&amp;lat=42.309" />
+<area shape="rect" coords="500,0,525,25" href="map?long=-71.116&amp;lat=42.309" />
+<area shape="rect" coords="0,25,25,50" href="map?long=-71.136&amp;lat=42.308" />
+<area shape="rect" coords="25,25,50,50" href="map?long=-71.135&amp;lat=42.308" />
+<area shape="rect" coords="50,25,75,50" href="map?long=-71.134&amp;lat=42.308" />
+<area shape="rect" coords="75,25,100,50" href="map?long=-71.133&amp;lat=42.308" />
+<area shape="rect" coords="100,25,125,50" href="map?long=-71.132&amp;lat=42.308" />
+<area shape="rect" coords="125,25,150,50" href="map?long=-71.131&amp;lat=42.308" />
+<area shape="rect" coords="150,25,175,50" href="map?long=-71.130&amp;lat=42.308" />
+<area shape="rect" coords="175,25,200,50" href="map?long=-71.129&amp;lat=42.308" />
+<area shape="rect" coords="200,25,225,50" href="map?long=-71.128&amp;lat=42.308" />
+<area shape="rect" coords="225,25,250,50" href="map?long=-71.127&amp;lat=42.308" />
+<area shape="rect" coords="250,25,275,50" href="map?long=-71.126&amp;lat=42.308" />
+<area shape="rect" coords="275,25,300,50" href="map?long=-71.125&amp;lat=42.308" />
+<area shape="rect" coords="300,25,325,50" href="map?long=-71.124&amp;lat=42.308" />
+<area shape="rect" coords="325,25,350,50" href="map?long=-71.123&amp;lat=42.308" />
+<area shape="rect" coords="350,25,375,50" href="map?long=-71.122&amp;lat=42.308" />
+<area shape="rect" coords="375,25,400,50" href="map?long=-71.121&amp;lat=42.308" />
+<area shape="rect" coords="400,25,425,50" href="map?long=-71.120&amp;lat=42.308" />
+<area shape="rect" coords="425,25,450,50" href="map?long=-71.119&amp;lat=42.308" />
+<area shape="rect" coords="450,25,475,50" href="map?long=-71.118&amp;lat=42.308" />
+<area shape="rect" coords="475,25,500,50" href="map?long=-71.117&amp;lat=42.308" />
+<area shape="rect" coords="500,25,525,50" href="map?long=-71.116&amp;lat=42.308" />
+<area shape="rect" coords="0,50,25,75" href="map?long=-71.136&amp;lat=42.307" />
+<area shape="rect" coords="25,50,50,75" href="map?long=-71.135&amp;lat=42.307" />
+<area shape="rect" coords="50,50,75,75" href="map?long=-71.134&amp;lat=42.307" />
+<area shape="rect" coords="75,50,100,75" href="map?long=-71.133&amp;lat=42.307" />
+<area shape="rect" coords="100,50,125,75" href="map?long=-71.132&amp;lat=42.307" />
+<area shape="rect" coords="125,50,150,75" href="map?long=-71.131&amp;lat=42.307" />
+<area shape="rect" coords="150,50,175,75" href="map?long=-71.130&amp;lat=42.307" />
+<area shape="rect" coords="175,50,200,75" href="map?long=-71.129&amp;lat=42.307" />
+<area shape="rect" coords="200,50,225,75" href="map?long=-71.128&amp;lat=42.307" />
+<area shape="rect" coords="225,50,250,75" href="map?long=-71.127&amp;lat=42.307" />
+<area shape="rect" coords="250,50,275,75" href="map?long=-71.126&amp;lat=42.307" />
+<area shape="rect" coords="275,50,300,75" href="map?long=-71.125&amp;lat=42.307" />
+<area shape="rect" coords="300,50,325,75" href="map?long=-71.124&amp;lat=42.307" />
+<area shape="rect" coords="325,50,350,75" href="map?long=-71.123&amp;lat=42.307" />
+<area shape="rect" coords="350,50,375,75" href="map?long=-71.122&amp;lat=42.307" />
+<area shape="rect" coords="375,50,400,75" href="map?long=-71.121&amp;lat=42.307" />
+<area shape="rect" coords="400,50,425,75" href="map?long=-71.120&amp;lat=42.307" />
+<area shape="rect" coords="425,50,450,75" href="map?long=-71.119&amp;lat=42.307" />
+<area shape="rect" coords="450,50,475,75" href="map?long=-71.118&amp;lat=42.307" />
+<area shape="rect" coords="475,50,500,75" href="map?long=-71.117&amp;lat=42.307" />
+<area shape="rect" coords="500,50,525,75" href="map?long=-71.116&amp;lat=42.307" />
+<area shape="rect" coords="0,75,25,100" href="map?long=-71.136&amp;lat=42.306" />
+<area shape="rect" coords="25,75,50,100" href="map?long=-71.135&amp;lat=42.306" />
+<area shape="rect" coords="50,75,75,100" href="map?long=-71.134&amp;lat=42.306" />
+<area shape="rect" coords="75,75,100,100" href="map?long=-71.133&amp;lat=42.306" />
+<area shape="rect" coords="100,75,125,100" href="map?long=-71.132&amp;lat=42.306" />
+<area shape="rect" coords="125,75,150,100" href="map?long=-71.131&amp;lat=42.306" />
+<area shape="rect" coords="150,75,175,100" href="map?long=-71.130&amp;lat=42.306" />
+<area shape="rect" coords="175,75,200,100" href="map?long=-71.129&amp;lat=42.306" />
+<area shape="rect" coords="200,75,225,100" href="map?long=-71.128&amp;lat=42.306" />
+<area shape="rect" coords="225,75,250,100" href="map?long=-71.127&amp;lat=42.306" />
+<area shape="rect" coords="250,75,275,100" href="map?long=-71.126&amp;lat=42.306" />
+<area shape="rect" coords="275,75,300,100" href="map?long=-71.125&amp;lat=42.306" />
+<area shape="rect" coords="300,75,325,100" href="map?long=-71.124&amp;lat=42.306" />
+<area shape="rect" coords="325,75,350,100" href="map?long=-71.123&amp;lat=42.306" />
+<area shape="rect" coords="350,75,375,100" href="map?long=-71.122&amp;lat=42.306" />
+<area shape="rect" coords="375,75,400,100" href="map?long=-71.121&amp;lat=42.306" />
+<area shape="rect" coords="400,75,425,100" href="map?long=-71.120&amp;lat=42.306" />
+<area shape="rect" coords="425,75,450,100" href="map?long=-71.119&amp;lat=42.306" />
+<area shape="rect" coords="450,75,475,100" href="map?long=-71.118&amp;lat=42.306" />
+<area shape="rect" coords="475,75,500,100" href="map?long=-71.117&amp;lat=42.306" />
+<area shape="rect" coords="500,75,525,100" href="map?long=-71.116&amp;lat=42.306" />
+<area shape="rect" coords="0,100,25,125" href="map?long=-71.136&amp;lat=42.305" />
+<area shape="rect" coords="25,100,50,125" href="map?long=-71.135&amp;lat=42.305" />
+<area shape="rect" coords="50,100,75,125" href="map?long=-71.134&amp;lat=42.305" />
+<area shape="rect" coords="75,100,100,125" href="map?long=-71.133&amp;lat=42.305" />
+<area shape="rect" coords="100,100,125,125" href="map?long=-71.132&amp;lat=42.305" />
+<area shape="rect" coords="125,100,150,125" href="map?long=-71.131&amp;lat=42.305" />
+<area shape="rect" coords="150,100,175,125" href="map?long=-71.130&amp;lat=42.305" />
+<area shape="rect" coords="175,100,200,125" href="map?long=-71.129&amp;lat=42.305" />
+<area shape="rect" coords="200,100,225,125" href="map?long=-71.128&amp;lat=42.305" />
+<area shape="rect" coords="225,100,250,125" href="map?long=-71.127&amp;lat=42.305" />
+<area shape="rect" coords="250,100,275,125" href="map?long=-71.126&amp;lat=42.305" />
+<area shape="rect" coords="275,100,300,125" href="map?long=-71.125&amp;lat=42.305" />
+<area shape="rect" coords="300,100,325,125" href="map?long=-71.124&amp;lat=42.305" />
+<area shape="rect" coords="325,100,350,125" href="map?long=-71.123&amp;lat=42.305" />
+<area shape="rect" coords="350,100,375,125" href="map?long=-71.122&amp;lat=42.305" />
+<area shape="rect" coords="375,100,400,125" href="map?long=-71.121&amp;lat=42.305" />
+<area shape="rect" coords="400,100,425,125" href="map?long=-71.120&amp;lat=42.305" />
+<area shape="rect" coords="425,100,450,125" href="map?long=-71.119&amp;lat=42.305" />
+<area shape="rect" coords="450,100,475,125" href="map?long=-71.118&amp;lat=42.305" />
+<area shape="rect" coords="475,100,500,125" href="map?long=-71.117&amp;lat=42.305" />
+<area shape="rect" coords="500,100,525,125" href="map?long=-71.116&amp;lat=42.305" />
+<area shape="rect" coords="0,125,25,150" href="map?long=-71.136&amp;lat=42.304" />
+<area shape="rect" coords="25,125,50,150" href="map?long=-71.135&amp;lat=42.304" />
+<area shape="rect" coords="50,125,75,150" href="map?long=-71.134&amp;lat=42.304" />
+<area shape="rect" coords="75,125,100,150" href="map?long=-71.133&amp;lat=42.304" />
+<area shape="rect" coords="100,125,125,150" href="map?long=-71.132&amp;lat=42.304" />
+<area shape="rect" coords="125,125,150,150" href="map?long=-71.131&amp;lat=42.304" />
+<area shape="rect" coords="150,125,175,150" href="map?long=-71.130&amp;lat=42.304" />
+<area shape="rect" coords="175,125,200,150" href="map?long=-71.129&amp;lat=42.304" />
+<area shape="rect" coords="200,125,225,150" href="map?long=-71.128&amp;lat=42.304" />
+<area shape="rect" coords="225,125,250,150" href="map?long=-71.127&amp;lat=42.304" />
+<area shape="rect" coords="250,125,275,150" href="map?long=-71.126&amp;lat=42.304" />
+<area shape="rect" coords="275,125,300,150" href="map?long=-71.125&amp;lat=42.304" />
+<area shape="rect" coords="300,125,325,150" href="map?long=-71.124&amp;lat=42.304" />
+<area shape="rect" coords="325,125,350,150" href="map?long=-71.123&amp;lat=42.304" />
+<area shape="rect" coords="350,125,375,150" href="map?long=-71.122&amp;lat=42.304" />
+<area shape="rect" coords="375,125,400,150" href="map?long=-71.121&amp;lat=42.304" />
+<area shape="rect" coords="400,125,425,150" href="map?long=-71.120&amp;lat=42.304" />
+<area shape="rect" coords="425,125,450,150" href="map?long=-71.119&amp;lat=42.304" />
+<area shape="rect" coords="450,125,475,150" href="map?long=-71.118&amp;lat=42.304" />
+<area shape="rect" coords="475,125,500,150" href="map?long=-71.117&amp;lat=42.304" />
+<area shape="rect" coords="500,125,525,150" href="map?long=-71.116&amp;lat=42.304" />
+<area shape="rect" coords="0,150,25,175" href="map?long=-71.136&amp;lat=42.303" />
+<area shape="rect" coords="25,150,50,175" href="map?long=-71.135&amp;lat=42.303" />
+<area shape="rect" coords="50,150,75,175" href="map?long=-71.134&amp;lat=42.303" />
+<area shape="rect" coords="75,150,100,175" href="map?long=-71.133&amp;lat=42.303" />
+<area shape="rect" coords="100,150,125,175" href="map?long=-71.132&amp;lat=42.303" />
+<area shape="rect" coords="125,150,150,175" href="map?long=-71.131&amp;lat=42.303" />
+<area shape="rect" coords="150,150,175,175" href="map?long=-71.130&amp;lat=42.303" />
+<area shape="rect" coords="175,150,200,175" href="map?long=-71.129&amp;lat=42.303" />
+<area shape="rect" coords="200,150,225,175" href="map?long=-71.128&amp;lat=42.303" />
+<area shape="rect" coords="225,150,250,175" href="map?long=-71.127&amp;lat=42.303" />
+<area shape="rect" coords="250,150,275,175" href="map?long=-71.126&amp;lat=42.303" />
+<area shape="rect" coords="275,150,300,175" href="map?long=-71.125&amp;lat=42.303" />
+<area shape="rect" coords="300,150,325,175" href="map?long=-71.124&amp;lat=42.303" />
+<area shape="rect" coords="325,150,350,175" href="map?long=-71.123&amp;lat=42.303" />
+<area shape="rect" coords="350,150,375,175" href="map?long=-71.122&amp;lat=42.303" />
+<area shape="rect" coords="375,150,400,175" href="map?long=-71.121&amp;lat=42.303" />
+<area shape="rect" coords="400,150,425,175" href="map?long=-71.120&amp;lat=42.303" />
+<area shape="rect" coords="425,150,450,175" href="map?long=-71.119&amp;lat=42.303" />
+<area shape="rect" coords="450,150,475,175" href="map?long=-71.118&amp;lat=42.303" />
+<area shape="rect" coords="475,150,500,175" href="map?long=-71.117&amp;lat=42.303" />
+<area shape="rect" coords="500,150,525,175" href="map?long=-71.116&amp;lat=42.303" />
+<area shape="rect" coords="0,175,25,200" href="map?long=-71.136&amp;lat=42.302" />
+<area shape="rect" coords="25,175,50,200" href="map?long=-71.135&amp;lat=42.302" />
+<area shape="rect" coords="50,175,75,200" href="map?long=-71.134&amp;lat=42.302" />
+<area shape="rect" coords="75,175,100,200" href="map?long=-71.133&amp;lat=42.302" />
+<area shape="rect" coords="100,175,125,200" href="map?long=-71.132&amp;lat=42.302" />
+<area shape="rect" coords="125,175,150,200" href="map?long=-71.131&amp;lat=42.302" />
+<area shape="rect" coords="150,175,175,200" href="map?long=-71.130&amp;lat=42.302" />
+<area shape="rect" coords="175,175,200,200" href="map?long=-71.129&amp;lat=42.302" />
+<area shape="rect" coords="200,175,225,200" href="map?long=-71.128&amp;lat=42.302" />
+<area shape="rect" coords="225,175,250,200" href="map?long=-71.127&amp;lat=42.302" />
+<area shape="rect" coords="250,175,275,200" href="map?long=-71.126&amp;lat=42.302" />
+<area shape="rect" coords="275,175,300,200" href="map?long=-71.125&amp;lat=42.302" />
+<area shape="rect" coords="300,175,325,200" href="map?long=-71.124&amp;lat=42.302" />
+<area shape="rect" coords="325,175,350,200" href="map?long=-71.123&amp;lat=42.302" />
+<area shape="rect" coords="350,175,375,200" href="map?long=-71.122&amp;lat=42.302" />
+<area shape="rect" coords="375,175,400,200" href="map?long=-71.121&amp;lat=42.302" />
+<area shape="rect" coords="400,175,425,200" href="map?long=-71.120&amp;lat=42.302" />
+<area shape="rect" coords="425,175,450,200" href="map?long=-71.119&amp;lat=42.302" />
+<area shape="rect" coords="450,175,475,200" href="map?long=-71.118&amp;lat=42.302" />
+<area shape="rect" coords="475,175,500,200" href="map?long=-71.117&amp;lat=42.302" />
+<area shape="rect" coords="500,175,525,200" href="map?long=-71.116&amp;lat=42.302" />
+<area shape="rect" coords="0,200,25,225" href="map?long=-71.136&amp;lat=42.301" />
+<area shape="rect" coords="25,200,50,225" href="map?long=-71.135&amp;lat=42.301" />
+<area shape="rect" coords="50,200,75,225" href="map?long=-71.134&amp;lat=42.301" />
+<area shape="rect" coords="75,200,100,225" href="map?long=-71.133&amp;lat=42.301" />
+<area shape="rect" coords="100,200,125,225" href="map?long=-71.132&amp;lat=42.301" />
+<area shape="rect" coords="125,200,150,225" href="map?long=-71.131&amp;lat=42.301" />
+<area shape="rect" coords="150,200,175,225" href="map?long=-71.130&amp;lat=42.301" />
+<area shape="rect" coords="175,200,200,225" href="map?long=-71.129&amp;lat=42.301" />
+<area shape="rect" coords="200,200,225,225" href="map?long=-71.128&amp;lat=42.301" />
+<area shape="rect" coords="225,200,250,225" href="map?long=-71.127&amp;lat=42.301" />
+<area shape="rect" coords="250,200,275,225" href="map?long=-71.126&amp;lat=42.301" />
+<area shape="rect" coords="275,200,300,225" href="map?long=-71.125&amp;lat=42.301" />
+<area shape="rect" coords="300,200,325,225" href="map?long=-71.124&amp;lat=42.301" />
+<area shape="rect" coords="325,200,350,225" href="map?long=-71.123&amp;lat=42.301" />
+<area shape="rect" coords="350,200,375,225" href="map?long=-71.122&amp;lat=42.301" />
+<area shape="rect" coords="375,200,400,225" href="map?long=-71.121&amp;lat=42.301" />
+<area shape="rect" coords="400,200,425,225" href="map?long=-71.120&amp;lat=42.301" />
+<area shape="rect" coords="425,200,450,225" href="map?long=-71.119&amp;lat=42.301" />
+<area shape="rect" coords="450,200,475,225" href="map?long=-71.118&amp;lat=42.301" />
+<area shape="rect" coords="475,200,500,225" href="map?long=-71.117&amp;lat=42.301" />
+<area shape="rect" coords="500,200,525,225" href="map?long=-71.116&amp;lat=42.301" />
+<area shape="rect" coords="0,225,25,250" href="map?long=-71.136&amp;lat=42.300" />
+<area shape="rect" coords="25,225,50,250" href="map?long=-71.135&amp;lat=42.300" />
+<area shape="rect" coords="50,225,75,250" href="map?long=-71.134&amp;lat=42.300" />
+<area shape="rect" coords="75,225,100,250" href="map?long=-71.133&amp;lat=42.300" />
+<area shape="rect" coords="100,225,125,250" href="map?long=-71.132&amp;lat=42.300" />
+<area shape="rect" coords="125,225,150,250" href="map?long=-71.131&amp;lat=42.300" />
+<area shape="rect" coords="150,225,175,250" href="map?long=-71.130&amp;lat=42.300" />
+<area shape="rect" coords="175,225,200,250" href="map?long=-71.129&amp;lat=42.300" />
+<area shape="rect" coords="200,225,225,250" href="map?long=-71.128&amp;lat=42.300" />
+<area shape="rect" coords="225,225,250,250" href="map?long=-71.127&amp;lat=42.300" />
+<area shape="rect" coords="250,225,275,250" href="map?long=-71.126&amp;lat=42.300" />
+<area shape="rect" coords="275,225,300,250" href="map?long=-71.125&amp;lat=42.300" />
+<area shape="rect" coords="300,225,325,250" href="map?long=-71.124&amp;lat=42.300" />
+<area shape="rect" coords="325,225,350,250" href="map?long=-71.123&amp;lat=42.300" />
+<area shape="rect" coords="350,225,375,250" href="map?long=-71.122&amp;lat=42.300" />
+<area shape="rect" coords="375,225,400,250" href="map?long=-71.121&amp;lat=42.300" />
+<area shape="rect" coords="400,225,425,250" href="map?long=-71.120&amp;lat=42.300" />
+<area shape="rect" coords="425,225,450,250" href="map?long=-71.119&amp;lat=42.300" />
+<area shape="rect" coords="450,225,475,250" href="map?long=-71.118&amp;lat=42.300" />
+<area shape="rect" coords="475,225,500,250" href="map?long=-71.117&amp;lat=42.300" />
+<area shape="rect" coords="500,225,525,250" href="map?long=-71.116&amp;lat=42.300" />
+<area shape="rect" coords="0,250,25,275" href="map?long=-71.136&amp;lat=42.299" />
+<area shape="rect" coords="25,250,50,275" href="map?long=-71.135&amp;lat=42.299" />
+<area shape="rect" coords="50,250,75,275" href="map?long=-71.134&amp;lat=42.299" />
+<area shape="rect" coords="75,250,100,275" href="map?long=-71.133&amp;lat=42.299" />
+<area shape="rect" coords="100,250,125,275" href="map?long=-71.132&amp;lat=42.299" />
+<area shape="rect" coords="125,250,150,275" href="map?long=-71.131&amp;lat=42.299" />
+<area shape="rect" coords="150,250,175,275" href="map?long=-71.130&amp;lat=42.299" />
+<area shape="rect" coords="175,250,200,275" href="map?long=-71.129&amp;lat=42.299" />
+<area shape="rect" coords="200,250,225,275" href="map?long=-71.128&amp;lat=42.299" />
+<area shape="rect" coords="225,250,250,275" href="map?long=-71.127&amp;lat=42.299" />
+<area shape="rect" coords="250,250,275,275" href="map?long=-71.126&amp;lat=42.299" />
+<area shape="rect" coords="275,250,300,275" href="map?long=-71.125&amp;lat=42.299" />
+<area shape="rect" coords="300,250,325,275" href="map?long=-71.124&amp;lat=42.299" />
+<area shape="rect" coords="325,250,350,275" href="map?long=-71.123&amp;lat=42.299" />
+<area shape="rect" coords="350,250,375,275" href="map?long=-71.122&amp;lat=42.299" />
+<area shape="rect" coords="375,250,400,275" href="map?long=-71.121&amp;lat=42.299" />
+<area shape="rect" coords="400,250,425,275" href="map?long=-71.120&amp;lat=42.299" />
+<area shape="rect" coords="425,250,450,275" href="map?long=-71.119&amp;lat=42.299" />
+<area shape="rect" coords="450,250,475,275" href="map?long=-71.118&amp;lat=42.299" />
+<area shape="rect" coords="475,250,500,275" href="map?long=-71.117&amp;lat=42.299" />
+<area shape="rect" coords="500,250,525,275" href="map?long=-71.116&amp;lat=42.299" />
+<area shape="rect" coords="0,275,25,300" href="map?long=-71.136&amp;lat=42.298" />
+<area shape="rect" coords="25,275,50,300" href="map?long=-71.135&amp;lat=42.298" />
+<area shape="rect" coords="50,275,75,300" href="map?long=-71.134&amp;lat=42.298" />
+<area shape="rect" coords="75,275,100,300" href="map?long=-71.133&amp;lat=42.298" />
+<area shape="rect" coords="100,275,125,300" href="map?long=-71.132&amp;lat=42.298" />
+<area shape="rect" coords="125,275,150,300" href="map?long=-71.131&amp;lat=42.298" />
+<area shape="rect" coords="150,275,175,300" href="map?long=-71.130&amp;lat=42.298" />
+<area shape="rect" coords="175,275,200,300" href="map?long=-71.129&amp;lat=42.298" />
+<area shape="rect" coords="200,275,225,300" href="map?long=-71.128&amp;lat=42.298" />
+<area shape="rect" coords="225,275,250,300" href="map?long=-71.127&amp;lat=42.298" />
+<area shape="rect" coords="250,275,275,300" href="map?long=-71.126&amp;lat=42.298" />
+<area shape="rect" coords="275,275,300,300" href="map?long=-71.125&amp;lat=42.298" />
+<area shape="rect" coords="300,275,325,300" href="map?long=-71.124&amp;lat=42.298" />
+<area shape="rect" coords="325,275,350,300" href="map?long=-71.123&amp;lat=42.298" />
+<area shape="rect" coords="350,275,375,300" href="map?long=-71.122&amp;lat=42.298" />
+<area shape="rect" coords="375,275,400,300" href="map?long=-71.121&amp;lat=42.298" />
+<area shape="rect" coords="400,275,425,300" href="map?long=-71.120&amp;lat=42.298" />
+<area shape="rect" coords="425,275,450,300" href="map?long=-71.119&amp;lat=42.298" />
+<area shape="rect" coords="450,275,475,300" href="map?long=-71.118&amp;lat=42.298" />
+<area shape="rect" coords="475,275,500,300" href="map?long=-71.117&amp;lat=42.298" />
+<area shape="rect" coords="500,275,525,300" href="map?long=-71.116&amp;lat=42.298" />
+<area shape="rect" coords="0,300,25,325" href="map?long=-71.136&amp;lat=42.297" />
+<area shape="rect" coords="25,300,50,325" href="map?long=-71.135&amp;lat=42.297" />
+<area shape="rect" coords="50,300,75,325" href="map?long=-71.134&amp;lat=42.297" />
+<area shape="rect" coords="75,300,100,325" href="map?long=-71.133&amp;lat=42.297" />
+<area shape="rect" coords="100,300,125,325" href="map?long=-71.132&amp;lat=42.297" />
+<area shape="rect" coords="125,300,150,325" href="map?long=-71.131&amp;lat=42.297" />
+<area shape="rect" coords="150,300,175,325" href="map?long=-71.130&amp;lat=42.297" />
+<area shape="rect" coords="175,300,200,325" href="map?long=-71.129&amp;lat=42.297" />
+<area shape="rect" coords="200,300,225,325" href="map?long=-71.128&amp;lat=42.297" />
+<area shape="rect" coords="225,300,250,325" href="map?long=-71.127&amp;lat=42.297" />
+<area shape="rect" coords="250,300,275,325" href="map?long=-71.126&amp;lat=42.297" />
+<area shape="rect" coords="275,300,300,325" href="map?long=-71.125&amp;lat=42.297" />
+<area shape="rect" coords="300,300,325,325" href="map?long=-71.124&amp;lat=42.297" />
+<area shape="rect" coords="325,300,350,325" href="map?long=-71.123&amp;lat=42.297" />
+<area shape="rect" coords="350,300,375,325" href="map?long=-71.122&amp;lat=42.297" />
+<area shape="rect" coords="375,300,400,325" href="map?long=-71.121&amp;lat=42.297" />
+<area shape="rect" coords="400,300,425,325" href="map?long=-71.120&amp;lat=42.297" />
+<area shape="rect" coords="425,300,450,325" href="map?long=-71.119&amp;lat=42.297" />
+<area shape="rect" coords="450,300,475,325" href="map?long=-71.118&amp;lat=42.297" />
+<area shape="rect" coords="475,300,500,325" href="map?long=-71.117&amp;lat=42.297" />
+<area shape="rect" coords="500,300,525,325" href="map?long=-71.116&amp;lat=42.297" />
+<area shape="rect" coords="0,325,25,350" href="map?long=-71.136&amp;lat=42.296" />
+<area shape="rect" coords="25,325,50,350" href="map?long=-71.135&amp;lat=42.296" />
+<area shape="rect" coords="50,325,75,350" href="map?long=-71.134&amp;lat=42.296" />
+<area shape="rect" coords="75,325,100,350" href="map?long=-71.133&amp;lat=42.296" />
+<area shape="rect" coords="100,325,125,350" href="map?long=-71.132&amp;lat=42.296" />
+<area shape="rect" coords="125,325,150,350" href="map?long=-71.131&amp;lat=42.296" />
+<area shape="rect" coords="150,325,175,350" href="map?long=-71.130&amp;lat=42.296" />
+<area shape="rect" coords="175,325,200,350" href="map?long=-71.129&amp;lat=42.296" />
+<area shape="rect" coords="200,325,225,350" href="map?long=-71.128&amp;lat=42.296" />
+<area shape="rect" coords="225,325,250,350" href="map?long=-71.127&amp;lat=42.296" />
+<area shape="rect" coords="250,325,275,350" href="map?long=-71.126&amp;lat=42.296" />
+<area shape="rect" coords="275,325,300,350" href="map?long=-71.125&amp;lat=42.296" />
+<area shape="rect" coords="300,325,325,350" href="map?long=-71.124&amp;lat=42.296" />
+<area shape="rect" coords="325,325,350,350" href="map?long=-71.123&amp;lat=42.296" />
+<area shape="rect" coords="350,325,375,350" href="map?long=-71.122&amp;lat=42.296" />
+<area shape="rect" coords="375,325,400,350" href="map?long=-71.121&amp;lat=42.296" />
+<area shape="rect" coords="400,325,425,350" href="map?long=-71.120&amp;lat=42.296" />
+<area shape="rect" coords="425,325,450,350" href="map?long=-71.119&amp;lat=42.296" />
+<area shape="rect" coords="450,325,475,350" href="map?long=-71.118&amp;lat=42.296" />
+<area shape="rect" coords="475,325,500,350" href="map?long=-71.117&amp;lat=42.296" />
+<area shape="rect" coords="500,325,525,350" href="map?long=-71.116&amp;lat=42.296" />
+<area shape="rect" coords="0,350,25,375" href="map?long=-71.136&amp;lat=42.295" />
+<area shape="rect" coords="25,350,50,375" href="map?long=-71.135&amp;lat=42.295" />
+<area shape="rect" coords="50,350,75,375" href="map?long=-71.134&amp;lat=42.295" />
+<area shape="rect" coords="75,350,100,375" href="map?long=-71.133&amp;lat=42.295" />
+<area shape="rect" coords="100,350,125,375" href="map?long=-71.132&amp;lat=42.295" />
+<area shape="rect" coords="125,350,150,375" href="map?long=-71.131&amp;lat=42.295" />
+<area shape="rect" coords="150,350,175,375" href="map?long=-71.130&amp;lat=42.295" />
+<area shape="rect" coords="175,350,200,375" href="map?long=-71.129&amp;lat=42.295" />
+<area shape="rect" coords="200,350,225,375" href="map?long=-71.128&amp;lat=42.295" />
+<area shape="rect" coords="225,350,250,375" href="map?long=-71.127&amp;lat=42.295" />
+<area shape="rect" coords="250,350,275,375" href="map?long=-71.126&amp;lat=42.295" />
+<area shape="rect" coords="275,350,300,375" href="map?long=-71.125&amp;lat=42.295" />
+<area shape="rect" coords="300,350,325,375" href="map?long=-71.124&amp;lat=42.295" />
+<area shape="rect" coords="325,350,350,375" href="map?long=-71.123&amp;lat=42.295" />
+<area shape="rect" coords="350,350,375,375" href="map?long=-71.122&amp;lat=42.295" />
+<area shape="rect" coords="375,350,400,375" href="map?long=-71.121&amp;lat=42.295" />
+<area shape="rect" coords="400,350,425,375" href="map?long=-71.120&amp;lat=42.295" />
+<area shape="rect" coords="425,350,450,375" href="map?long=-71.119&amp;lat=42.295" />
+<area shape="rect" coords="450,350,475,375" href="map?long=-71.118&amp;lat=42.295" />
+<area shape="rect" coords="475,350,500,375" href="map?long=-71.117&amp;lat=42.295" />
+<area shape="rect" coords="500,350,525,375" href="map?long=-71.116&amp;lat=42.295" />
+<area shape="rect" coords="0,375,25,400" href="map?long=-71.136&amp;lat=42.294" />
+<area shape="rect" coords="25,375,50,400" href="map?long=-71.135&amp;lat=42.294" />
+<area shape="rect" coords="50,375,75,400" href="map?long=-71.134&amp;lat=42.294" />
+<area shape="rect" coords="75,375,100,400" href="map?long=-71.133&amp;lat=42.294" />
+<area shape="rect" coords="100,375,125,400" href="map?long=-71.132&amp;lat=42.294" />
+<area shape="rect" coords="125,375,150,400" href="map?long=-71.131&amp;lat=42.294" />
+<area shape="rect" coords="150,375,175,400" href="map?long=-71.130&amp;lat=42.294" />
+<area shape="rect" coords="175,375,200,400" href="map?long=-71.129&amp;lat=42.294" />
+<area shape="rect" coords="200,375,225,400" href="map?long=-71.128&amp;lat=42.294" />
+<area shape="rect" coords="225,375,250,400" href="map?long=-71.127&amp;lat=42.294" />
+<area shape="rect" coords="250,375,275,400" href="map?long=-71.126&amp;lat=42.294" />
+<area shape="rect" coords="275,375,300,400" href="map?long=-71.125&amp;lat=42.294" />
+<area shape="rect" coords="300,375,325,400" href="map?long=-71.124&amp;lat=42.294" />
+<area shape="rect" coords="325,375,350,400" href="map?long=-71.123&amp;lat=42.294" />
+<area shape="rect" coords="350,375,375,400" href="map?long=-71.122&amp;lat=42.294" />
+<area shape="rect" coords="375,375,400,400" href="map?long=-71.121&amp;lat=42.294" />
+<area shape="rect" coords="400,375,425,400" href="map?long=-71.120&amp;lat=42.294" />
+<area shape="rect" coords="425,375,450,400" href="map?long=-71.119&amp;lat=42.294" />
+<area shape="rect" coords="450,375,475,400" href="map?long=-71.118&amp;lat=42.294" />
+<area shape="rect" coords="475,375,500,400" href="map?long=-71.117&amp;lat=42.294" />
+<area shape="rect" coords="500,375,525,400" href="map?long=-71.116&amp;lat=42.294" />
+<area shape="rect" coords="0,400,25,425" href="map?long=-71.136&amp;lat=42.293" />
+<area shape="rect" coords="25,400,50,425" href="map?long=-71.135&amp;lat=42.293" />
+<area shape="rect" coords="50,400,75,425" href="map?long=-71.134&amp;lat=42.293" />
+<area shape="rect" coords="75,400,100,425" href="map?long=-71.133&amp;lat=42.293" />
+<area shape="rect" coords="100,400,125,425" href="map?long=-71.132&amp;lat=42.293" />
+<area shape="rect" coords="125,400,150,425" href="map?long=-71.131&amp;lat=42.293" />
+<area shape="rect" coords="150,400,175,425" href="map?long=-71.130&amp;lat=42.293" />
+<area shape="rect" coords="175,400,200,425" href="map?long=-71.129&amp;lat=42.293" />
+<area shape="rect" coords="200,400,225,425" href="map?long=-71.128&amp;lat=42.293" />
+<area shape="rect" coords="225,400,250,425" href="map?long=-71.127&amp;lat=42.293" />
+<area shape="rect" coords="250,400,275,425" href="map?long=-71.126&amp;lat=42.293" />
+<area shape="rect" coords="275,400,300,425" href="map?long=-71.125&amp;lat=42.293" />
+<area shape="rect" coords="300,400,325,425" href="map?long=-71.124&amp;lat=42.293" />
+<area shape="rect" coords="325,400,350,425" href="map?long=-71.123&amp;lat=42.293" />
+<area shape="rect" coords="350,400,375,425" href="map?long=-71.122&amp;lat=42.293" />
+<area shape="rect" coords="375,400,400,425" href="map?long=-71.121&amp;lat=42.293" />
+<area shape="rect" coords="400,400,425,425" href="map?long=-71.120&amp;lat=42.293" />
+<area shape="rect" coords="425,400,450,425" href="map?long=-71.119&amp;lat=42.293" />
+<area shape="rect" coords="450,400,475,425" href="map?long=-71.118&amp;lat=42.293" />
+<area shape="rect" coords="475,400,500,425" href="map?long=-71.117&amp;lat=42.293" />
+<area shape="rect" coords="500,400,525,425" href="map?long=-71.116&amp;lat=42.293" />
+<area shape="rect" coords="0,425,25,450" href="map?long=-71.136&amp;lat=42.292" />
+<area shape="rect" coords="25,425,50,450" href="map?long=-71.135&amp;lat=42.292" />
+<area shape="rect" coords="50,425,75,450" href="map?long=-71.134&amp;lat=42.292" />
+<area shape="rect" coords="75,425,100,450" href="map?long=-71.133&amp;lat=42.292" />
+<area shape="rect" coords="100,425,125,450" href="map?long=-71.132&amp;lat=42.292" />
+<area shape="rect" coords="125,425,150,450" href="map?long=-71.131&amp;lat=42.292" />
+<area shape="rect" coords="150,425,175,450" href="map?long=-71.130&amp;lat=42.292" />
+<area shape="rect" coords="175,425,200,450" href="map?long=-71.129&amp;lat=42.292" />
+<area shape="rect" coords="200,425,225,450" href="map?long=-71.128&amp;lat=42.292" />
+<area shape="rect" coords="225,425,250,450" href="map?long=-71.127&amp;lat=42.292" />
+<area shape="rect" coords="250,425,275,450" href="map?long=-71.126&amp;lat=42.292" />
+<area shape="rect" coords="275,425,300,450" href="map?long=-71.125&amp;lat=42.292" />
+<area shape="rect" coords="300,425,325,450" href="map?long=-71.124&amp;lat=42.292" />
+<area shape="rect" coords="325,425,350,450" href="map?long=-71.123&amp;lat=42.292" />
+<area shape="rect" coords="350,425,375,450" href="map?long=-71.122&amp;lat=42.292" />
+<area shape="rect" coords="375,425,400,450" href="map?long=-71.121&amp;lat=42.292" />
+<area shape="rect" coords="400,425,425,450" href="map?long=-71.120&amp;lat=42.292" />
+<area shape="rect" coords="425,425,450,450" href="map?long=-71.119&amp;lat=42.292" />
+<area shape="rect" coords="450,425,475,450" href="map?long=-71.118&amp;lat=42.292" />
+<area shape="rect" coords="475,425,500,450" href="map?long=-71.117&amp;lat=42.292" />
+<area shape="rect" coords="500,425,525,450" href="map?long=-71.116&amp;lat=42.292" />
+<area shape="rect" coords="0,450,25,475" href="map?long=-71.136&amp;lat=42.291" />
+<area shape="rect" coords="25,450,50,475" href="map?long=-71.135&amp;lat=42.291" />
+<area shape="rect" coords="50,450,75,475" href="map?long=-71.134&amp;lat=42.291" />
+<area shape="rect" coords="75,450,100,475" href="map?long=-71.133&amp;lat=42.291" />
+<area shape="rect" coords="100,450,125,475" href="map?long=-71.132&amp;lat=42.291" />
+<area shape="rect" coords="125,450,150,475" href="map?long=-71.131&amp;lat=42.291" />
+<area shape="rect" coords="150,450,175,475" href="map?long=-71.130&amp;lat=42.291" />
+<area shape="rect" coords="175,450,200,475" href="map?long=-71.129&amp;lat=42.291" />
+<area shape="rect" coords="200,450,225,475" href="map?long=-71.128&amp;lat=42.291" />
+<area shape="rect" coords="225,450,250,475" href="map?long=-71.127&amp;lat=42.291" />
+<area shape="rect" coords="250,450,275,475" href="map?long=-71.126&amp;lat=42.291" />
+<area shape="rect" coords="275,450,300,475" href="map?long=-71.125&amp;lat=42.291" />
+<area shape="rect" coords="300,450,325,475" href="map?long=-71.124&amp;lat=42.291" />
+<area shape="rect" coords="325,450,350,475" href="map?long=-71.123&amp;lat=42.291" />
+<area shape="rect" coords="350,450,375,475" href="map?long=-71.122&amp;lat=42.291" />
+<area shape="rect" coords="375,450,400,475" href="map?long=-71.121&amp;lat=42.291" />
+<area shape="rect" coords="400,450,425,475" href="map?long=-71.120&amp;lat=42.291" />
+<area shape="rect" coords="425,450,450,475" href="map?long=-71.119&amp;lat=42.291" />
+<area shape="rect" coords="450,450,475,475" href="map?long=-71.118&amp;lat=42.291" />
+<area shape="rect" coords="475,450,500,475" href="map?long=-71.117&amp;lat=42.291" />
+<area shape="rect" coords="500,450,525,475" href="map?long=-71.116&amp;lat=42.291" />
+<area shape="rect" coords="0,475,25,500" href="map?long=-71.136&amp;lat=42.290" />
+<area shape="rect" coords="25,475,50,500" href="map?long=-71.135&amp;lat=42.290" />
+<area shape="rect" coords="50,475,75,500" href="map?long=-71.134&amp;lat=42.290" />
+<area shape="rect" coords="75,475,100,500" href="map?long=-71.133&amp;lat=42.290" />
+<area shape="rect" coords="100,475,125,500" href="map?long=-71.132&amp;lat=42.290" />
+<area shape="rect" coords="125,475,150,500" href="map?long=-71.131&amp;lat=42.290" />
+<area shape="rect" coords="150,475,175,500" href="map?long=-71.130&amp;lat=42.290" />
+<area shape="rect" coords="175,475,200,500" href="map?long=-71.129&amp;lat=42.290" />
+<area shape="rect" coords="200,475,225,500" href="map?long=-71.128&amp;lat=42.290" />
+<area shape="rect" coords="225,475,250,500" href="map?long=-71.127&amp;lat=42.290" />
+<area shape="rect" coords="250,475,275,500" href="map?long=-71.126&amp;lat=42.290" />
+<area shape="rect" coords="275,475,300,500" href="map?long=-71.125&amp;lat=42.290" />
+<area shape="rect" coords="300,475,325,500" href="map?long=-71.124&amp;lat=42.290" />
+<area shape="rect" coords="325,475,350,500" href="map?long=-71.123&amp;lat=42.290" />
+<area shape="rect" coords="350,475,375,500" href="map?long=-71.122&amp;lat=42.290" />
+<area shape="rect" coords="375,475,400,500" href="map?long=-71.121&amp;lat=42.290" />
+<area shape="rect" coords="400,475,425,500" href="map?long=-71.120&amp;lat=42.290" />
+<area shape="rect" coords="425,475,450,500" href="map?long=-71.119&amp;lat=42.290" />
+<area shape="rect" coords="450,475,475,500" href="map?long=-71.118&amp;lat=42.290" />
+<area shape="rect" coords="475,475,500,500" href="map?long=-71.117&amp;lat=42.290" />
+<area shape="rect" coords="500,475,525,500" href="map?long=-71.116&amp;lat=42.290" />
+<area shape="rect" coords="0,500,25,525" href="map?long=-71.136&amp;lat=42.289" />
+<area shape="rect" coords="25,500,50,525" href="map?long=-71.135&amp;lat=42.289" />
+<area shape="rect" coords="50,500,75,525" href="map?long=-71.134&amp;lat=42.289" />
+<area shape="rect" coords="75,500,100,525" href="map?long=-71.133&amp;lat=42.289" />
+<area shape="rect" coords="100,500,125,525" href="map?long=-71.132&amp;lat=42.289" />
+<area shape="rect" coords="125,500,150,525" href="map?long=-71.131&amp;lat=42.289" />
+<area shape="rect" coords="150,500,175,525" href="map?long=-71.130&amp;lat=42.289" />
+<area shape="rect" coords="175,500,200,525" href="map?long=-71.129&amp;lat=42.289" />
+<area shape="rect" coords="200,500,225,525" href="map?long=-71.128&amp;lat=42.289" />
+<area shape="rect" coords="225,500,250,525" href="map?long=-71.127&amp;lat=42.289" />
+<area shape="rect" coords="250,500,275,525" href="map?long=-71.126&amp;lat=42.289" />
+<area shape="rect" coords="275,500,300,525" href="map?long=-71.125&amp;lat=42.289" />
+<area shape="rect" coords="300,500,325,525" href="map?long=-71.124&amp;lat=42.289" />
+<area shape="rect" coords="325,500,350,525" href="map?long=-71.123&amp;lat=42.289" />
+<area shape="rect" coords="350,500,375,525" href="map?long=-71.122&amp;lat=42.289" />
+<area shape="rect" coords="375,500,400,525" href="map?long=-71.121&amp;lat=42.289" />
+<area shape="rect" coords="400,500,425,525" href="map?long=-71.120&amp;lat=42.289" />
+<area shape="rect" coords="425,500,450,525" href="map?long=-71.119&amp;lat=42.289" />
+<area shape="rect" coords="450,500,475,525" href="map?long=-71.118&amp;lat=42.289" />
+<area shape="rect" coords="475,500,500,525" href="map?long=-71.117&amp;lat=42.289" />
+<area shape="rect" coords="500,500,525,525" href="map?long=-71.116&amp;lat=42.289" />
+<area shape="rect" coords="0,525,25,550" href="map?long=-71.136&amp;lat=42.288" />
+<area shape="rect" coords="25,525,50,550" href="map?long=-71.135&amp;lat=42.288" />
+<area shape="rect" coords="50,525,75,550" href="map?long=-71.134&amp;lat=42.288" />
+<area shape="rect" coords="75,525,100,550" href="map?long=-71.133&amp;lat=42.288" />
+<area shape="rect" coords="100,525,125,550" href="map?long=-71.132&amp;lat=42.288" />
+<area shape="rect" coords="125,525,150,550" href="map?long=-71.131&amp;lat=42.288" />
+<area shape="rect" coords="150,525,175,550" href="map?long=-71.130&amp;lat=42.288" />
+<area shape="rect" coords="175,525,200,550" href="map?long=-71.129&amp;lat=42.288" />
+<area shape="rect" coords="200,525,225,550" href="map?long=-71.128&amp;lat=42.288" />
+<area shape="rect" coords="225,525,250,550" href="map?long=-71.127&amp;lat=42.288" />
+<area shape="rect" coords="250,525,275,550" href="map?long=-71.126&amp;lat=42.288" />
+<area shape="rect" coords="275,525,300,550" href="map?long=-71.125&amp;lat=42.288" />
+<area shape="rect" coords="300,525,325,550" href="map?long=-71.124&amp;lat=42.288" />
+<area shape="rect" coords="325,525,350,550" href="map?long=-71.123&amp;lat=42.288" />
+<area shape="rect" coords="350,525,375,550" href="map?long=-71.122&amp;lat=42.288" />
+<area shape="rect" coords="375,525,400,550" href="map?long=-71.121&amp;lat=42.288" />
+<area shape="rect" coords="400,525,425,550" href="map?long=-71.120&amp;lat=42.288" />
+<area shape="rect" coords="425,525,450,550" href="map?long=-71.119&amp;lat=42.288" />
+<area shape="rect" coords="450,525,475,550" href="map?long=-71.118&amp;lat=42.288" />
+<area shape="rect" coords="475,525,500,550" href="map?long=-71.117&amp;lat=42.288" />
+<area shape="rect" coords="500,525,525,550" href="map?long=-71.116&amp;lat=42.288" />
 </map></body></html>

@@ -13,7 +13,7 @@ BEGIN{
 	{
 	  for (x = 0; x < 21 ; x++)
 		{
-		  print "<area shape=\"rect\" coords=" x * 25 "," (y+1) *25 "," (x+1)*25 "," y*25 "\" href=\"map?long=-71." 136-x "&lat=42." 309 - y  "\" />" ;
+		  print "<area shape=\"rect\" coords=\"" x * 25 "," y *25 "," (x+1)*25 "," (y+1)*25 "\" href=\"map?long=-71." 136-x "&lat=42." 309 - y  "\" />" ;
 		}
 	}
 
