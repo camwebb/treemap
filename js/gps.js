@@ -4,7 +4,8 @@ function gpsit()
   if(geo_position_js.init())
 	{
 	  document.getElementById('current').innerHTML="Receiving...";
-	  geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  // options:5000
+	  geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  
+	  // ,options:5000
 	}
   else
 	{
@@ -16,7 +17,7 @@ function gpsit()
 function success_callback(p)
 {
   // write to status bar
-  document.getElementById('current').innerHTML="lat = " + p.coords.latitude.toFixed(5)+" deg, long = " + p.coords.longitude.toFixed(5) " deg";
+  document.getElementById('current').innerHTML="Your current lat: " + p.coords.latitude.toFixed(5)+", long: " + p.coords.longitude.toFixed(5) ;
 
   // if the script is called map, set params to small tiles
   if ( window.location.pathname.substring( window.location.pathname.lastIndexOf('/')+1) == 'map')
@@ -54,13 +55,20 @@ function success_callback(p)
 	}
   else
 	{
-	  document.getElementById('current').innerHTML="lat = " + p.coords.latitude.toFixed(5)+" deg, long = " + p.coords.longitude.toFixed(5) " deg (off visible map)";
+	  if (xpx < 0) { var locnwe = 'W' }
+	  else if (xpx > wid) { var locnwe = 'E' }
+	  else 	{ var locnwe = '' }
+	  if (ypx < 0) { var locnns = 'N' }
+	  else if (ypx > hig) { var locnns = 'S' }
+	  else { var locnns = '' }
+
+	  document.getElementById('current').innerHTML="Your current lat: " + p.coords.latitude.toFixed(5)+", long: " + p.coords.longitude.toFixed(5) + " (to " + locnns + locnwe + " of this map)";
 	}
 }
 
 function error_callback(p)
 {
-  document.getElementById('current').innerHTML="Couldn't get location"}
+  document.getElementById('current').innerHTML="Couldn't get location"
   // alert('error='+p.message);
 }               
 

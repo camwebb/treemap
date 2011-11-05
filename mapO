@@ -74,6 +74,7 @@ function header() {
            href=\"aa.css\" type=\"text/css\" /> \
            <script type=\"text/javascript\" src=\"js/gps.js\" ></script> \
            <script type=\"text/javascript\" src=\"js/geo.js\"></script> \
+           <script src=\"http://code.google.com/apis/gears/gears_init.js\" type=\"text/javascript\" charset=\"utf-8\"></script> \
            </head><body onload=\"gpsit()\" >" ;
 	print "<h1>Search results</h1>";
 	print "<p><b>" f["famQ"] f["spQ"] "</b></p>" ;
@@ -95,6 +96,7 @@ function footer() {
              <img src=\"img/blank.png\" width=\"525\" height=\"550\" usemap=\"#trees\" border=\"0\" alt=\"\" /> \
            </div> \
          </div> " ;
+  print "<p id=\"current\">Initializing GPS...</p>";
   print "</body></html>\n";
 }
 
