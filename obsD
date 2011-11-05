@@ -87,7 +87,10 @@ BEGIN{
   print "<p>[ <a href=\"index.html\">home</a> ]</p>";
 
   # make thumb
-  system("convert 'obsdata/" outfile "' -resize 50x50 'obsdata/sm_" outfile "'");
+  if (outfile != "")
+  {
+      system("convert 'obsdata/" outfile "' -resize 50x50 'obsdata/sm_" outfile "'");
+  }
 
   footer();
 

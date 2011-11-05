@@ -79,7 +79,7 @@ function header() {
     print "Content-type: text/html\n\n";
     print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \
          <head><title>Arnold Arboretum Trees : Tree detail</title> \
-         <meta name=\"viewport\" content=\"width=400, initial-scale=1.0, user-scalable=yes\" /> \
+         <meta name=\"viewport\" content=\"width=500, initial-scale=1.0, user-scalable=yes\" /> \
          <meta http-equiv=\"Content-Type\" content=\"text/html; \
            charset=utf-8\" /><link rel=\"stylesheet\" \
            href=\"aa.css\" type=\"text/css\" /> \
