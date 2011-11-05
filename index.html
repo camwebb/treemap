@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=600, user-scalable=yes" />
 	<script type="text/javascript" src="js/gps.js" ></script>
 	<script type="text/javascript" src="js/geo.js"></script>
-	<!-- <script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script> -->
+	<script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
 	</head><body onload="gpsit()">
   <h1>Arnold Arboretum trees</h1>
   <form method="get" action="search">
@@ -21,6 +21,7 @@
     <img src="img/blank.png" width="525" height="550" usemap="#grid" border="0" alt="" />
   </div> 
 </div>
+<p id="current">Initializing GPS...</p>
 <map name="grid" id="grid">
 <area shape="rect" coords="0,0,25,25" href="map?long=-71.136&amp;lat=42.309" />
 <area shape="rect" coords="25,0,50,25" href="map?long=-71.135&amp;lat=42.309" />

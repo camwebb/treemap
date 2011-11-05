@@ -1,17 +1,24 @@
 function gpsit()
 {
+  // initialize, using geo.js
   if(geo_position_js.init())
 	{
-	  geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true, options:5000});
+	  document.getElementById('current').innerHTML="Receiving...";
+	  geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  // options:5000
 	}
   else
 	{
-	  alert("GPS functionality not available");
+	  document.getElementById('current').innerHTML="Functionality not available";
+	  // alert("GPS functionality not available");
 	}
 }
 
 function success_callback(p)
 {
+  // write to status bar
+  document.getElementById('current').innerHTML="lat = " + p.coords.latitude.toFixed(5)+" deg, long = " + p.coords.longitude.toFixed(5) " deg";
+
+  // if the script is called map, set params to small tiles
   if ( window.location.pathname.substring( window.location.pathname.lastIndexOf('/')+1) == 'map')
 	{
 	    var longOri = Number(queryString('long')) + 0.001 ;
@@ -21,6 +28,7 @@ function success_callback(p)
 	    var factr = 500000 ;
 	    // alert('map! '+ longOri + ', '+ latOri);
 	}
+  // else to large pane
   else
 	{
 	  var longOri = -71.115 ;
@@ -30,24 +38,30 @@ function success_callback(p)
 	  var factr = 25000 ;
 	}
 
+  // convert long/lat to pixels
   var xpx = parseInt( wid + ((p.coords.longitude - longOri ) * factr )) ;
   var ypx = parseInt( hig - ((+p.coords.latitude  - latOri ) * factr));  
   
+  // test for location in box
   if ((xpx >= 0) && (xpx < wid) && (ypx >= 0) && (ypx < hig ))
 	{
 	  var ctx = document.getElementById("gps").getContext("2d");
-
 	  var dot = new Image();
 	  dot.src = "img/ring.png";
 	  dot.onload = function() {
 		ctx.drawImage(dot, xpx-25, ypx-25);
 	  }
 	}
+  else
+	{
+	  document.getElementById('current').innerHTML="lat = " + p.coords.latitude.toFixed(5)+" deg, long = " + p.coords.longitude.toFixed(5) " deg (off visible map)";
+	}
 }
 
 function error_callback(p)
 {
-  alert('error='+p.message);
+  document.getElementById('current').innerHTML="Couldn't get location"}
+  // alert('error='+p.message);
 }               
 
 
