@@ -14,12 +14,12 @@ function success_callback(p)
 {
   if ( window.location.pathname.substring( window.location.pathname.lastIndexOf('/')+1) == 'map')
 	{
-	  var longOri = queryString('long') ;
-	  var latOri = queryString('lat') ;
-	  var wid = 500 ;
-	  var hig = 500 ;
-	  var factr = 500000 ;
-	  // alert('map! '+ longOri + ', '+ latOri);
+	    var longOri = Number(queryString('long')) + 0.001 ;
+	    var latOri  = Number(queryString('lat')) ;
+	    var wid = 500 ;
+	    var hig = 500 ;
+	    var factr = 500000 ;
+	    // alert('map! '+ longOri + ', '+ latOri);
 	}
   else
 	{
@@ -30,12 +30,14 @@ function success_callback(p)
 	  var factr = 25000 ;
 	}
 
-  var xpx = Math.round( wid + ((+p.coords.longitude.toFixed(3) - longOri ) * factr )) ;
-  var ypx = Math.round( hig - ((+p.coords.latitude.toFixed(3)  - latOri ) * factr));  
+  // alert(p.coords.longitude.toFixed(4) + ', ' + p.coords.latitude.toFixed(4));
+  var xpx = parseInt( wid + ((p.coords.longitude - longOri ) * factr )) ;
+  // var xpx = p.coords.longitude -longOri  ;
+  var ypx = parseInt( hig - ((+p.coords.latitude  - latOri ) * factr));  
   
   // xpx = 100; ypx = 100;
 
-  alert('lat=' + ypx + ';lon=' + xpx );
+  //alert('lat=' + ypx + ';lon=' + xpx );
 
   if ((xpx >= 0) && (xpx < wid) && (ypx >= 0) && (ypx < hig ))
 	{
@@ -48,7 +50,7 @@ function success_callback(p)
 	  var dot = new Image();
 	  dot.src = "img/dot.png";
 	  dot.onload = function() {
-		ctx.drawImage(dot, xpx, ypx);
+		ctx.drawImage(dot, xpx-12, ypx-12);
 	  }
 	}
 }
