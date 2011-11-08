@@ -1,280 +1,60 @@
-#!/usr/bin/gawk -f
+#!/usr/local/bin/gawk -f
+
+# Treemap: Web application for mobiles that displays information on 
+#   georeferenced trees over a base map
+# Copyright (c) 2011, Campbell Webb <cwebb@oeb.harvard.edu>
+# Free/Open Source Software using BSD 2-clause license
+# Requires gawk v4. See http://www.gnu.org/software/gawk/
+
+# Include function libraries
+@include "lib/colors.awk" ;
+@include "lib/html.awk" ;
+@include "lib/mapHi.awk" ;
+@include "lib/mapLo.awk" ;
+@include "lib/utils.awk" ;
+@include "lib/info.awk" ;
+@include "lib/search.awk" ;
+@include "lib/obs.awk" ;
+@include "lib/docs.awk" ;
 
 BEGIN{
 
-  # OFS = ""; # ORS = "";
-
-  colors = "CAPRIFOLIACEAE:purple ADOXACEAE:purple DIPSACALES:purple ARALIACEAE:purple ASTERACEAE:purple AQUIFOLIACEAE:purple CORNACEAE:purple POLYGONACEAE:purple ERICACEAE:violet CYRILLACEAE:violet CLETHRACEAE:violet ACTINIDIACEAE:violet STYRACACEAE:violet SYMPLOCACEAE:violet THEACEAE:violet EBENACEAE:violet SAPOTACEAE:violet OLEACEAE:violet VERBENACEAE:blue BIGNONIACEAE:blue LABIATAE:blue LAMIACEAE:blue SCROPHULARIACEAE:blue SOLANACEAE:light-blue RUBIACEAE:light-blue LOGANIACEAE:light-blue APOCYNACEAE:light-blue BORAGINACEAE:light-blue EUCOMMIACEAE:light-blue ROSACEAE:green ULMACEAE:light-green MORACEAE:green URTICACEAE:green CANNABACEAE:green ELAEAGNACEAE:green RHAMNACEAE:green FAGACEAE:turquoise BETULACEAE:turquoise JUGLANDACEAE:turquoise MYRICACEAE:turquoise CORIARIACEAE:turquoise FABACEAE:turquoise SALICACEAE:dark-green FLACOURTIACEAE:dark-green EUPHORBIACEAE:dark-green CLUSIACEAE:dark-green CELASTRACEAE:dark-green SAPINDACEAE:sea-green RUTACEAE:sea-green SIMAROUBACEAE:sea-green MELIACEAE:sea-green ANACARDIACEAE:sea-green THYMELAEACEAE:yellow TILIACEAE:yellow MALVACEAE:yellow STAPHYLEACEAE:yellow STACHYURACEAE:yellow LYTHRACEAE:yellow GERANIACEAE:yellow VITACEAE:coral SAXIFRAGACEAE:coral HAMAMELIDACEAE:coral CERCIDIPHYLLACEAE:coral SANTALACEAE:goldenrod BUXACEAE:goldenrod TROCHODENDRACEAE:goldenrod PLATANACEAE:goldenrod SABIACEAE:goldenrod BERBERIDACEAE:gold RANUNCULACEAE:gold MENISPERMACEAE:gold LARDIZABALACEAE:gold PAPAVERACEAE:gold EUPTELEACEAE:gold POACEAE:orange LILIACEAE:orange SMILACACEAE:orange ARACEAE:orange MAGNOLIACEAE:red ANNONACEAE:red LAURACEAE:red CALYCANTHACEAE:red ARISTOLOCHIACEAE:red PINACEAE:gray CUPRESSACEAE:gray TAXACEAE:gray GINKGOACEAE:gray TAXODIACEAE:gray CEPHALOTAXACEAE:gray NYSSACEAE:black EMPETRACEAE:black LEITNERIACEAE:black EPHEDRACEAE:black UNKNOWN:black" ;
-  split(colors, c1, " ");
-  for (i in c1)
-	{
-	  split(c1[i], c2, ":");
-	  color[c2[1]] = c2[2];
-	}
-
+  # INITIALIZATION
+  # unique process code
   srand();
   ps = substr(rand(),3);
 
-  #  system("rm -f run/plot.plt >& /dev/null");
-  #  system("rm -f run/plot2.plt >& /dev/null");
-  #  system("rm -f run/plot.dat >& /dev/null");
-
   # clean old files (older than one minute)
-  system("rm -f `find run -type f -cmin +1 -not -name .gitignore -print` >& /dev/null");
+  system("rm -f `find run -type f -cmin +1 -not -name .gitignore -print` \
+          >& /dev/null");
 
+  # READ QUERY STRING
   split(ENVIRON["QUERY_STRING"], query, "&");
-  for (i in query)
+  for (i1 in query)
 	{
-	  split(query[i], tq, "=");
-	  f[tq[1]] = decode(tq[2]); 
+	  split(query[i1], tmpq, "=");
+	  f[tmpq[1]] = urldecode(tmpq[2]); 
    }
 
- header();
-
- # print "<p>Long: " f["long"] "..." f["long"]+0.001 "; Lat: " f["lat"] "..." f["lat"]+0.001 "</p>";
- print "<map name=\"trees\">" ;
-
- FS="|";
- while ((getline < "aa-tree.csv") > 0)
-   {
-	 if (($14 <= f["long"]) && ($14 < (f["long"]+0.001)) && \
-		 ($13 >= f["lat"]) && ($13 < (f["lat"]+0.001))) 
-	   {
-		 # print "long: " $14 "; lat: " $13 ;
-	     print $14 " " $13 >> "run/" ps "." $3 ".dat";
-		 print "<area shape=\"circle\" coords=\"" int(($14-f["long"])*500000) "," int((f["lat"]+0.001 - $13)*500000) ",7\" href=\"info?tag=" $1 "\" title=\"" $4 " (" $3 ") : " $1 "\"/>";
-
-		 hasFam[$3]++;
-		 
-		 # Hightlight
-		 if ($1 == f["tagQ"])
-           {
-			 print $14 " " $13 > "run/" ps ".Q.dat";
-			 hasQ = 1;
-		   }
-		 else if (($3 == f["famQ"]) || ($4 == f["spQ"])) 
-		   {
-			 print $14 " " $13 >> "run/" ps ".Q.dat";
-			 hasQ = 1;
-		   }
-	   }
-   }
-
- print "</map>";
-
- gpheader() ;
-
- for (i in hasFam)
-   {
-	 if (color[i] == "") color[i] = "black";
-	 print "plot \"run/" ps "." i ".dat\" with points pointtype 7 pointsize 2 lt rgb \"" color[i] "\"" >> "run/" ps ".plt" ;
-   }
-
- if (hasQ) print "plot \"run/" ps ".Q.dat\" with points pointtype 4 pointsize 4 linewidth 2 lt rgb \"yellow\"" >> "run/" ps ".plt" ;
-   
- system("gnuplot run/" ps ".plt >& /dev/null");
-
- cmd = "composite run/" ps ".png tiles/" (-1000 * (f["long"]+71)) "_" (1000*(f["lat"] - 42)) ".png run/" ps "f.png" ;
- system(cmd);
- system("convert run/" ps "f.png run/" ps ".jpg");
-
- footer();
-
- exit;
-
- 
- # Make page
-
-}
-
-function gpheader() {
-  print "set terminal png transparent size 500,500\nset size square\nset xrange [" f["long"] ":" f["long"]+0.001 "]\nset yrange [" f["lat"] ":" f["lat"]+0.001 "]\nset border 0\nunset xtics\nunset ytics\nunset key\nset bmargin 0\nset tmargin 0\nset lmargin 0\nset rmargin 0\n\nset output \"run/" ps ".png\"\nset multiplot\n" > "run/" ps ".plt" ;
-}
-
-function header() {
-    print "Content-type: text/html\n\n";
-    print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \
-         <head><title>Arnold Arboretum Trees</title> \
-         <meta name=\"viewport\" content=\"width=620, user-scalable=yes\" /> \
-         <meta http-equiv=\"Content-Type\" content=\"text/html; \
-           charset=utf-8\" /><link rel=\"stylesheet\" \
-           href=\"aa.css\" type=\"text/css\" /> \
-           </head><body onload=\"gpsit()\">" ;
-	# print "<h1>Arboretum trees</h1>";
-    # <link href=\"../img/icon.ico\" rel=\"shortcut icon\" type=\"image/x-icon\"/>
-	# print "<pre>" ;
-
-}
-
-function footer() {
-  # print "</pre>";
-  print "<table cellpadding=\"5\">";
-  print "<tr><td>&#160;</td><td align=\"center\"><a href=\"map?long=" f["long"] "&amp;lat=" f["lat"]+0.001 "\"><img src=\"img/U.png\" /></a></td><td>&#160;</td></tr>";
-  print "<tr><td><a href=\"map?long=" f["long"] - 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/L.png\" /></a></td><td>" ;
-  # print "<img src=\"run/" ps  ".jpg\" usemap=\"#trees\" />";
-  print "<div id=\"base\"> \
-           <img src=\"run/" ps ".jpg\" border=\"0\" alt=\"\" /> \
-           <div id=\"mid\">											   \
-             <canvas id=\"gps\" width=\"500\" height=\"500\"></canvas> \
-           </div>													   \
-           <div id=\"top\">												\
-             <img src=\"img/blank.png\" width=\"500\" height=\"500\" usemap=\"#trees\" border=\"0\" alt=\"\" /> \
-           </div> \
-         </div> " ;
-  print "</td><td><a href=\"map?long=" f["long"] + 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/R.png\" /></a></td></tr>" ;
-  print "<tr><td>&#160;</td><td align=\"center\"><a href=\"map?long=" f["long"] "&amp;lat=" f["lat"]-0.001 "\"><img src=\"img/D.png\" /></a></td><td>&#160;</td></tr>";
-  print "<tr><td colspan=\"3\" align=\"right\">[ <a href=\"search?long=" f["long"] "&amp;lat=" f["lat"] "\">list taxa</a> | <a href=\"index.html\">zoom out</a> ]</td></tr>";
-  print "</table>";
-  print "<p id=\"current\">Initializing GPS...</p>";
-  print "  <script type=\"text/javascript\" src=\"js/gps.js\" ></script> \
-           <script type=\"text/javascript\" src=\"js/geo.js\"></script> \
-           <script src=\"http://code.google.com/apis/gears/gears_init.js\" type=\"text/javascript\" charset=\"utf-8\"></script>";
-  print "</body></html>\n";
-}
-
-function error(msg) {
-  print msg ;
-  print "Exiting. Please return to previous page.";
-  print "</pre></body></html>";
-  exit;
-}
-
-# decode urlencoded string
-function decode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
-	
-  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
-  for (i=0; i<16; i++) hextab[hex[i+1]] = i
+  # DETERMINE AND EXECUTE METHOD
+  # NB: variables in these functions  are not protected; care not to 
+  #     introduce new variable in this main loop with clashing names 
+  if      (f["method"] == "mapHi")  mapHi() ;
+  else if (f["method"] == "mapLo")  mapLo() ;
+  else if (f["method"] == "info")   treeInfo() ;
+  else if (f["method"] == "search") search() ;
+  else if (f["method"] == "about")  about() ;
+  else if (f["method"] == "obs")    obsForm() ;
+  else if (f["method"] == "obsD")   obsCapture() ;
+  else if (f["method"] == "obsS")   obsReport() ;
   
-  # urldecode function from Heiner Steven
-  # http://www.shelldorado.com/scripts/cmds/urldecode
+  # other/no arguments
+  else mapLo() ;
+  
+  # RETURN FOOTER
+  htmlFooter();
 
-  # decode %xx to ASCII char 
-  decoded = ""
-  i = 1
-  len = length(text)
-  
-  while ( i <= len ) {
-    c = substr (text, i, 1)
-    if ( c == "%" ) {
-      if ( i+2 <= len ) {
-	c1 = tolower(substr(text, i+1, 1))
-	c2 = tolower(substr(text, i+2, 1))
-	if ( hextab [c1] != "" || hextab [c2] != "" ) {
-	  # print "Read: %" c1 c2;
-	  # Allow: 
-	  # 20 begins main chars, but dissallow 7F (wrong in orig code!)
-	       # tab, newline, formfeed, carriage return
-	  if ( ( (c1 >= 2) && ((c1 c2) != "7f") )  \
-	       || (c1 == 0 && c2 ~ "[9acd]") )
-	  {
-	    code = 0 + hextab [c1] * 16 + hextab [c2] + 0
-	    # print "Code: " code
-	    c = sprintf ("%c", code)
-	  } else {
-	    # for dissallowed chars
-	    c = " "
-	  }
-	  i = i + 2
-	}
-      }
-    } else if ( c == "+" ) {	# special handling: "+" means " "
-      c = " "
-    }
-    decoded = decoded c
-    ++i
-  }
-  
-  # change linebreaks to \n
-  gsub(/\r\n/, "\n", decoded);
-  
-  # remove last linebreak
-  sub(/[\n\r]*$/,"",decoded);
-  
-  return decoded
+  exit ;
 }
 
-# show colornames
-#  white              #ffffff = 255 255 255
-#  black              #000000 =   0   0   0
-#  gray0              #000000 =   0   0   0
-#  grey0              #000000 =   0   0   0
-#  gray10             #1a1a1a =  26  26  26
-#  grey10             #1a1a1a =  26  26  26
-#  gray20             #333333 =  51  51  51
-#  grey20             #333333 =  51  51  51
-#  gray30             #4d4d4d =  77  77  77
-#  grey30             #4d4d4d =  77  77  77
-#  gray40             #666666 = 102 102 102
-#  grey40             #666666 = 102 102 102
-#  gray50             #7f7f7f = 127 127 127
-#  grey50             #7f7f7f = 127 127 127
-#  gray60             #999999 = 153 153 153
-#  grey60             #999999 = 153 153 153
-#  gray70             #b3b3b3 = 179 179 179
-#  grey70             #b3b3b3 = 179 179 179
-#  gray80             #cccccc = 204 204 204
-#  grey80             #cccccc = 204 204 204
-#  gray90             #e5e5e5 = 229 229 229
-#  grey90             #e5e5e5 = 229 229 229
-#  gray100            #ffffff = 255 255 255
-#  grey100            #ffffff = 255 255 255
-#  gray               #bebebe = 190 190 190
-#  grey               #bebebe = 190 190 190
-#  light-gray         #d3d3d3 = 211 211 211
-#  light-grey         #d3d3d3 = 211 211 211
-#  dark-gray          #a9a9a9 = 169 169 169
-#  dark-grey          #a9a9a9 = 169 169 169
-#  red                #ff0000 = 255   0   0
-#  light-red          #f03232 = 240  50  50
-#  dark-red           #8b0000 = 139   0   0
-#  yellow             #ffff00 = 255 255   0
-#  light-yellow       #ffffe0 = 255 255 224
-#  dark-yellow        #c8c800 = 200 200   0
-#  green              #00ff00 =   0 255   0
-#  light-green        #90ee90 = 144 238 144
-#  dark-green         #006400 =   0 100   0
-#  spring-green       #00ff7f =   0 255 127
-#  forest-green       #228b22 =  34 139  34
-#  sea-green          #2e8b57 =  46 139  87
-#  blue               #0000ff =   0   0 255
-#  light-blue         #add8e6 = 173 216 230
-#  dark-blue          #00008b =   0   0 139
-#  midnight-blue      #191970 =  25  25 112
-#  navy               #000080 =   0   0 128
-#  medium-blue        #0000cd =   0   0 205
-#  royalblue          #4169e1 =  65 105 225
-#  skyblue            #87ceeb = 135 206 235
-#  cyan               #00ffff =   0 255 255
-#  light-cyan         #e0ffff = 224 255 255
-#  dark-cyan          #008b8b =   0 139 139
-#  magenta            #ff00ff = 255   0 255
-#  light-magenta      #f055f0 = 240  85 240
-#  dark-magenta       #8b008b = 139   0 139
-#  turquoise          #40e0d0 =  64 224 208
-#  light-turquoise    #afeeee = 175 238 238
-#  dark-turquoise     #00ced1 =   0 206 209
-#  pink               #ffc0cb = 255 192 203
-#  light-pink         #ffb6c1 = 255 182 193
-#  dark-pink          #ff1493 = 255  20 147
-#  coral              #ff7f50 = 255 127  80
-#  light-coral        #f08080 = 240 128 128
-#  orange-red         #ff4500 = 255  69   0
-#  salmon             #fa8072 = 250 128 114
-#  light-salmon       #ffa07a = 255 160 122
-#  dark-salmon        #e9967a = 233 150 122
-#  aquamarine         #7fffd4 = 127 255 212
-#  khaki              #f0e68c = 240 230 140
-#  dark-khaki         #bdb76b = 189 183 107
-#  goldenrod          #daa520 = 218 165  32
-#  light-goldenrod    #eedd82 = 238 221 130
-#  dark-goldenrod     #b8860b = 184 134  11
-#  gold               #ffd700 = 255 215   0
-#  beige              #f5f5dc = 245 245 220
-#  brown              #a52a2a = 165  42  42
-#  orange             #ffa500 = 255 165   0
-#  dark-orange        #ff8c00 = 255 140   0
-#  violet             #ee82ee = 238 130 238
-#  dark-violet        #9400d3 = 148   0 211
-#  plum               #dda0dd = 221 160 221
-#  purple             #a020f0 = 160  32 240
 

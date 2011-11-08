@@ -1,172 +1,36 @@
-#!/usr/bin/gawk -f
+function treeInfo()
+{
 
-BEGIN{
+  htmlHeader("Plant information", 600) ;
 
-  split(ENVIRON["QUERY_STRING"], query, "&");
-  for (i in query)
-	{
-	  split(query[i], tq, "=");
-	  f[tq[1]] = decode(tq[2]); 
-	}
+  apfam_load() ;
 
-  
-
-  header();
-
-  stages["bud"] = "just budding out";
-  stages["flower"] = "in flower";
-  stages["fruit"] = "in fruit";
-  stages["fall"] = "in fine Fall color";
-  
   FS="|";
-
-  while ((getline < "aa-tree.csv") > 0)
-  {
-      sp[$1] = $4 ;
-  }
-
-  if (f["tag"] != "")
+  while ((getline < "data/aa-tree.csv") > 0)
 	{
-	  while ((getline < "obsdata/data.csv") > 0)
+	  if ($1 == f["tag"])
 		{
-		  if (($3 != "damage") && (f["tag"] == $2))
-			{
-			  date[++n] = $1;
-			  tag[n] = $2;
-			  stage[n] = $3;
-			  notes[n] = $4 ;
-			  img[n] = $7; 
-			  tagDataFound = 1;
-			}
+		  print "<h1>" $4 "</h1>";
+		  print "<ul>" ;
+		  if (apfam[$3] == "") print "<li>Family : " substr($3,1,1) tolower(substr($3,2)) "</li>" ;
+		  else print "<li>Family : <a href=\"http://www.mobot.org/MOBOT/Research/APweb/orders/" apfam[$3] "\">" substr($3,1,1) tolower(substr($3,2)) "</a></li>" ;
+		  if ($6 != "") print "<li>Common name : " $6 "</li>" ;
+		  if ($10 != "") print "<li>Section : " $10 "</li>" ;
+		  if ($11 != "") print "<li>Collection : " $11 "</li>" ;
+		  if ($8 > 0) print "<li>Diameter : " int($8) " " $9 "</li>" ;
+		  print "<li>Grid : " $12 "</li>" ;
+		  print "<li>Tag : " $1 "</li>" ;
+		  split($4,nam," ");
+		  print "<li><a href=\"map?method=obsS&amp;tag=" $1 "\">Observations of this plant</a></li>" ;
+		  print "<li><a href=\"http://google.com/m?q=" nam[1] "+" nam[2] "&site=images\">Images of this taxon</a></li>";
+		  print "<li><a href=\"http://en.m.wikipedia.org/wiki/" nam[1] "_" nam[2] "\">More info...</a></li>"; 
+
+		  print "</ul>";
+		  print "<p>[ <a href=\"map?method=obs&amp;tag=" $1 "\">observe</a> | <a href=\"map?method=mapLo&amp;tag=" $1 "\">map it</a> | <a href=\"http://google.com/m?site=maps&q=" $13 "," $14 " (" $1 ", " $4 ")\">directions</a> | <a href=\"map\">home</a> ]</p>" ;
+
+		  break;
 		}
 	}
-  else
-	{
-	  while ((getline < "obsdata/data.csv") > 0)
-		{
-		  if ($3 != "damage")
-			{
-			  date[++n] = $1;
-			  tag[n] = $2;
-			  notes[n] = $4 ;
-			  stage[n] = $3;
-			  img[n] = $7; 
-			}
-		}
-	}
-
-  if ((f["tag"] != "") && (tagDataFound != 1))
-	{
-	  print "<p>Sorry, not citizen science records for this plant.<br/>  Why not <a href=\"obs?tag=" f["tag"] "\">make one?</a></p>" ;
-	}
-  else
-	{
-	  print "<table cellpadding=\"5\">";
-	  print "<tr><td><i>Tag</i></td><td><i>Taxon</i></td><td><i>Info</i></td><td><i>Date</i></td><td><i>Notes</i></td><td><i>Photo</i></td></tr>";
-	  if (n > 10) start = n-10 ;
-	  else start = 1;
-	  for (i = start; i <= n ; i++)
-		{
-		  print "<tr><td><a href=\"mapO?tagQ=" tag[i] "\">" tag[i] "</td>" ;
-		  print "<td><a href=\"mapO?spQ=" sp[tag[i]] "\">" sp[tag[i]] "</td>" ;
-
-		  print "<td>" stages[stage[i]] "</td>" ;
-		  print "<td>" substr(date[i],1,4) "-" substr(date[i],5,2) "-" substr(date[i],7,2) "</td>" ;
-		  print "<td>" gensub(/\\n/,"\\&#160;", "G", notes[i]) "</td>" ;
-		  if (img[i] != "")
-			{
-			  print "<td><a href=\"obsdata/" img[i] "\"><img src=\"obsdata/sm_" img[i] "\" /></a></td></tr>" ;
-			}
-		  else print "<td>&#160;</td></tr>" ;
-		}
-	  print "</table>";
-	}
-
- footer();
-
- exit;
-
- 
-}
-
-function header() {
-    print "Content-type: text/html\n\n";
-    print "<html xmlns=\"http://www.w3.org/1999/xhtml\"> \
-         <head><title>Arnold Arboretum Trees : Tree detail</title> \
-         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=yes\" /> \
-         <meta http-equiv=\"Content-Type\" content=\"text/html; \
-           charset=utf-8\" /><link rel=\"stylesheet\" \
-           href=\"aa.css\" type=\"text/css\" /> \
-           </head><body>" ;
-	print "<h1>Recent observations</h1>";
-
-}
-
-function footer() {
-
-  print "</html>\n";
-}
-
-
-function error(msg) {
-  print msg ;
-  print "Exiting. Please return to previous page.";
-  print "</pre></body></html>";
-  exit;
-}
-
-# decode urlencoded string
-function decode(text,   hex, i, hextab, decoded, len, c, c1, c2, code) {
-	
-  split("0 1 2 3 4 5 6 7 8 9 a b c d e f", hex, " ")
-  for (i=0; i<16; i++) hextab[hex[i+1]] = i
-  
-  # urldecode function from Heiner Steven
-  # http://www.shelldorado.com/scripts/cmds/urldecode
-
-  # decode %xx to ASCII char 
-  decoded = ""
-  i = 1
-  len = length(text)
-  
-  while ( i <= len ) {
-    c = substr (text, i, 1)
-    if ( c == "%" ) {
-      if ( i+2 <= len ) {
-	c1 = tolower(substr(text, i+1, 1))
-	c2 = tolower(substr(text, i+2, 1))
-	if ( hextab [c1] != "" || hextab [c2] != "" ) {
-	  # print "Read: %" c1 c2;
-	  # Allow: 
-	  # 20 begins main chars, but dissallow 7F (wrong in orig code!)
-	       # tab, newline, formfeed, carriage return
-	  if ( ( (c1 >= 2) && ((c1 c2) != "7f") )  \
-	       || (c1 == 0 && c2 ~ "[9acd]") )
-	  {
-	    code = 0 + hextab [c1] * 16 + hextab [c2] + 0
-	    # print "Code: " code
-	    c = sprintf ("%c", code)
-	  } else {
-	    # for dissallowed chars
-	    c = " "
-	  }
-	  i = i + 2
-	}
-      }
-    } else if ( c == "+" ) {	# special handling: "+" means " "
-      c = " "
-    }
-    decoded = decoded c
-    ++i
-  }
-  
-  # change linebreaks to \n
-  gsub(/\r\n/, "\n", decoded);
-  
-  # remove last linebreak
-  sub(/[\n\r]*$/,"",decoded);
-  
-  return decoded
 }
 
 function apfam_load ()

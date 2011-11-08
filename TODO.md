@@ -1,6 +1,8 @@
-# TO DO list for treemap project
+TO DO list for treemap project
+------------------------------
 
-## Short term
+Short term
+----------
 
   * List sightings in the past few days, with thumbnails
   * Add link to Picup iPhone app, so that iPhones can upload images
@@ -9,4 +11,7 @@
   * Add Geolocation data and a mapping overlay
   * Look into failure of Blackberries to use image maps
 
-## Long term
+Long term
+---------
+
+  * Taxon-dependent (e.g., _Acer_ dioecy) observations
