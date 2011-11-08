@@ -145,7 +145,10 @@ function obsReport()
   while ((getline < "obsdata/data.csv") > 0)
 	{
 	  parseXML(++n,$0);
-	  if (XML[n,"tag"] == f["tag"]) XML[n, "match"] = 1; tagDataFound = 1;
+	  if (XML[n,"tag"] == f["tag"]) 
+		{
+		  XML[n, "match"] = 1; tagDataFound = 1;
+		}
 	}
 
   if ((f["tag"] != "") && (tagDataFound != 1))
