@@ -8,7 +8,7 @@ function search()
 	FS="|";
  while ((getline < "data/aa-tree.csv") > 0)
    {
-	 famN[$3]++ ; spN[$4]++ ;
+       famN[$3]++ ; spN[$4]++ ; famOfSp[$4] = $3;
 	 if (gensub(/\*/,"-","G",tolower($1)) == gensub(/\*/,"-","G",tolower(f["q"])))
 	   {
 		 print "<p>Tag match found: <a href=\"map?method=info&amp;tag=" $1 "\">" $1 "</a> (<a href=\"map?method=mapLo&amp;tag=" $1 "\">map</a>)</p>" ;
@@ -24,7 +24,7 @@ function search()
    }
 
  print "<table width=\"400\" cellpadding=\"3\">";
- print "<tr><td width=\"50\"><i>Fam</i></td><td><i>Taxon</i></td><td width=\"10\"><i>N</i></td></tr>";
+ print "<tr><td><i>Fam</i></td><td><i>Taxon</i></td><td><i>N</i></td></tr>";
 
  # Hi res species search from mapHi
  if (Lsp)
@@ -54,7 +54,7 @@ function search()
    {
 	 if (tolower(famName[i]) ~ tolower(f["q"]))
 	   {
-		 print "<tr><td><a href=\"map?method=mapLo&amp;fam=" famName[i] "\">" famName[i] "</a></td><td>" famN[famName[i]] "</td></tr>";
+		 print "<tr><td><a href=\"map?method=mapLo&amp;fam=" famName[i] "\">" famName[i] "</a></td><td>&#160;</td><td>" famN[famName[i]] "</td></tr>";
 		 results++;
 	   }
    }
@@ -67,7 +67,7 @@ function search()
    {
 	 if ((tolower(spName[i]) ~ tolower(f["q"])) && (results <= 50))
 	   {
-		 print "<tr><td><a href=\"map?method=mapLo&amp;sp=" spName[i] "\">" spName[i] "</a></td><td>" spN[spName[i]] "</td></tr>";
+		 print "<tr><td>" famOfSp[spName[i]] "</td><td><a href=\"map?method=mapLo&amp;sp=" spName[i] "\">" spName[i] "</a></td><td>" spN[spName[i]] "</td></tr>";
 		 results++;
 	   }
    }

@@ -2,7 +2,7 @@ function mapLo()
 {
 
   # is it a blank call?
-  if (!f["tag"] && !f["gen"] && !f["sp"])
+  if (!f["tag"] && !f["fam"] && !f["sp"])
 	{
 	  htmlHeader("Arnold Arboretum trees", 600);
 

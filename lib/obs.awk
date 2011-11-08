@@ -127,7 +127,7 @@ function obsCapture()
 function obsReport()
 {
 
-  htmlHeader("Observations report", 600);
+  htmlHeader("Observations report", 420);
 
   stages["bud"] = "budding out";
   stages["flower"] = "in flower";
@@ -153,7 +153,8 @@ function obsReport()
 	}
   else
 	{
-	  print "<table cellpadding=\"5\">";
+	    print "<h1>Recent observations</h1>" ;
+	  print "<table cellpadding=\"5\" width=\"400\">";
 	  print "<tr><td><i>Tag</i></td><td><i>Taxon</i></td><td><i>Info</i></td><td><i>Date</i></td><td><i>Notes</i></td><td><i>Photo</i></td></tr>";
 	  if (n > 10) start = n-10 ;
 	  else start = 1;
@@ -181,18 +182,18 @@ function parseXML(indx, string,    i)
   i = 1;
   while (i <= length(string))
 	{
-	  # skip leading blanks 
-	  while (substr(string,i,1) != "<") i++ ;
+	  # skip leading blanks and check in case there are no `<' in line
+	  while ((substr(string,i,1) != "<") && (i <= length(string))) i++ ;
 	  tag = ""; i++;
 	  # read tag name
-	  while (substr(string,i,1) != ">") 
+	  while ((substr(string,i,1) != ">") && (i <= length(string))) 
 		{
 		  tag = tag substr(string,i,1) ; i++;
 		}
 	  # clean tag name of blanks
 	  gsub(/\ /,"",tag);  data = ""; i++;
 	  # read data, terminated by `</'
-	  while (substr(string,i,2) != "</")
+	  while ((substr(string,i,2) != "</") && (i <= length(string)))
 		{
 		  data = data substr(string,i,1) ; i++;
 		}
