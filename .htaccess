@@ -3,27 +3,3 @@ Options +ExecCGI -Indexes
 <Files map>
   SetHandler cgi-script
 </Files>
-
-<Files info>
-  SetHandler cgi-script
-</Files>
-
-<Files search>
-  SetHandler cgi-script
-</Files>
-
-<Files mapO>
-  SetHandler cgi-script
-</Files>
-
-<Files obs>
-  SetHandler cgi-script
-</Files>
-
-<Files obsD>
-  SetHandler cgi-script
-</Files>
-
-<Files obsS>
-  SetHandler cgi-script
-</Files>

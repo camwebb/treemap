@@ -20,7 +20,8 @@ function success_callback(p)
   document.getElementById('current').innerHTML="Your current lat: " + p.coords.latitude.toFixed(5)+", long: " + p.coords.longitude.toFixed(5) ;
 
   // if the script is called map, set params to small tiles
-  if ( window.location.pathname.substring( window.location.pathname.lastIndexOf('/')+1) == 'map')
+  // if ( window.location.pathname.substring( window.location.pathname.lastIndexOf('/')+1) == 'map')
+  if (queryString('method') == 'mapHi')
 	{
 	    var longOri = Number(queryString('long')) + 0.001 ;
 	    var latOri  = Number(queryString('lat')) ;
