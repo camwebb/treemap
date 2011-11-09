@@ -3,15 +3,21 @@ function gpsit()
   // initialize, using geo.js
   if(geo_position_js.init())
 	{
-	  document.getElementById('current').innerHTML="Receiving...";
-	  geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  
-	  // ,options:5000
+
+	  setInterval(retrieve,5000);
 	}
   else
 	{
 	  document.getElementById('current').innerHTML="Functionality not available";
 	  // alert("GPS functionality not available");
 	}
+}
+
+function retrieve()
+{
+  document.getElementById('current').innerHTML="Receiving...";
+  geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  
+	  // ,options:5000
 }
 
 function success_callback(p)
