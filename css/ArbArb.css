@@ -1,0 +1,1276 @@
+ /*
+Theme Name: ArnoldArboretum
+Theme URI: http://arboretum.harvard.edu
+Description: Revised theme for the Arnold website.
+Author: Donna Tremonte
+Author URI: http://donnatremonte.com
+Created: June 2010
+Version: v2.1
+
+This theme can be used for commercial or non-commercial use 
+as long as it is not redistributed or resold in any way.
+*/ 
+
+body 	{
+        font-family: "Helvetica Neue", Arial, sans-serif;
+	    font-weight: normal;
+        line-height: 1.6;
+	    color: #000;
+	    background-color: #f7f9e8;
+	    margin: 0;
+	    padding: 0;
+	    text-align: center;
+	    
+		}
+
+img 	{
+		display: block;
+		border: 0;
+		}
+		
+div 	{
+		margin: 0;
+		}
+		
+/* IE6 hack */ 
+* html div {
+		overflow: visible;
+		}
+		
+ul		{
+		margin: 0 0 1.4em 0;
+		padding: 0;
+		}
+		
+ul li	{
+		margin: 0 0 0 2.5em;
+		padding: 0;
+		}
+
+hr		{
+		width: 100%;
+		height: 1px;
+		border: 0;
+		color: #657600;
+		background-color: #657600;
+		margin: 16px 0;
+		padding: 0;
+		}
+
+.floatleft {
+		float: left;
+		margin: 3px 20px 20px 0;
+		display: inline;
+		}
+		
+.floatright {
+		float: right;
+		margin: 3px -92px 20px 20px;
+		display: inline;
+		}
+.float_left {
+        float: left;
+        margin: 20px;
+}
+.float_right {
+		float: right;
+		margin: 10px;
+		display: inline;
+		}
+.float-right {
+		float: right;
+		margin: 10px;
+		display: inline;
+		padding-right: 240px;
+		padding-top: 10px;
+		}
+.rightfloat {float: right; padding-right: 4px; padding-bottom: 5px;}
+.alignleft {
+        float: left;
+        padding: 0px 50px 20px 50px;
+}
+.align-left {
+        float: left;
+        padding: 0px 0px 0px 0px;
+}
+.leftalign {
+        float: left;
+        padding: 0px 0px 0px 0px;
+}
+.alignright {
+        float: right;
+        padding: 0px 50px 20px 50px;
+}
+h1.search_page {
+        margin: 20px 0px 0px 0px;
+}
+.post {
+        width: 500px;
+        padding: 5px 50px;
+}
+.post h2 {
+        text-align: left;
+}
+.post p {
+        text-align: left;
+}
+.caption {
+        padding: 5px;
+		color: #929d53;
+		margin: 4px 0;
+		line-height: 14px;
+}	
+.wp-caption {
+        padding: 5px 5px 0px 15px;
+		color: #929d53;
+		margin: 4px 0 0px 0;
+		line-height: 14px;
+}		
+.inset {
+		margin-right: 0;
+		}
+		
+.clearleft {
+		clear: left;
+		}
+		
+.clearright {
+		clear: right;
+		}
+		
+.clear {
+		clear: both;
+		}
+
+/* --------text formatting begins-------- */
+a 		{
+		text-decoration: underline;
+		color: #a24c00;
+		padding: 0;
+		background: transparent;
+		}
+		
+a:hover {
+		text-decoration: none;
+		}
+		
+#top a, #left a, #foot a {
+		text-decoration: none;
+		}
+		
+#top a:hover, #left a:hover, #foot a:hover {
+		text-decoration: underline;
+		}
+		
+a#administration, a#curation, a#public, a#external, a#greenhouse, a#horticulture, a#library, a#IT, a#peopleResearch, a#associates, a#hortInterns {
+        text-decoration: none;
+        color: #657600;
+        }
+        
+a.green-link { color: #657600;}
+a.no-display { color: #657600; text-decoration: none;}
+		
+body, p, td, li, ul, ol, h4, h5, h6 {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+	    font-size: 12px;
+	    line-height: 16px;
+	    font-style:normal;
+		}
+
+h1, h2, h3 {
+	    margin: 0;
+	    padding: 0;
+		}
+		
+p       {
+        margin: 0;
+	    padding: 0 0 1em 0;
+        }
+        	
+p.indent {
+        padding-left: 18px;
+        }  
+        
+h1 		{
+		font-size: 27px;
+		font-weight: normal;
+		line-height: 30px;
+		color: #452f77;
+		padding: 0 0 .5em 0;
+		margin-left: -1px;
+		}
+		
+h2 {
+	    font-size: 18px;
+	    font-weight: normal;
+	    line-height: 21px;
+	    color: #657600;
+	    padding: 0;
+		}
+		
+h2.h2links a {
+	    font-size: 18px;
+	    font-weight: normal;
+	    line-height: 31px;
+	    color: #a24c00;
+	    padding: 0;
+	    text-decoration: none;
+		}
+		
+.h2links h2 a {
+	    font-size: 18px;
+	    font-weight: normal;
+	    line-height: 21px;
+	    color: #657600;
+	    padding: 0;
+	    text-decoration: none;
+		}
+		
+h2.smaller {
+        font-size: 16px;
+        }
+        
+h2.paddingtop {
+        padding-top: 15px;
+        }
+				
+#left h3, h3 {
+		font-weight: bold;
+		font-size: 14px;
+		padding: 0 0 1.3em 0;
+		}
+
+h4 		{
+		font-weight: bold;
+		color: #657600;
+		text-transform: uppercase;
+		}
+
+h7 		{
+	    font-size: 18px;
+	    font-weight: normal;
+	    line-height: 21px;
+	    color: #657600;
+		}
+		
+h8	    {
+	    font-weight: bold;
+	    font-size: 13px;
+	    padding: 0 0 1.3em 0;
+	    color: #8B3F43;
+		}
+span.specialNote, span.specialNote a {
+    color: red;
+    font-style: italic;
+    font-weight: bold;
+}
+/* --------text formatting ends-------- */
+
+/* --------header formatting begins ---------- */
+div#outer {
+		width: 994px;
+		position: relative;
+		background-color: #fff;
+		margin: auto;
+		/* Add some gloss for the new browsers */
+		-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+		-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+		box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+		margin-top:8px;
+		margin-bottom:8px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		}		
+div#top	{
+		width: 994px;
+		background-color: #C9D488;
+		padding: 0;
+		-moz-border-radius: 5px;
+		border-radius: 5px; 
+		}		
+div#top img {
+		float: left;
+		}
+div#logo-arnold-arboretum img{padding:8px 0 12px 8px;}	
+
+        /* --------top right nav menu formatting begins ---------- */
+		div#top div#topnav {
+		    float: right;
+		    padding: 10px 17px 14px 0;
+		    text-align: right;
+		}		
+		div#top div#topnav ul li {
+		    list-style-type: none;
+		    display: inline;
+		    padding: 0px 13px;
+		    margin: 0px;
+		}		
+		div#top div#topnav ul li a {
+		    color: #4a5700;
+		    text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+            filter: dropshadow(color=#ffffff, offx=0, offy=1);
+		}		
+		div#top div#topnav ul li a:hover {
+		    color: #4a5700;
+		    text-decoration: underline;
+		}
+        /* --------top right nav menu formatting ends ---------- */
+        /* --------top right search formatting begins ---------- */
+        .top-search {
+            float: right;
+            padding-top: 10px;
+            margin-right: 5px;
+            width: 190px;
+        }
+        .top-search form div input {
+            margin-bottom: 5px;
+        }
+        .cse-branding-bottom, .cse-branding-logo img, .cse-branding-text, { display: none; }
+        /* --------top right search formatting ends ---------- */
+		/* -------- weather widget css begins------------*/
+		div#weather-widget {
+        float: left;
+        padding-right: 10px;
+        padding-top: 5px;
+        color: #4a5700;
+        }
+		#weather-widget p {
+        padding: 0px;
+        margin: 0px;
+        padding-left: 0px;
+        text-shadow: 0px 1px 0px rgba(255,255,255,0.4);
+		filter: none;
+        width: 160px;
+		}
+		#weather-widget img {
+        width: 35px;
+        padding: 0px 5px;
+		}
+        /*---------- weather widget css ends------------*/
+/* --------header formatting ends ---------- */	
+
+/*---------home page formatting begins ------ */
+#home hr {
+    height: 1px;
+    color: #A1A1AD;
+    background-color: #A1A1AD;
+}
+#home .floatleft {
+    width: 615px;
+    padding-left: 25px;
+}
+div.enews form p {
+        padding: 0px;
+        margin: 0px;
+}
+	/*---------home page What's New box formatting begins ------ */
+    div.sidebar {
+        background-color: #e0d7f4;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        margin: 30px;
+		padding-bottom: 10px;
+		width: 270px;
+    }
+    div.sidebar p, div.sidebar ul {
+        padding-bottom: 10px;
+		padding-left: 24px;
+		padding-right: 24px;
+		text-align: left;
+	}	
+    /**div.sidebar h3, div#content div.sidebar h3 {
+	    color: #FFF;
+	    background-color: #452f77;
+	    padding: 6px 24px;
+	    margin: 0 0 1.3em 0;
+	    text-align: left;
+		} **/
+    #home #mid div.sidebar h3 {
+        font-weight: normal;
+        font-size: 14px;
+	    text-shadow: 0px 1px 0px rgba(0,0,0,0.5);
+        filter: dropshadow(color=#000, offx=0, offy=1);
+    }
+    div.sidebar h3, div#content .sidebar h3 {
+	    color: #FFF;
+	    background-color: #452f77;
+	    padding: 6px 24px;
+	    margin: 0 0 1.3em 0;
+	    text-align: left;
+	    -moz-border-radius-topleft: 3px;
+	    -moz-border-radius-topright: 3px;
+	    -moz-border-radius-bottomright: 0px;
+	    -moz-border-radius-bottomleft: 0px;
+	    border-top-left-radius: 3px;
+	    border-top-right-radius: 3px;
+	    border-bottom-right-radius: 0px;
+	    border-bottom-left-radius: 0px; 
+	    text-shadow: 0px 1px 0px #000;
+		filter: dropshadow(color=#000, offx=0, offy=1);
+    }
+    div.sidebar h3 a {
+	    color: #FFF;
+	    /*background-color: #9966CC;*/
+	    font-size: 14px;
+	    font-family: "Helvetica Neue", Arial, sans-serif;
+	    font-weight: normal;
+	    }
+	h3 a img.feed {
+		float:right;
+		width: 20px;
+		}
+    div.sidebar h4, .sidebar h5 {
+        color: black;
+        margin: 0px;
+        padding: 0px;
+    }
+    div.sidebar h4 {text-align: left; padding-left: 24px; text-transform: none; font-size: 110%;}
+    div.sidebar h5 {text-align: left; padding-left: 24px; font-size: 90%;}
+    div.sidebar h5 .source {
+        font-weight: normal;
+        font-style: italic;
+        font-size: 90%;
+    }
+    #home #mid .sidebar ul li {
+		list-style-type: none;
+		margin: 0 0 1.4em 0;
+	}
+	#home #mid .sidebar a {
+		text-decoration: none;
+	}
+	#home #mid .sidebar a:hover {
+		text-decoration: underline;
+	}
+    div.sidebar .floatleft {
+        margin-bottom: 0px;
+    }
+    a.specialNote, p.specialnote {
+        color: #990000;
+        font-size: 120%;
+        font-weight: bold;
+    }
+    /*---------What's New box formatting ends ------ */
+    /* home page seasonal color schemes */
+    #feature { 
+        background: url("/wp-content/uploads/headerimgs/rotate.php") no-repeat bottom center; 
+    }
+    .spring #mid .spot h3, body.spring #mid .sidebar h3, #top div#mainnav, #foot {
+	    background-color: #773341  !important; /* feature box header color*/
+	}
+    .spring #mid .sidebar {
+	    background-color: #E0CEC4; /* What's new background */
+	}
+
+    .summer #mid .spot h3, body.summer #mid .sidebar h3 {
+	    background-color: #FF6666 !important; /* feature box header color*/
+	}
+    .summer #mid .sidebar {
+	    background-color: #EFD086; /* What's new background */
+	}
+	
+	
+    .fall #mid .spot h3, body.fall #mid .sidebar h3 {
+	    background-color: #990000 !important; /* feature box header color*/
+	}
+    .fall #mid .sidebar {
+	    background-color: #BFBFBF; /* What's new background */
+	}
+	
+    .winter #mid .spot h3, body.winter #mid .sidebar h3 {
+	    background-color: #8F3E4B !important; /* feature box header color*/
+	}
+    .winter #mid .sidebar {
+	    background-color: #B6B5CF; /* What's new background */
+	}
+	/* home page seasonal color schemes ends */
+	/* css for facebook and twitter badges begins */		
+    img.badgeimage {
+		display: inline;
+		margin: 0px 2px;
+		padding: 0px;
+	}
+    div.badge  {
+        float: left;
+        padding-left: 0px;
+    }
+    /* css for facebook and twitter badges ends */
+/*---------home page formatting ends ------ */
+
+/*--------- formatting for spot highlights on home and level3 pages begins ------------*/
+#home #mid .spot {
+		width: 161px;
+		margin: 30px 30px 0 30px;
+		padding-bottom: 0px;
+		float: left;
+		}
+#home #mid .spot h3 {
+	    /*color: #9966CC;*/
+	    position: static;
+	    padding: 6px 10px;
+	    margin: 0;
+	    text-align: left;
+	    text-shadow: 0px 1px 0px #000;
+	    filter: dropshadow(color=#000, offx=0, offy=1);
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-topright: 3px;
+		-moz-border-radius-bottomright: 0px;
+		-moz-border-radius-bottomleft: 0px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 0px;
+		border-bottom-left-radius: 0px; 
+	    }		
+#home #mid .spot h3 a {
+	    color: #FFF;
+	    /*background-color: #9966CC;*/
+	    font-size: 14px;
+	    font-family: "Helvetica Neue", Arial, sans-serif;
+	    font-weight: normal;
+	    }
+div#mid div.spot {
+		width: 113px;
+		margin: 20px 30px 1.8em 0;
+		float: left;
+		min-height: 240px; /* need for 2nd level pages, fixes overflow problem on top row*/
+		}
+div#mid div.spot div.header {
+		position: relative; /* needed to make dropdowns stay under menu items when resize window*/
+		margin-top: 4em;
+		width: 100%;
+		}
+div#mid div.spot p {
+        text-align: left;
+        padding: 0px;
+        }
+div#mid div.spot h3 {
+		padding-bottom: .6em;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		}
+div#mid div.wide {
+		width: 256px;
+		}
+div#mid div.spot img {
+		margin: 0 0 .6em 0;
+		}
+div#mid div.spot a {
+		text-decoration: none;
+		}		
+div#mid div.spot a:hover {
+		text-decoration: underline;
+		}		
+div#mid div.spot ul {
+		padding: 0;
+		margin: 0;
+		}	
+div#mid div.spot ul li {
+		list-style-type: none;
+		line-height: 14px;
+		padding: 0;
+		margin: 0 0 10px 0;
+		}
+/* ----- formatting for spot highlights ends ----- */
+/* ----- purple call out boxes on 2nd level pages begins ----- */
+div.callout2 {
+		width: 135px;
+		background-color: #e0d7f4;
+		padding: 0px 10px 10px 10px;
+		-moz-border-radius-topleft: 3px;
+		-moz-border-radius-topright: 3px;
+		-moz-border-radius-bottomright: 0px;
+		-moz-border-radius-bottomleft: 0px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 0px;
+		border-bottom-left-radius: 0px; 
+		}
+div.callout2 h3 {
+	    color: #FFF;
+	    background-color: #452f77;
+	    padding: 6px;
+	    margin: 0px;
+	    text-align: left;
+		}
+div.callout2 p {
+        padding-top: 10px;
+        margin: 0px 6px;
+}
+div.callout2 img {
+        width: 135px;
+        height: 75px;
+}
+div.callout2 p.none {
+        margin: 0px;
+        padding: 0px;
+}
+/* ----- purple call out boxes on 2nd level pages ends ----- */
+/* ----- styles for green callout boxes on the right side of pages
+replaces purple callout boxes, must be enclosed in div.callout-box --------------------------------- */
+.callout-box {
+   float: right; 
+   margin: 0; 
+   padding: 0 0 0em;
+   margin: 30px 20px;
+   padding: 5px 5px 25px 5px;
+   width: 250px;
+   background-color: #E2E8B6;
+   -moz-border-radius-bottomright: 3px;
+   -moz-border-radius-bottomleft: 3px;
+   border-bottom-right-radius: 3px;
+   border-bottom-left-radius: 3px; 
+   -moz-border-radius-topright: 3px;
+   -moz-border-radius-topleft: 3px;
+   border-bottom-top-radius: 3px;
+   border-bottom-bottom-radius: 3px; 
+}
+.callout-box h3 { padding: 15px 10px 0px 15px; }
+.callout-box h3 a { padding: 15px 10px 0px 15px; text-decoration: none; }
+.callout-box h3 a:hover { text-decoration: underline; }
+.callout-box img, .callout-box a img {
+   float: left;
+   left: 0; width: 70px;
+   padding: 18px 10px 0px 15px;
+}
+.callout-box p {
+   padding: 0px 8px 10px 8px;
+   margin-left: 8px;
+}
+/* -------- green feature boxes end ------------------- */
+/* -------- middle section formatting begins ---------- */		
+div#mid 	{
+		width: 994px;
+		position: relative;
+		clear: both;
+		background-color: #e2e8b6;
+		/*background: #fff url(../images/bg_left.gif) top left repeat-y; --not doing anything that I can see*/
+		}
+div#mid div#right {
+		text-align: left;
+		padding: 0px 0px 0 20px;
+		background-color: #FFF;
+		overflow: hidden;
+		}
+/* IE hack */	
+* html #mid #right {
+		margin-left: 25px;
+		}
+div#mid div#breadcrumbs {
+		margin-bottom: 1.8em;
+		padding-top: 1.2em;
+		}
+div#mid div#right div#content {
+		padding-right: 30px;
+		min-height: 400px;
+        padding-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        }
+div#content h3 {
+        padding: 0px;
+        margin: 4px 0px;
+}
+div#mid div#right div#content h1.plus {
+        padding-top: 30px;
+        }
+/* hack for Plants page so that only 4 thumbs show */
+.rightsub {
+        width: 700px;
+        }
+        
+        /* style for collections main page, for 3 image icons */
+        div#mid div#breadcrumb-space {
+		padding-top: 1.2em;
+		}
+        #right #collections .spot img, #right #collections .spot p, #right  #collections .spot .header {
+        width: 150px; 
+        }
+        #right #collections .spot {padding: 10px; margin: 10px; padding-left: 40px;}  
+
+/* --------middle section formatting ends ---------- */
+
+/* --------side navigation begins ---------- */
+h2.ontop {
+   font-size: 27px;
+   line-height: 30px;
+   padding: 0 0 .5em 0;
+   margin-left: 25px;
+   position: relative;
+   top: 2.2em;
+   z-index: 2;
+   color: white;
+   margin-top:-50px;
+   text-shadow: 0px 0px 0px rgba(255,255,255,0.4);
+}
+.bar {
+       height: 6em;
+       padding: 0em;
+       margin: 0px;
+       -moz-opacity:0.5;
+       -khtml-opacity: 0.5;
+       opacity: 0.5;
+       filter:alpha(opacity=50);
+       background: #000000;
+       margin-top:-05px;
+}
+div#mid div#left {
+		width: 200px;
+		float: left;
+		text-align: left;
+		background-color: #e2e8b6;
+		padding-top: 5px;
+		padding-left: 10px;
+		text-shadow: 0px 1px 0px rgba(255,255,255,0.4);
+		}
+div#mid div#left ul {
+		padding: 13px 30px 20px 20px;
+		margin: 0;
+		}
+div#mid div#left ul li {
+		list-style-type: none;
+		font-size: 12px;
+		line-height: 14px;
+		padding: 0;
+		margin: 0 0 10px 0;
+		}
+div#mid div#left ul li.on {
+		list-style-type: none;
+		font-weight: bold;
+		}
+div#mid div#left ul li.on a {
+		color: black;
+		}
+
+div#mid div#left h3 {
+		color: #657600;
+		padding-bottom: 5px;
+		margin: 0 30px;
+		border-bottom: 1px solid #657600;
+		}
+div#mid div#left h3.non-link {
+		margin-left: 0px;
+		}
+div#mid div#left ul li ul {
+		padding-bottom: 0;
+		}
+li.current_page_item a, .news #left li.current_page_parent a {
+        color: black;
+        font-weight: bold;
+		}		
+li.current_page_item ul.children a {
+        color: #a55309;
+        font-weight: normal;
+		}
+li ul.children li {
+        list-style-image: url("");
+        }
+ul li a.self {
+    color: #000;
+    font-weight: bold;
+}
+/** on news page, keeps side nav displaying correctly **/
+#left ul li.page_item ul { display: none; }
+#left ul li.current_page_item ul { display: block !important;}
+
+/* formatting for collapsing pages plugin */
+.collapse .sym {
+	display: none;
+	}
+.expand .sym {
+	display: none;
+	}
+a[title="Visit"], a[title="Plants"], a[title="Library"], a[title="Education"], a[title="Research"], [title="Support"], a[title="About"] {
+	border-bottom: 1px solid #657600;
+	color: #657600 !important;
+	display: block;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 0 0 1.3em 0;
+	padding-bottom: 5px;
+	}
+div#mid div#left ul#collapsPage-48, div#mid div#left ul#collapsPage-46, div#mid div#left ul#collapsPage-50, div#mid div#left ul#collapsPage-52, div#mid div#left ul#collapsPage-2, div#mid div#left ul#collapsPage-54, div#mid div#left ul#collapsPage-56 {
+	margin-left: -20px;
+	}
+/* fix for library page sub sub sub pages and CTFS page */
+ul#collapsPage-3901 li a, ul#collapsPage-11155 li a {
+	padding-right: 35px;
+	display: block;
+}
+div#mid div#left ul#collapsPage-48 li, div#mid div#left ul#collapsPage-46 li, div#mid div#left ul#collapsPage-50 li, div#mid div#left ul#collapsPage-52 li, div#mid div#left ul#collapsPage-2 li, div#mid div#left ul#collapsPage-54 li, div#mid div#left ul#collapsPage-56 li {
+	width: 140px;
+	}
+div#mid div#left ul li ul {
+   	padding-left: -10px !important;
+}
+div#mid div#left h3.non-link {
+	margin-left: 20px;
+}
+div#mid div#left h3.self {
+	margin-top: 10px;
+}
+/*added in so that Arnoldia sub navigation will always display */
+#left ul.arnoldia li ul.arnoldia { display: block !important;}
+/* --------side navigation ends ---------- */
+
+/* -------- formatting for library page begins -------- */
+table.explorers {
+        padding-bottom: 20px;
+}
+.feature-lib {
+   float: right; 
+   margin: 0; 
+   padding: 0 0 0em;
+   margin: 30px 20px;
+   padding: 5px 5px 25px 5px;
+   width: 250px;
+   background-color: #E2E8B6;
+   -moz-border-radius-bottomright: 3px;
+   -moz-border-radius-bottomleft: 3px;
+   border-bottom-right-radius: 3px;
+   border-bottom-left-radius: 3px; 
+   -moz-border-radius-topright: 3px;
+   -moz-border-radius-topleft: 3px;
+   border-bottom-top-radius: 3px;
+   border-bottom-bottom-radius: 3px; 
+}
+.feature-lib h3 { padding: 15px 10px 0px 10px; }
+.feature-lib h3 a { padding: 15px 10px 0px 10px; text-decoration: none; }
+.feature-lib h3 a:hover { text-decoration: underline; }
+.feature-lib img, .feature-lib p a img {
+   float: left;
+   left: 0; width: 70px;
+   padding: 18px 10px 0px 10px;
+}
+.feature-lib p {
+   padding: 0px 5px;
+   margin-left: 8px;
+}
+h1.archive {padding-bottom: 0px; margin-bottom: 0px;}
+h3.archive {padding-bottom: 10px !important; }
+a.archive img {padding-right: 10px; padding-bottom: 15px; }
+.libraryMain { margin: 2em 0 2em 2em; }
+/* -------- formatting for library page ends -------- */
+
+/* -------- formatting for eNews page begins -------- */
+table.enews { 
+       width: 600px;
+       padding: 0px;
+       border: 0px;
+       margin: 0px;
+       border-spacing: 0px;
+}
+table.enews a {
+       text-decoration: none;
+}
+table.enews tr td table { 
+       padding: 0px;
+       border: 0px;
+       margin: 0px;
+       border-spacing: 0px;
+}
+table.enews tr.enewsTitle {
+       background-color: #667600;
+}
+table.enews tr.enewsTitle td {
+       font-size: 120%;
+       padding: 5px 0px;
+       color: #ffffff; 
+       font-weight: bold; 
+       padding-left: 5px;
+}
+/* -------- formatting for eNews page ends -------- */
+
+/* -------- formatting for Publications page ends -------- */
+#content table.silva tr td {
+       padding: 0px 10px 10px 0px;
+}
+#content table.silva tr td a {
+       padding: 0px 20px;
+}
+/* -------- formatting for Publications page ends -------- */
+
+/* -------- formatting for Contact page begins -------- */
+.displaynone { color: white; }
+.top-padding { padding-top: 20px;}
+/* -------- formatting for Contact page ends -------- */
+
+/*--------- css for CTFS pages ----------------*/
+.style3 {
+       font-weight: bold;
+       font-size: 130%;
+}
+.style4 {
+       color:#aa4c41;
+}
+/*--------- css for CTFS pages ends----------------*/
+
+/*--------- css for Our History table ----------------*/
+table.historypage tr td {
+     min-width: 50px;
+}
+/*--------- css for Our History table ends ----------------*/
+
+/*--------- css for Order of Bloom begins ----------------*/
+table.bloom select option { min-width: 255px;}
+table.bloom tr td p {margin-top: 10px; margin-bottom: 0px; padding-bottom: 0px;}
+/*--------- css for Order of Bloom ends ----------------*/
+
+/*--------- css for Plant Inventory table ----------------*/
+table#plantinv {
+border-width: 1px;
+border-style: solid;
+border-color: #000000;
+border-collapse: collapse;
+margin: 5px;
+width: 550px;
+}
+table#plantinv th {
+text-align: center;
+}
+table#plantinv th, table#plantinv td {
+border-width: 1px;
+border-style: solid;
+border-color: #000000;
+padding: 5px;
+}
+table#plantinv td.subcell1 {
+padding-left: 30px;
+}
+table#plantinv td.subcell {
+border: none;
+padding-left: 30px;
+}
+table#plantinv td.noborder {
+border: none;
+border-left-width: 1px;
+border-right-width: 1px;
+border-left-style: solid;
+border-right-style: solid;
+border-left-color: #000000;
+border-right-color: #000000;
+text-align: center;
+}
+table#plantinv td.nocenter {
+border: none;
+border-left-width: 1px;
+border-right-width: 1px;
+border-left-style: solid;
+border-right-style: solid;
+border-left-color: #000000;
+border-right-color: #000000;
+}
+table#plantinv td.center {
+text-align: center;
+}
+/*--------- css for Plant Inventory table ----------------*/
+
+.smallgoogle {
+}
+#cse a .gs-title {
+     color: red;
+}
+	
+/* -------- formatting for footer begins -------- */
+#foot 	{
+		width: 994px;
+		clear: both;
+		background-color: #657600;
+		padding: 22px 0 50px 0;
+		text-align: left;
+	    text-shadow: 0px 1px 0px #000;
+	    filter: dropshadow(color=#000, offx=0, offy=1);
+
+		-moz-border-radius-bottomright: 3px;
+		-moz-border-radius-bottomleft: 3px;
+
+		border-bottom-right-radius: 3px;
+		border-bottom-left-radius: 3px; 
+		}
+		
+#foot p {
+		padding: 0 30px 10px 30px;
+		color: #fff;
+		font-weight: normal;
+		}
+		
+#foot p a {
+		color: #dcbe5d;
+		}
+/* -------- formatting for footer ends -------- */
+
+/* --------- css for rollover sprites begins ---------- */
+span.rollover a {
+        display: block;
+        width: 152px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        text-decoration: none;
+}
+span.rollover a:hover{
+        background: #fff url(engle_pond_on.jpg) 0px 0px no-repeat;
+}
+
+/* --------- css for rollover sprites ends ---------- */
+
+
+/* ---- art show page ----*/
+.style1 {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* Research pages style begins */
+table.scientists { width: 680px;}
+table.scientists tr td {
+padding: 0px 0px;
+margin: 10px 0px;
+}
+table.scientists img {
+width: 100px;
+height: 100px;
+}
+table.scientists a {
+text-decoration: none;
+}
+table.scientists a:hover {
+text-decoration: underline;
+}
+table.scientists tr td.color1 {
+padding: 10px 20px;
+margin: 5px 0px;
+background-color: #EEF2D5;
+}
+table.scientists tr td.color2 {
+padding: 10px 20px;
+margin: 5px 0px;
+background-color: #C9D488;
+}
+/**** Research Talks page ***/
+table.talks { width: 680px; border-collapse: collapse;}
+table.talks tr td {
+padding: 0px 0px;
+margin: 0px 0px;
+}
+table.talks tr td {
+padding: 10px 20px;
+margin: 0px;
+border-style: solid;
+border-width: 1px;
+}
+
+/* New styles for News and Events page */
+.article-block { position: relative; margin: 0; padding: 0 0 0em; }
+.article-block img { position: absolute; top: 1.2em; left: 0; width: 70px;}
+.article-block .article-info { margin-left: 78px;}
+.article-block p, .article-info p { margin: 0; font-size: 110%; }
+.article-info p.title, p.byline, p.abstract { padding-bottom: 5px; }
+.article-block p.title a { font-weight: bold; text-decoration: none; font-size: 110%;}
+.article-block p.title a:hover { text-decoration: underline; }
+.article-block p.byline { font-style: italic; }
+
+    /* ----- clear fix for floats ----- */
+    /* these styles instruct non-IE browsers to render container elements so that they fully enclose    
+    floats */		
+    /* without this class applied, a float might hang over the bottom border of it's container */
+    .clearfix:after { content: "."; display:block; height:0; clear:both; visibility:hidden; }
+    .clearfix { display:inline-block; }		
+
+    /* hides clearfix from IE-mac \*/
+    * html .clearfix { height:1%; }
+    .clearfix { display:block; }
+    /* end hide from IE-mac */
+/* New styles for News and Events page ends */
+
+/* styles for Webb Blog */
+p.blogg { padding-right: 10px;}
+#webb-blog { padding: 5px; }
+#webb-blog h1 { padding: 0px; }
+#webb-blog h1 a { text-decoration: none;}
+#webb-blog h1 a:hover { text-decoration: underline; }
+#webb-blog .blog-block { position: relative; margin: 0 0 2em; padding: 0 0 1em; }
+#webb-blog .blog-block img { position: absolute; top: .3em; left: 0; width: 100px;}
+#webb-blog .blog-block .blog-info { margin-left: 118px; margin-right: 50px; padding-top: 4px;}
+#webb-blog .blog-block p, .blog-info p { margin: 0 0 .3em; font-size: 110%; }
+#webb-blog .blog-block p.byline { font-style: italic; }
+.postmetadata {
+    padding: 0px;
+}
+#comments h2 {
+ margin: 20px 0px 0px 0px;
+ padding: none;
+}
+#comments hr {
+padding: 0px;
+margin: 10px 0px;
+}
+#comments ul.commentlist {
+    list-style: none;
+}
+.fn {
+    font-weight: bold;
+}
+#comments .float_right {
+ width: 300px;
+}
+#comment-ID {
+ margin: 0px; padding-top: 10px;
+}
+ul.inline {
+    display: block;
+	margin: 1em 0;
+	padding: 0;
+}
+ul.inline li {
+	display: inline;
+	margin: 0 0.5em 0 0;
+}
+ul.inline li a img {
+   margin: 0px; padding: 0px;
+}
+#respond p {padding: 0 0 1em 0;}
+input#author, input#email {margin: 0 0 1em 0;}
+input#submit {margin: 1em 0 1em 0;}
+textarea#comment {width: 500px !important;}
+.navigation {padding-top: 20px;}
+/* styles for Webb Blog ends */
+
+/* -------- extra css for top navigation menus highlighting when active, 
+            needs to go at bottom------------*/
+html body #outer #mainnav .menu-mainnav-container ul li.current-page-ancestor a {
+	color: #dcbe5d;
+}
+html body #outer #topnav .menu-topnav-container ul li.current-page-ancestor a {
+	font-weight: bold;
+}
+ul.nodisplay li {
+    list-style-type: none;
+    clear: left;
+}
+div.visual_nav {
+    width: 650px;
+    height: 125px;
+    padding: 20px;
+    background-color: #EEF2D5;
+}
+ul.dynamic_gallery li {
+    float: left;
+    list-style-type: none;
+    padding: 0px; 
+    margin: 0px;
+    display: inline-block;
+    padding-right: 5px;
+}
+ul.dynamic_gallery li a {
+    padding: 0px; 
+    margin: 0px;
+}
+ul.dynamic_gallery li a img {
+    height: 125px;
+}
+
+/* customization for NGG Image gallery plugin */
+.ngg-imagebrowser-desc p {
+   clear: both;
+   padding-top: 10px;
+   padding-left: 100px; 
+   /*color: #929d53; */
+}
+.news .ngg-imagebrowser { width: 300px; }
+
+/* customization to PostTabs plugin on Featured Plants pages */
+ul.postTabs li a
+	{
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	font-size: 110%;
+	}
+ul.postTabs li.postTabs_curr a {
+	font-weight: bold;
+	}
+ul.postTabs { width: 330px;}
+div.float_right .slideshow #so14_1 { margin-top: 5px; }
+
+
+/* This removes the credit link, but if possible we ask that you try and
+re-theme it to your liking instead as a courtesy to the TurnKey Linux
+project */
+#turnkey-credit { display: none; }
+
+/* style for new top-level pages */
+/* must go at bottom, formatting for new navigation landing pages */
+.top-level { position: relative; margin: 1em 0 0 2em; padding: 0 0 0em; min-height: 400px;}
+.top { margin: 2em 0 2em 2em; }
+#about .top-level {min-height: 550px;}
+.top-level .info { position: absolute; top:0; left: 0; width: 425px;}
+.top-level img, .rnews, .top-level .float_right  { padding-top: 47px; margin-left: 450px;}
+
+/* formatting for new Arnoldia pages */
+.arnoldia-home .float_left p {width: 250px; padding-right: 60px;}
+.arnoldia-home ul, .arnoldia-home img {padding-top: 20px;}
+.arnoldia-home ul li {line-height: 1.7em; list-style: none; }
+
+/** new news pages styles **/
+.rss-feed {
+	float: right;
+	padding: 0px 0px 0px 10px;
+	margin-right: -200px;
+	margin-left: -10px;
+	width: 160px;
+	}
+.rss-feed h3 {
+    border-bottom: 1px solid #e1ddc8;
+	}
+.rss-feed div.article-block {
+    padding: 10px 0 0px 0px;
+	}
+.rss-feed div.article-info p.title {
+    padding-bottom: 5px;
+	}
+.rss-feed ul li {
+	list-style: none;
+	}
+.rss-feed ul li img {
+	float: left;
+	}
+div.with-right-sidebar {
+	width: 530px;
+	}
+.layout-right {
+	width: 220px;
+	float: right;
+	padding-top: 105px;
+}
+.layout-right h3 {
+	padding-top: 5px;
+}
+.layout-right h3 a {
+	text-decoration: none;
+}
+ul.news-blog {
+	margin-bottom: 0;
+	padding: 6px 20px 20px 0px;
+	border-top: 1px solid #e1ddc8;
+}
+ul.news-blog li {
+	padding: 5px 0 5px 0px;
+	list-style-type: disc;
+}
+ul.news-blog li a {
+	text-decoration: none;
+}
+ul.news-blog li a:hover {
+	text-decoration: underline;
+}
+/* New styles for News and Events page */
+.article-block { position: relative; margin: 0; padding: 10px 0 20px 0; }
+.article-block img { position: absolute; top: 1.2em; left: 0; width: 70px;}
+.article-block .article-info { margin-left: 78px;}
+.article-block p, .article-info p { margin: 0; font-size: 110%; }
+.article-info p.title, p.byline, p.abstract { padding-bottom: 5px; }
+.article-block p.title a { font-weight: bold; text-decoration: none; font-size: 110%;}
+.article-block p.title a:hover { text-decoration: underline; }
+.article-block p.byline { font-style: italic; }
+
+/** new news pages styles end **/
