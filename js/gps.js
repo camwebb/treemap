@@ -16,7 +16,9 @@ function retrieve()
 {
   document.getElementById('current').innerHTML="Updating location...";
   geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  
-	  // ,options:5000
+	  // or try without accuracy ,options:5000
+      // Aslo try geo_position_js.watchPosition(success_callback, error_callback, {enableHighAccuracy:true}); without an interval
+     
 }
 
 function success_callback(p)

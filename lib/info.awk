@@ -25,7 +25,9 @@ function treeInfo()
 		  print "<li><a href=\"http://google.com/m?q=" nam[1] "+" nam[2] "&site=images\">Images of this taxon</a></li>";
 		  print "<li><a href=\"http://en.m.wikipedia.org/wiki/" nam[1] "_" nam[2] "\">More info...</a></li>"; 
 
+		  print "<li><a href=\"#\" onclick=\"insidewood('" nam[1] "');\">Wood</a></li>";
 		  print "</ul>";
+		  print "<script type=\"text/javascript\" src=\"js/form.js\"></script>";
 		  print "<p>[ <a href=\"map?method=obs&amp;tag=" $1 "\">observe</a> | <a href=\"map?method=mapLo&amp;tag=" $1 "\">map it</a> | <a href=\"http://google.com/m?site=maps&q=" $13 "," $14 " (" $1 ", " $4 ")\">directions</a> | <a href=\"map\">home</a> ]</p>" ;
 
 		  break;
