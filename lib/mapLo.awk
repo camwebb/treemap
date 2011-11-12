@@ -28,6 +28,7 @@ function mapLo()
 	           <div id=\"toptext\"> \
 		         <p>See recent citizen scientist<br/> \
                  <a href=\"map?method=obsS\">images and data</a></p> \
+                 <p>We are sorry to have to remind<br/> you, but for <a href=\"http://www.cbd.int/doc/meetings/abs/abswg-03/information/abswg-03-inf-02-en.pdf\">CBD biodiversity <br/>sovereignty</a> reasons, <br/><b>absolutely no collecting <br/>of plant parts <br/>is permitted</b>.</p> \
 	           </div> \
 	         </div> " ;
 

@@ -75,6 +75,10 @@ function success_callback(p)
 	  else { var locnns = '' }
 
 	  document.getElementById('current').innerHTML="Your current lat: " + p.coords.latitude.toFixed(5)+", long: " + p.coords.longitude.toFixed(5) + " (to " + locnns + locnwe + " of this map)";
+
+	  var ctx = document.getElementById("gps").getContext("2d");
+	  ctx.clearRect(0,0,500,525); // clear canvas  
+
 	}
 }
 
