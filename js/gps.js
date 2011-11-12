@@ -3,7 +3,6 @@ function gpsit()
   // initialize, using geo.js
   if(geo_position_js.init())
 	{
-
 	  setInterval(retrieve,5000);
 	}
   else
@@ -15,7 +14,7 @@ function gpsit()
 
 function retrieve()
 {
-  document.getElementById('current').innerHTML="Receiving...";
+  document.getElementById('current').innerHTML="Updating location...";
   geo_position_js.getCurrentPosition(success_callback, error_callback, {enableHighAccuracy:true});  
 	  // or try without accuracy ,options:5000
       // Aslo try geo_position_js.watchPosition(success_callback, error_callback, {enableHighAccuracy:true}); without an interval
@@ -31,8 +30,8 @@ function success_callback(p)
   // if ( window.location.pathname.substring( window.location.pathname.lastIndexOf('/')+1) == 'map')
   if (queryString('method') == 'mapHi')
 	{
-	    var longOri = Number(queryString('long')) + 0.001 ;
-	    var latOri  = Number(queryString('lat')) ;
+	    var longOri = new Number(queryString('long')) + 0.001 ;
+	    var latOri  = new Number(queryString('lat')) ;
 	    var wid = 500 ;
 	    var hig = 500 ;
 	    var factr = 500000 ;
@@ -56,11 +55,17 @@ function success_callback(p)
   if ((xpx >= 0) && (xpx < wid) && (ypx >= 0) && (ypx < hig ))
 	{
 	  var ctx = document.getElementById("gps").getContext("2d");
+
+	  ctx.globalCompositeOperation = 'destination-over';  
+	  ctx.clearRect(0,0,500,525); // clear canvas  
+
 	  var dot = new Image();
 	  dot.src = "img/ring.png";
 	  dot.onload = function() {
-		ctx.drawImage(dot, xpx-25, ypx-25);
+	  	ctx.drawImage(dot, xpx-25, ypx-25);
 	  }
+	  // ctx.drawImage(dot, xpx-25, ypx-25);
+
 	}
   else
 	{
