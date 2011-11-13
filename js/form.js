@@ -4,9 +4,12 @@ function insidewood(genus) {
   location.href="http://insidewood.lib.ncsu.edu/search";
   var form = document.createElement("form");
   form.setAttribute("method", "post");
-  form.setAttribute("action", "http://insidewood.lib.ncsu.edu/?wicket:interface=:36:keywordsearchform::IFormSubmitListener::");
-  // form.setAttribute("action", "http://insidewood.lib.ncsu.edu/search.0;jsessionid=a878c24621cae06e24713f3667c9?wicket:interface=:0:keywordsearchform::IFormSubmitListener::");
-  
+  // form.setAttribute("action", "http://insidewood.lib.ncsu.edu/?wicket:interface=:71:keywordsearchform::IFormSubmitListener::");
+  // XXX form.setAttribute("action", "http://insidewood.lib.ncsu.edu/search.0;jsessionid=d1fc69fc466a90ac4430e7f6e82c?wicket:interface=:0:keywordsearchform::IFormSubmitListener::");
+  form.setAttribute("action", "http://insidewood.lib.ncsu.edu/search.0?wicket:interface=:0:keywordsearchform::IFormSubmitListener::");
+  // form.setAttribute("action", "http://insidewood.lib.ncsu.edu/search.0?wicket:interface=:0:keywordsearchform::IFormSubmitListener::");
+
+
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
   hiddenField.setAttribute("name", "id7_hf_0");
@@ -19,6 +22,7 @@ function insidewood(genus) {
   form.appendChild(kw);
   
   document.body.appendChild(form);
+  // document.cookie = "JSESSIONID=b1fc69fc466a90ac4430e7f6e82c; Path=/" ;
   form.submit();
 }
 

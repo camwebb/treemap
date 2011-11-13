@@ -14,7 +14,58 @@ BEGIN{
 
    "curl -L http://insidewood.lib.ncsu.edu/search" | getline spage ;
 
-   print spage ;
+   n = split(spage,sl,"\n");
+   for (i = 1; i < n; i++)
+	 {
+	   if (sl[i] ~ "keywordsearchform")
+		 {
+		   split(sl[i], sm, "\"");
+		 }
+	 }
+
+   cookie = sm[6] ;
+   gsub(/;jsessionid=/,"",cookie);
+   gsub(/\?wicket.*/,"",cookie);
+
+   "curl -L -d keywordSearch=Acer \"http://insidewood.lib.ncsu.edu/" sm[6] "\"" | getline spage2 ;
+   # "curl -L -d keywordSearch=Acer \"wood/" sm[6] "\"" | getline spage2 ;
+
+   print "Content-type: text/html\n\n<html><body><table border=\"1\">" ;
+
+   n = split(spage2,sl2,"\n");
+   for (i = 1; i < n; i++)
+	 {
+	   if (sl2[i] ~ "descriptionlink")
+		 {
+		   print "<tr>" sl2[i] "</tr>";
+		 }
+	 }
+
+   print "</table></body></html>" ;
+
+   exit;
+
+
+   # See: http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+   # print "Set-Cookie: JSESSIONID=" cookie "; Path=/" ;
+   print "Content-type: text/html\n\n<html><head> \
+          </head> \
+	      <body> \
+            <p>Redirecting... " cookie "</p> \
+          <script type=\"text/javascript\"> \
+             document.cookie = \"JSESSIONID=" cookie "; Path=/\" ; \
+             var form = document.createElement(\"form\"); \
+             form.setAttribute(\"method\", \"post\"); \
+             form.setAttribute(\"action\", \
+                  \"http://insidewood.lib.ncsu.edu/" sm[6] "\"); \
+             var kw = document.createElement(\"input\"); \
+             kw.setAttribute(\"type\", \"hidden\"); \
+             kw.setAttribute(\"name\", \"keywordSearch\"); \
+             kw.setAttribute(\"value\", \"Acer\"); \
+             form.appendChild(kw); \
+             document.body.appendChild(form); \
+             form.submit(); \
+          </script></body></html>" ;
 
    exit;
 

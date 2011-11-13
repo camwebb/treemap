@@ -1,3 +1,7 @@
 <Files insidewood>
   SetHandler cgi-script
 </Files>
+
+# RewriteEngine On
+# RewriteBase /~cam/aa/treemap/cgi/
+# RewriteRule ^wood/(.*) http://insidewood.lib.ncsu.edu/$1 [P,QSA,L]
