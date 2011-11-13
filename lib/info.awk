@@ -18,14 +18,13 @@ function treeInfo()
 		  if ($10 != "") print "<li>Section : " $10 "</li>" ;
 		  if ($11 != "") print "<li>Collection : " $11 "</li>" ;
 		  if ($8 > 0) print "<li>Diameter : " int($8) " " $9 "</li>" ;
-		  print "<li>Grid : " $12 "</li>" ;
+		  # print "<li>Grid : " $12 "</li>" ;
 		  print "<li>Tag : " $1 "</li>" ;
 		  split($4,nam," ");
 		  print "<li><a href=\"map?method=obsS&amp;tag=" $1 "\">Observations of this plant</a></li>" ;
 		  print "<li><a href=\"http://google.com/m?q=" nam[1] "+" nam[2] "&site=images\">Images of this taxon</a></li>";
+		  print "<li><a href=\"#\" onclick=\"insidewood('" nam[1] "');\">Wood structure</a></li>";
 		  print "<li><a href=\"http://en.m.wikipedia.org/wiki/" nam[1] "_" nam[2] "\">More info...</a></li>"; 
-
-		  print "<li><a href=\"#\" onclick=\"insidewood('" nam[1] "');\">Wood</a></li>";
 		  print "</ul>";
 		  print "<script type=\"text/javascript\" src=\"js/form.js\"></script>";
 		  print "<p>[ <a href=\"map?method=obs&amp;tag=" $1 "\">observe</a> | <a href=\"map?method=mapLo&amp;tag=" $1 "\">map it</a> | <a href=\"http://google.com/m?site=maps&q=" $13 "," $14 " (" $1 ", " $4 ")\">directions</a> | <a href=\"map\">home</a> ]</p>" ;

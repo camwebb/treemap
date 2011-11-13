@@ -1,0 +1,3 @@
+<Files insidewood>
+  SetHandler cgi-script
+</Files>

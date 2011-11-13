@@ -1,0 +1,21 @@
+#!/usr/local/bin/gawk -f
+
+BEGIN{
+
+  # READ QUERY STRING
+  split(ENVIRON["QUERY_STRING"], query, "&");
+  for (i1 in query)
+	{
+	  split(query[i1], tmpq, "=");
+	  f[tmpq[1]] = urldecode(tmpq[2]); 
+   }
+
+   RS="\x04" ;
+
+   "curl -L http://insidewood.lib.ncsu.edu/search" | getline spage ;
+
+   print spage ;
+
+   exit;
+
+}

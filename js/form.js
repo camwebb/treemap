@@ -1,13 +1,16 @@
 function insidewood(genus) {
   // See: http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+
+  location.href="http://insidewood.lib.ncsu.edu/search";
   var form = document.createElement("form");
   form.setAttribute("method", "post");
-  form.setAttribute("action", "http://insidewood.lib.ncsu.edu/?wicket:interface=:107:keywordsearchform::IFormSubmitListener::");
+  form.setAttribute("action", "http://insidewood.lib.ncsu.edu/?wicket:interface=:36:keywordsearchform::IFormSubmitListener::");
+  // form.setAttribute("action", "http://insidewood.lib.ncsu.edu/search.0;jsessionid=a878c24621cae06e24713f3667c9?wicket:interface=:0:keywordsearchform::IFormSubmitListener::");
   
   var hiddenField = document.createElement("input");
   hiddenField.setAttribute("type", "hidden");
-  hiddenField.setAttribute("name", "id2c91_hf_0");
-  form.appendChild(hiddenField);
+  hiddenField.setAttribute("name", "id7_hf_0");
+  // form.appendChild(hiddenField);
   
   var kw = document.createElement("input");
   kw.setAttribute("type", "hidden");
