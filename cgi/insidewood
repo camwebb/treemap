@@ -1,5 +1,7 @@
 #!/usr/local/bin/gawk -f
 
+@include "../lib/utils.awk" ;
+
 BEGIN{
 
   # READ QUERY STRING
@@ -8,7 +10,7 @@ BEGIN{
 	{
 	  split(query[i1], tmpq, "=");
 	  f[tmpq[1]] = urldecode(tmpq[2]); 
-   }
+	}
 
    RS="\x04" ;
 
@@ -23,37 +25,22 @@ BEGIN{
 		 }
 	 }
 
-   cookie = sm[6] ;
-   gsub(/;jsessionid=/,"",cookie);
-   gsub(/\?wicket.*/,"",cookie);
+   # "curl -L -d keywordSearch=Acer \"http://insidewood.lib.ncsu.edu/" sm[6] "\"" | getline spage2 ;
+   # print "Content-type: text/html\n\n" spage2 ;
 
-   "curl -L -d keywordSearch=Acer \"http://insidewood.lib.ncsu.edu/" sm[6] "\"" | getline spage2 ;
-   # "curl -L -d keywordSearch=Acer \"wood/" sm[6] "\"" | getline spage2 ;
-
-   print "Content-type: text/html\n\n<html><body><table border=\"1\">" ;
-
-   n = split(spage2,sl2,"\n");
-   for (i = 1; i < n; i++)
-	 {
-	   if (sl2[i] ~ "descriptionlink")
-		 {
-		   print "<tr>" sl2[i] "</tr>";
-		 }
-	 }
-
-   print "</table></body></html>" ;
-
-   exit;
-
-
-   # See: http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
+   # cookie = sm[6] ;
+   # gsub(/;jsessionid=/,"",cookie);
+   # gsub(/\?wicket.*/,"",cookie);
    # print "Set-Cookie: JSESSIONID=" cookie "; Path=/" ;
+
    print "Content-type: text/html\n\n<html><head> \
           </head> \
 	      <body> \
-            <p>Redirecting... " cookie "</p> \
+            <p>Redirecting to Insidewood query on " f["genus"] "</p> \
+            <p>(If this link does not work, please clear your cookie \
+               for insidewood.lib.ncsu.edu)</p> \
           <script type=\"text/javascript\"> \
-             document.cookie = \"JSESSIONID=" cookie "; Path=/\" ; \
+             /* document.cookie = \"JSESSIONID=" cookie "; Path=/\" ; */ \
              var form = document.createElement(\"form\"); \
              form.setAttribute(\"method\", \"post\"); \
              form.setAttribute(\"action\", \
@@ -61,11 +48,13 @@ BEGIN{
              var kw = document.createElement(\"input\"); \
              kw.setAttribute(\"type\", \"hidden\"); \
              kw.setAttribute(\"name\", \"keywordSearch\"); \
-             kw.setAttribute(\"value\", \"Acer\"); \
+             kw.setAttribute(\"value\", \"" f["genus"] "\"); \
              form.appendChild(kw); \
              document.body.appendChild(form); \
              form.submit(); \
           </script></body></html>" ;
+
+   # See: http://stackoverflow.com/questions/133925/javascript-post-request-like-a-form-submit
 
    exit;
 

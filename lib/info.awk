@@ -23,7 +23,7 @@ function treeInfo()
 		  split($4,nam," ");
 		  print "<li><a href=\"map?method=obsS&amp;tag=" $1 "\">Observations of this plant</a></li>" ;
 		  print "<li><a href=\"http://google.com/m?q=" nam[1] "+" nam[2] "&site=images\">Images of this taxon</a></li>";
-		  print "<li><a href=\"#\" onclick=\"insidewood('" nam[1] "');\">Wood structure</a></li>";
+		  print "<li><a target=\"_blank\" href=\"cgi/insidewood?genus=" nam[1] "\">Wood structure</a></li>";
 		  print "<li><a href=\"http://en.m.wikipedia.org/wiki/" nam[1] "_" nam[2] "\">More info...</a></li>"; 
 		  print "</ul>";
 		  print "<script type=\"text/javascript\" src=\"js/form.js\"></script>";
