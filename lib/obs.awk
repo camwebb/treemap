@@ -6,7 +6,7 @@ function obsForm()
   print "<h1>Make an observation</h1>";
   print "<p>for tree with tag <b>" f["tag"] "</b><br/> <b>(Please double check the tag code)</b></p>";
   print "<form enctype=\"multipart/form-data\" method=\"post\" action=\"map?method=obsD\">" ;
-  print "<p><input type=\"hidden\" name=\"tag\" value=\"" f["tag"] "\" /><b>Type</b> of observation:<br /><select name=\"type\"><option value=\"bud\">Spring buds just breaking open</option><option value=\"flower\">In flower (any stage)</option><option value=\"fruit\">In fruit (any stage)</option><option value=\"fall\">Outstanding fall color</option></select></p>";
+  print "<p><input type=\"hidden\" name=\"tag\" value=\"" f["tag"] "\" /><b>Type</b> of observation:<br /><select name=\"type\"><option value=\"bud\">Spring buds just breaking open</option><option value=\"flower\">In flower (any stage)</option><option value=\"fruit\">In fruit (any stage)</option><option value=\"fall\">Outstanding fall color</option><option value=\"fobs\">Feeding obs. (note animal and plant part)</option></select></p>";
   # <option value=\"damage\">Report plant damage</option></select></p>";
   print "<p>Upload a <b>photo</b> (optional)<br/><span style=\"font-size:12px;\"><i>(small please: &lt;2 MB; NB: iPhone does not support file uploads)</i></span><br/><input type=\"file\" name=\"photo\" /></p>";
   print "<p>Your <b>notes</b> (optional):<br/><textarea name=\"notes\" cols=\"30\" rows=\"2\"></textarea></p>";
@@ -134,6 +134,7 @@ function obsReport()
   stages["flower"] = "in flower";
   stages["fruit"] = "in fruit";
   stages["fall"] = "Fall color";
+  stages["fobs"] = "Feeding obs";
   
   FS="|";
 
@@ -154,6 +155,30 @@ function obsReport()
   if ((f["tag"] != "") && (tagDataFound != 1))
 	{
 	  print "<p>Sorry, no citizen science records for this plant.<br/>  Why not <a href=\"map?method=obs&amp;tag=" f["tag"] "\">make one?</a></p>" ;
+	}
+  else if (tagDataFound)
+	{
+	  print "<h1>Observations for " f["tag"] "</h1>" ;
+	  print "<table cellpadding=\"5\" width=\"400\">";
+	  print "<tr><td><i>Tag</i></td><td><i>Taxon</i></td><td><i>Info</i></td><td><i>Date</i></td><td><i>Notes</i></td><td><i>Photo</i></td></tr>";
+	  for (i = 1; i <= n ; i++)
+	  {
+	      if (XML[i,"tag"] == f["tag"])
+	      {
+		  print "<tr><td><a href=\"map?method=mapLo&amp;tag=" XML[i,"tag"] "\">" XML[i,"tag"] "</td>" ;
+		  print "<td><a href=\"map?method=mapLo&amp;sp=" sp[XML[i,"tag"]] "\">" sp[XML[i,"tag"]] "</td>" ;
+
+			print "<td>" stages[XML[i,"obstype"]] "</td>" ;
+			print "<td>" XML[i,"date"] "</td>" ;
+			print "<td>" gensub(/\\n/,"\\&#160;", "G", XML[i,"notes"]) "</td>" ;
+			if (XML[i,"outfile"] != "")
+			{
+			    print "<td><a href=\"obsdata/" XML[i,"outfile"] "\"><img src=\"obsdata/sm_" XML[i,"outfile"] "\" /></a></td></tr>" ;
+			}
+			else print "<td>&#160;</td></tr>" ;
+		    }
+		}
+	  print "</table>";
 	}
   else
 	{
@@ -178,6 +203,7 @@ function obsReport()
 		}
 	  print "</table>";
 	}
+
 }
   
 function parseXML(indx, string,    i) 
