@@ -78,7 +78,7 @@ function displayMapHi() {
          </div> " ;
   print "</td><td><a href=\"map?method=mapHi&amp;long=" f["long"] + 0.001 "&amp;lat=" f["lat"] "\"><img src=\"img/R.png\" /></a></td></tr>" ;
   print "<tr><td>&#160;</td><td align=\"center\"><a href=\"map?method=mapHi&amp;long=" f["long"] "&amp;lat=" f["lat"]-0.001 "\"><img src=\"img/D.png\" /></a></td><td>&#160;</td></tr>";
-  print "<tr><td colspan=\"3\" align=\"right\">[ <a href=\"map?method=search&amp;long=" f["long"] "&amp;lat=" f["lat"] "\">list taxa</a> | <a href=\"map\">zoom out</a> ]</td></tr>";
+  print "<tr><td colspan=\"3\" align=\"right\">[ <a href=\"map?method=colorkey\">color key</a> | <a href=\"map?method=search&amp;long=" f["long"] "&amp;lat=" f["lat"] "\">list taxa</a> | <a href=\"map\">zoom out</a> ]</td></tr>";
   print "</table>";
 
 }

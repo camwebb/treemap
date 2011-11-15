@@ -57,7 +57,8 @@ function colorkey(          i, j, c, n, famorder, nfamorder, syn)
   print "<h1>Family colors</h1>";
   print "<table cellpadding=\"5\">";
 
-  for (i = 1; i <= nfamorder; i++)
+  # note, counter must start negative for gymnosperms
+  for (i = -20; i <= nfamorder; i++)
 	{
 	  if (color[famorder[i]] != "")
 		{
