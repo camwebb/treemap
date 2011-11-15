@@ -47,6 +47,7 @@ BEGIN{
   else if (f["method"] == "obs")    obsForm() ;
   else if (f["method"] == "obsD")   obsCapture() ;
   else if (f["method"] == "obsS")   obsReport() ;
+  else if (f["method"] == "colorkey")   colorkey() ;
   
   # other/no arguments
   else mapLo() ;

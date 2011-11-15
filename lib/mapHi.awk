@@ -40,7 +40,7 @@ function mapHi()
 
   for (i in hasFam)
 	{
-	  if (color[i] == "") color[i] = "black";
+	  if (color[i] == "") error("color not found for fam " i);
 	  print "plot \"run/" ps "." i ".dat\" with points pointtype 7 pointsize 2 lt rgb \"" color[i] "\"" >> "run/" ps ".plt" ;
 	}
   
