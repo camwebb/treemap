@@ -13,8 +13,8 @@ function treeInfo()
 		{
 		  print "<h1>" $4 "</h1>";
 		  print "<ul>" ;
-		  if (apfam[$3] == "") print "<li>Family : " substr($3,1,1) tolower(substr($3,2)) "&#160;&#160;&#160;<span style=\"background-color: " color[$3] ";\">&#160;&#160;&#160;&#160;</span></li>" ;
-		  else print "<li>Family : <a href=\"http://www.mobot.org/MOBOT/Research/APweb/orders/" apfam[$3] "\">" substr($3,1,1) tolower(substr($3,2)) "</a>&#160;&#160;&#160;<span style=\"background-color: " color[$3] ";\">&#160;&#160;&#160;&#160;</span></li>" ;
+		  if (apfam[$3] == "") print "<li>Family : " substr($3,1,1) tolower(substr($3,2)) "&#160;&#160;&#160;<span style=\"background-color: " color[$3] ";\">&#160;&#160;&#160;&#160;</span>&#160;&#160;&#160;<a href=\"phylo/phylo.svg\">&#934;</a></li>" ;
+		  else print "<li>Family : <a href=\"http://www.mobot.org/MOBOT/Research/APweb/orders/" apfam[$3] "\">" substr($3,1,1) tolower(substr($3,2)) "</a>&#160;&#160;&#160;<span style=\"background-color: " color[$3] ";\">&#160;&#160;&#160;&#160;</span>&#160;&#160;&#160;<a href=\"phylo/phylo.svg\">&#934;</a></li>" ;
 		  if ($6 != "") print "<li>Common name : " $6 "</li>" ;
 		  if ($10 != "") print "<li>Section : " $10 "</li>" ;
 		  if ($11 != "") print "<li>Collection : " $11 "</li>" ;
