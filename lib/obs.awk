@@ -9,8 +9,9 @@ function obsForm()
   print "<p><input type=\"hidden\" name=\"tag\" value=\"" f["tag"] "\" /><b>Type</b> of observation:<br /><select name=\"type\"><option value=\"bud\">Spring buds just breaking open</option><option value=\"flower\">In flower (any stage)</option><option value=\"fruit\">In fruit (any stage)</option><option value=\"fall\">Outstanding fall color</option><option value=\"fobs\">Feeding obs. (note animal and plant part)</option></select></p>";
   # <option value=\"damage\">Report plant damage</option></select></p>";
   print "<p>Upload a <b>photo</b> (optional)<br/><span style=\"font-size:12px;\"><i>(small please: &lt;2 MB; NB: iPhone does not support file uploads)</i></span><br/><input type=\"file\" name=\"photo\" /></p>";
+  print "<p>Upload a photo of the plant <b>tag</b> (optional)<br/><input type=\"file\" name=\"tagphoto\" /></p>";
   print "<p>Your <b>notes</b> (optional):<br/><textarea name=\"notes\" cols=\"30\" rows=\"2\"></textarea></p>";
-  print "<p>Your <b>email</b> (optional)<br/><input type=\"text\" name=\"email\" size=\"30\"/></p>";
+  print "<p>Your <b>email</b> or <b>username</b> (optional)<br/><input type=\"text\" name=\"email\" size=\"30\"/></p>";
   
   print "<p><input type=\"submit\" value=\"Send observation\" /></p>";
   print "</form>";
@@ -54,7 +55,9 @@ function obsCapture()
   gsub(/\-/,"\\-",$0); gsub(/\*/,"\\*",$0);
   gsub(/\./,"\\.",$0); gsub(/\?/,"\\?",$0);
   RS = $0 "[^\r]*" "\r?\n" ; 
-  recdate = strftime("%Y-%m-%d"); rectime= strftime("%H%M%S") ;
+  recdate = strftime("%Y-%m-%d"); 
+  frecdate = gensub(/\-/,"","G",recdate);
+  rectime= strftime("%H%M%S") ;
   # had to add the extra regex return because webkit and mozilla use a 
   #   different last delimiter ( ----XYZ-- )
   while (getline > 0)
@@ -68,16 +71,19 @@ function obsCapture()
 		{
 		  ORS = "";
 		  split (line[1], lineTmp2, ";");
-		  filename = gensub(/ filename="([^"]*)"$/,"\\1","G",lineTmp2[3]);
+		  # now need to differentiate between main photo, and tag photo
+		  pht = gensub(/ name="([^"]*)"$/,"\\1","G",lineTmp2[2]);
+		  filename[pht] = gensub(/ filename="([^"]*)"$/,"\\1","G",lineTmp2[3]);
 		  mediatype = gensub(/[^/]*\/([a-z]+)/,"\\1","G",line[2]);
-		  outfile = recdate "T" rectime "_" tag "." mediatype ;
+		  tagmark = ""; if (pht == "tagphoto") tagmark = "_tag" ;
+		  outfile[pht] = frecdate "T" rectime "_" tag tagmark "." mediatype ;
 		  # likely all to be in line 4, but there may be a \r\n in the 
 		  #  file, so better to concatenate lines
 		  for (x = 4 ; x < lines ; x++)
 			{
 			  # could add a rand component: srand(); substr(rand(),3,5)
 			  # but chance of two uploads in same second very tiny
-			  print line[x] "\r\n" >> "obsdata/" outfile;
+			  print line[x] "\r\n" >> "obsdata/" outfile[pht];
 			}
 		  ORS = "\n";
 		}
@@ -98,7 +104,7 @@ function obsCapture()
 		}
 	}
 
-  gsub(/|/,"",notes) ; gsub(/|/,"",filename); # just in case
+  gsub(/|/,"",notes) ; gsub(/|/,"",filename["photo"]); # just in case
 
   # WRITE TO FILE
   print "<date>" recdate \
@@ -107,10 +113,12 @@ function obsCapture()
 	"</tag><obstype>" obstype \
 	"</obstype><notes>" notes \
 	"</notes><email>" email \
-	"</email><oriname>"	filename \
-	"</oriname><outfile>" outfile \
-	"</outfile>" >> "obsdata/data.csv" ;
-
+	"</email><oriname>"	filename["photo"] \
+	"</oriname><outfile>" outfile["photo"] \
+	"</outfile><tagoriname>"  filename["tagphoto"] \
+    "</tagoriname><tagoutfile>" outfile["tagphoto"] \
+	"</tagoutfile>" >> "obsdata/data.csv" ;
+  
   # OUTPUT
 
   print "<h1>Data stored</h1>" ;
@@ -118,9 +126,13 @@ function obsCapture()
   print "<p align=\"right\">[ <a href=\"map\">home</a> ]</p>";
 
   # make thumb
-  if (outfile != "")
+  if (outfile["photo"] != "")
   {
-      system("convert 'obsdata/" outfile "' -resize 50x50 'obsdata/sm_" outfile "'");
+      system("convert 'obsdata/" outfile["photo"] "' -resize 50x50 'obsdata/sm_" outfile["photo"] "'");
+  }
+  if (outfile["tagphoto"] != "")
+  {
+      system("convert 'obsdata/" outfile["tagphoto"] "' -resize 50x50 'obsdata/sm_" outfile["tagphoto"] "'");
   }
 
 }

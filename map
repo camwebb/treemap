@@ -1,4 +1,4 @@
-#!/usr/local/bin/gawk -f
+#!/bin/gawk -f
 
 # Treemap: Web application for mobiles that displays information on 
 #   georeferenced trees over a base map
@@ -48,6 +48,7 @@ BEGIN{
   else if (f["method"] == "obsD")   obsCapture() ;
   else if (f["method"] == "obsS")   obsReport() ;
   else if (f["method"] == "colorkey")   colorkey() ;
+  else if (f["method"] == "latinlist")   latinlist() ;
   
   # other/no arguments
   else mapLo() ;
