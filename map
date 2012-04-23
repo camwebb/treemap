@@ -1,4 +1,4 @@
-#!/bin/gawk -f
+#!/usr/local/bin/gawk -f
 
 # Treemap: Web application for mobiles that displays information on 
 #   georeferenced trees over a base map
