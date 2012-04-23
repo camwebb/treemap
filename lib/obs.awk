@@ -125,14 +125,10 @@ function obsCapture()
   print "<p>Thanks for your observation on plant <a href=\"map?method=info&amp;tag=" tag "\">" tag "</a></p>";
   print "<p align=\"right\">[ <a href=\"map\">home</a> ]</p>";
 
-  # make thumb
+  # make thumb (of main photo only)
   if (outfile["photo"] != "")
   {
       system("convert 'obsdata/" outfile["photo"] "' -resize 50x50 'obsdata/sm_" outfile["photo"] "'");
-  }
-  if (outfile["tagphoto"] != "")
-  {
-      system("convert 'obsdata/" outfile["tagphoto"] "' -resize 50x50 'obsdata/sm_" outfile["tagphoto"] "'");
   }
 
 }
@@ -164,6 +160,7 @@ function obsReport()
 		}
 	}
 
+  # if a tag argument is given
   if ((f["tag"] != "") && (tagDataFound != 1))
 	{
 	  print "<p>Sorry, no citizen science records for this plant.<br/>  Why not <a href=\"map?method=obs&amp;tag=" f["tag"] "\">make one?</a></p>" ;
@@ -194,26 +191,44 @@ function obsReport()
 	}
   else
 	{
-	    print "<h1>Recent observations</h1>" ;
+	  if (f["email"] != "") 
+		{
+		  print "<h1>Your observations</h1>" ;
+		  print "<h2>" f["email"] "</h2>" ;
+		  start = 1;
+		}
+	  else 
+		{
+		  print "<h1>Recent observations</h1>" ;
+		  if (n > 10) start = n-10 ;
+		  else start = 1;
+		}
+	  # print the table header
 	  print "<table cellpadding=\"5\" width=\"400\">";
 	  print "<tr><td><i>Tag</i></td><td><i>Taxon</i></td><td><i>Info</i></td><td><i>Date</i></td><td><i>Notes</i></td><td><i>Photo</i></td></tr>";
-	  if (n > 10) start = n-10 ;
-	  else start = 1;
+
 	  for (i = start; i <= n ; i++)
 		{
-		  print "<tr><td><a href=\"map?method=mapLo&amp;tag=" XML[i,"tag"] "\">" XML[i,"tag"] "</td>" ;
-		  print "<td><a href=\"map?method=mapLo&amp;sp=" sp[XML[i,"tag"]] "\">" sp[XML[i,"tag"]] "</td>" ;
-
-		  print "<td>" stages[XML[i,"obstype"]] "</td>" ;
-		  print "<td>" XML[i,"date"] "</td>" ;
-		  print "<td>" gensub(/\\n/,"\\&#160;", "G", XML[i,"notes"]) "</td>" ;
-		  if (XML[i,"outfile"] != "")
+		  if (((f["email"] != "") && (f["email"] == XML[i,"email"])) \
+			  || (f["email"] == ""))
 			{
-			  print "<td><a href=\"obsdata/" XML[i,"outfile"] "\"><img src=\"obsdata/sm_" XML[i,"outfile"] "\" /></a></td></tr>" ;
+			  print "<tr><td><a href=\"map?method=mapLo&amp;tag=" XML[i,"tag"] "\">" XML[i,"tag"] "</td>" ;
+			  print "<td><a href=\"map?method=mapLo&amp;sp=" sp[XML[i,"tag"]] "\">" sp[XML[i,"tag"]] "</td>" ;
+
+			  print "<td>" stages[XML[i,"obstype"]] "</td>" ;
+			  print "<td>" XML[i,"date"] "</td>" ;
+			  print "<td>" gensub(/\\n/,"\\&#160;", "G", XML[i,"notes"]) "</td>" ;
+			  if (XML[i,"outfile"] != "")
+				{
+				  print "<td><a href=\"obsdata/" XML[i,"outfile"] "\"><img src=\"obsdata/sm_" XML[i,"outfile"] "\" /></a></td></tr>" ;
+				}
+			  else print "<td>&#160;</td></tr>" ;
 			}
-		  else print "<td>&#160;</td></tr>" ;
 		}
 	  print "</table>";
+	  
+	  # user form
+	  print "<hr/><p>To see your own images (if tagged with your email address), enter your email address here:</p><form method=\"get\" action=\"map\"><input name=\"method\" type=\"hidden\" value=\"obsS\" /><input type=\"text\" name=\"email\" length=\"20\"/><input type=\"submit\" value=\"Go\" /></form>" ;
 	}
 
 }
