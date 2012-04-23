@@ -200,7 +200,7 @@ function obsReport()
 	  else 
 		{
 		  print "<h1>Recent observations</h1>" ;
-		  if (n > 10) start = n-10 ;
+		  if (n > 10) start = n-9 ;
 		  else start = 1;
 		}
 	  # print the table header
